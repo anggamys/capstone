@@ -28,7 +28,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
 
-            $table->string('short_description', 255)->nullable();
             $table->longText('description')->nullable();
 
             $table->text('address')->nullable();
@@ -42,10 +41,8 @@ return new class extends Migration
 
             $table->unsignedInteger('ticket_price')->default(0);
 
-            $table->time('opening_time')->nullable();
-            $table->time('closing_time')->nullable();
+            $table->string('operational_hours')->nullable();
 
-            $table->decimal('visit_duration_hours', 4, 1)->nullable();
             $table->decimal('rating', 2, 1)->default(0);
 
             $table->enum('crowd_level', ['low', 'medium', 'high'])->default('medium');

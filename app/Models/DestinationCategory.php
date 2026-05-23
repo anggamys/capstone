@@ -13,7 +13,6 @@ class DestinationCategory extends Model
     protected $fillable = [
         'name',
         'slug',
-        'description',
         'status',
     ];
 

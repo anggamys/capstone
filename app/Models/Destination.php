@@ -15,7 +15,6 @@ class Destination extends Model
         'destination_subcategory_id',
         'name',
         'slug',
-        'short_description',
         'description',
         'address',
         'district',
@@ -24,13 +23,11 @@ class Destination extends Model
         'google_maps_url',
         'main_image',
         'ticket_price',
-        'opening_time',
-        'closing_time',
-        'visit_duration_hours',
+        'operational_hours',
         'rating',
         'crowd_level',
-        'access_level',
         'activity_level',
+        'access_level',
         'generated_tags',
         'status',
     ];
@@ -39,11 +36,9 @@ class Destination extends Model
         'latitude' => 'decimal:7',
         'longitude' => 'decimal:7',
         'ticket_price' => 'integer',
-        'visit_duration_hours' => 'decimal:1',
+        'operational_hours' => 'string',
         'rating' => 'decimal:1',
         'generated_tags' => 'array',
-        'opening_time' => 'datetime:H:i',
-        'closing_time' => 'datetime:H:i',
     ];
 
     public function category()

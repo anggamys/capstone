@@ -14,7 +14,6 @@ class DestinationSubcategory extends Model
         'destination_category_id',
         'name',
         'slug',
-        'description',
         'status',
     ];
 
