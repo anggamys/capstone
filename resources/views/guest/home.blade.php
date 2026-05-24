@@ -244,7 +244,7 @@
                     tag="Machine Learning" 
                     name="Clarisah" 
                     role="Machine Learning Engineer" 
-                    image="https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=200&h=200&q=80" 
+                    image="{{ asset('images/clarisah.png') }}"
                     linkedin="www.linkedin.com/in/clarissa-ingnasia-659323282" />
 
                 <!-- Dev 2: Dyah -->
@@ -252,7 +252,7 @@
                     tag="Machine Learning" 
                     name="Dyah" 
                     role="Machine Learning Engineer" 
-                    image="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=200&h=200&q=80" 
+                    image="{{ asset('images/nana.png') }}"
                     linkedin="www.linkedin.com/in/dyahinkud" />
 
                 <!-- Dev 3: Dicky -->
@@ -260,7 +260,7 @@
                     tag="Front End & Back End" 
                     name="Dicky" 
                     role="Fullstack Developer" 
-                    image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80" 
+                    image="{{ asset('images/dickyha.png') }}"
                     linkedin="www.linkedin.com/in/dickyhaa" />
 
                 <!-- Dev 4: Feomita -->
@@ -268,7 +268,7 @@
                     tag="Front End & Back End" 
                     name="Feomita" 
                     role="Fullstack Developer" 
-                    image="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=200&h=200&q=80" 
+                    image="{{ asset('images/feomita.png') }}"
                     linkedin="www.linkedin.com/in/feomita-ramadhany-fudiansah-90767828b" />
 
                 <!-- Dev 5: Sophia -->
@@ -276,7 +276,7 @@
                     tag="UI UX Designer" 
                     name="Sophia" 
                     role="UI UX" 
-                    image="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&h=200&q=80" 
+                    image="{{ asset('images/sopia.png') }}"
                     linkedin="www.linkedin.com/in/sophiaanindita" />
             </div>
         </div>
