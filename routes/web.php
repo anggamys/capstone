@@ -54,7 +54,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 if (request('search')) {
                     $query->where('name', 'like', '%' . request('search') . '%');
                 }
-                $categories = $query->paginate(10)->withQueryString();
+                $categories = $query->paginate(5)->withQueryString();
                 return view('pages.admin.kategori-destinasi.index', compact('categories'));
             })->name('index');
         });
@@ -72,7 +72,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
                           });
                     });
                 }
-                $subcategories = $query->paginate(10)->withQueryString();
+                $subcategories = $query->paginate(5)->withQueryString();
                 return view('pages.admin.sub-kategori-destinasi.index', compact('subcategories'));
             })->name('index');
         });
