@@ -42,16 +42,18 @@ return new class extends Migration
             $table->unsignedInteger('ticket_price')->default(0);
 
             $table->string('operational_hours')->nullable();
+            $table->string('visit_duration_hours')->nullable();
 
             $table->decimal('rating', 2, 1)->default(0);
 
-            $table->enum('crowd_level', ['low', 'medium', 'high'])->default('medium');
-            $table->enum('access_level', ['easy', 'medium', 'hard'])->default('medium');
-            $table->enum('activity_level', ['relaxing', 'moderate', 'active'])->default('moderate');
+            $table->enum('access_level', ['Mudah', 'Sedang', 'Sulit'])->default('Sedang');
 
-            $table->json('generated_tags')->nullable();
+            $table->text('generated_tags')->nullable();
 
-            $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
+            $table->enum('status', [
+                'active',
+                'inactive'
+            ])->default('active');
 
             $table->timestamps();
             $table->softDeletes();

@@ -24,9 +24,8 @@ class Destination extends Model
         'main_image',
         'ticket_price',
         'operational_hours',
+        'visit_duration_hours',
         'rating',
-        'crowd_level',
-        'activity_level',
         'access_level',
         'generated_tags',
         'status',
@@ -37,6 +36,7 @@ class Destination extends Model
         'longitude' => 'decimal:7',
         'ticket_price' => 'integer',
         'operational_hours' => 'string',
+        'visit_duration_hours' => 'integer',
         'rating' => 'decimal:1',
         'generated_tags' => 'array',
     ];
