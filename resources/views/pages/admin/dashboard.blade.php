@@ -3,15 +3,21 @@
         {{ __('Dashboard Admin') }}
     </x-slot>
 
-    <div class="py-4">
-        <!-- Welcome Message -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-[#2b3674] tracking-tight">
-                Selamat Datang di Panel Admin Laras Banyuwangi
-            </h1>
-            <p class="text-sm text-slate-500 mt-1">
-                Pantau destinasi, blog artikel dan hasil rekomendasi destinasi secara real-time.
-            </p>
+    <div class="py-2">
+        <!-- Banner Section (Mount Ijen Panorama Background) -->
+        <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden shadow-md mb-8 py-10 px-6 md:py-14 md:px-12 flex flex-col items-center justify-center text-center min-h-[220px]">
+            <!-- Background Image -->
+            <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/dashboard-banner.png') }}');"></div>
+
+            <!-- Banner Content -->
+            <div class="relative z-10 text-white max-w-3xl">
+                <h1 class="text-2xl md:text-3.5xl font-bold tracking-tight mb-2.5 leading-tight font-sans">
+                    Selamat Datang di Panel Admin Laras Banyuwangi
+                </h1>
+                <p class="text-xs md:text-sm text-slate-100/90 leading-relaxed font-light font-sans max-w-xl mx-auto">
+                    Pantau destinasi, blog artikel dan hasil rekomendasi destinasi secara real-time.
+                </p>
+            </div>
         </div>
 
         <!-- Stats Cards Grid -->
@@ -73,9 +79,8 @@
                 <a href="#" class="flex items-center justify-center p-8 bg-[#3F5C7D] hover:bg-[#344d6b] text-white rounded-2xl shadow-md transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] font-semibold text-lg">
                     <!-- Map Pin Plus Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-3 shrink-0">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 3v4M21 5h-4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1 1 15 0Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7v6m-3-3h6" />
                     </svg>
                     <span>Tambah Destinasi</span>
                 </a>
