@@ -46,6 +46,36 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/{id}', function () { return view('pages.admin.kategori-blog-artikel.show'); })->name('show');
             Route::get('/{id}/edit', function () { return view('pages.admin.kategori-blog-artikel.edit'); })->name('edit');
         });
+
+        // Kategori Destinasi Wisata
+        Route::prefix('kategori-destinasi')->name('admin.kategori-destinasi.')->group(function () {
+            Route::get('/', function () {
+                $query = \App\Models\DestinationCategory::query();
+                if (request('search')) {
+                    $query->where('name', 'like', '%' . request('search') . '%');
+                }
+                $categories = $query->paginate(10)->withQueryString();
+                return view('pages.admin.kategori-destinasi.index', compact('categories'));
+            })->name('index');
+        });
+
+        // Sub Kategori Destinasi Wisata
+        Route::prefix('sub-kategori-destinasi')->name('admin.sub-kategori-destinasi.')->group(function () {
+            Route::get('/', function () {
+                $query = \App\Models\DestinationSubcategory::with('category');
+                if (request('search')) {
+                    $search = request('search');
+                    $query->where(function ($q) use ($search) {
+                        $q->where('name', 'like', '%' . $search . '%')
+                          ->orWhereHas('category', function ($catQuery) use ($search) {
+                              $catQuery->where('name', 'like', '%' . $search . '%');
+                          });
+                    });
+                }
+                $subcategories = $query->paginate(10)->withQueryString();
+                return view('pages.admin.sub-kategori-destinasi.index', compact('subcategories'));
+            })->name('index');
+        });
     });
 });
 

@@ -111,8 +111,8 @@
                      x-transition:leave-end="opacity-0 transform -translate-y-2"
                      class="space-y-1">
                     
-                    <a href="#" class="{{ $kategoriActive ? $activeSubClass : $inactiveSubClass }}">Kategori</a>
-                    <a href="#" class="{{ $subKategoriActive ? $activeSubClass : $inactiveSubClass }}">Subkategori</a>
+                    <a href="{{ Route::has('admin.kategori-destinasi.index') ? route('admin.kategori-destinasi.index') : '#' }}" class="{{ $kategoriActive ? $activeSubClass : $inactiveSubClass }}">Kategori</a>
+                    <a href="{{ Route::has('admin.sub-kategori-destinasi.index') ? route('admin.sub-kategori-destinasi.index') : '#' }}" class="{{ $subKategoriActive ? $activeSubClass : $inactiveSubClass }}">Subkategori</a>
                     <a href="#" class="{{ $aktivitasActive ? $activeSubClass : $inactiveSubClass }}">Aktivitas</a>
                     <a href="#" class="{{ $fasilitasActive ? $activeSubClass : $inactiveSubClass }}">Fasilitas</a>
                     <a href="#" class="{{ $tipePerjalananActive ? $activeSubClass : $inactiveSubClass }}">Tipe Perjalanan</a>
