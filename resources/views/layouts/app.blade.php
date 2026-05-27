@@ -17,23 +17,26 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <body class="font-sans antialiased text-[#2b3674]">
+        <div class="flex min-h-screen bg-[#F1F3FF]/40" x-data="{ sidebarOpen: false }">
+            
+            <!-- Admin Sidebar Component -->
+            <x-admin-sidebar />
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+            <!-- Main Content Area -->
+            <div class="flex-1 flex flex-col min-w-0 overflow-hidden min-h-screen">
+                
+                <!-- Admin Navbar Component -->
+                <x-admin-navbar :header="$header ?? null" />
+
+                <!-- Page Content -->
+                <main class="flex-1 overflow-x-hidden overflow-y-auto p-6 md:p-8 flex flex-col justify-between">
+                    <div class="flex-grow">
+                        {{ $slot }}
                     </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                    <x-admin-footer />
+                </main>
+            </div>
         </div>
     </body>
 </html>
