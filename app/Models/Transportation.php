@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Activity extends Model
+class Transportation extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -18,6 +18,6 @@ class Activity extends Model
 
     public function destinations()
     {
-        return $this->belongsToMany(Destination::class, 'activity_destination');
+        return $this->belongsToMany(Destination::class, 'destination_transportation');
     }
 }

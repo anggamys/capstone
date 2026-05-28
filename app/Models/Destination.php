@@ -50,4 +50,29 @@ class Destination extends Model
     {
         return $this->belongsTo(DestinationSubcategory::class, 'destination_subcategory_id');
     }
+
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class, 'activity_destination');
+    }
+
+    public function facilities()
+    {
+        return $this->belongsToMany(Facility::class, 'destination_facility');
+    }
+
+    public function travelTypes()
+    {
+        return $this->belongsToMany(TravelType::class, 'destination_travel_type');
+    }
+
+    public function visitTimes()
+    {
+        return $this->belongsToMany(VisitTime::class, 'destination_visit_time');
+    }
+
+    public function transportations()
+    {
+        return $this->belongsToMany(Transportation::class, 'destination_transportation');
+    }
 }
