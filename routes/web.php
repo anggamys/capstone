@@ -3,6 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DestinationCategoryController;
 use App\Http\Controllers\DestinationSubcategoryController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\FacilityController;
+use App\Http\Controllers\TravelTypeController;
+use App\Http\Controllers\VisitTimeController;
+use App\Http\Controllers\TransportationController;
 use Illuminate\Support\Facades\Route;
 
 // Guest Routes
@@ -69,6 +74,61 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/{id}/edit', [DestinationSubcategoryController::class, 'edit'])->name('edit');
             Route::put('/{id}', [DestinationSubcategoryController::class, 'update'])->name('update');
             Route::delete('/{id}', [DestinationSubcategoryController::class, 'destroy'])->name('destroy');
+        });
+
+        // Aktivitas Wisata
+        Route::prefix('aktivitas')->name('admin.aktivitas.')->group(function () {
+            Route::get('/', [ActivityController::class, 'index'])->name('index');
+            Route::get('/create', [ActivityController::class, 'create'])->name('create');
+            Route::post('/', [ActivityController::class, 'store'])->name('store');
+            Route::get('/{id}', [ActivityController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [ActivityController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [ActivityController::class, 'update'])->name('update');
+            Route::delete('/{id}', [ActivityController::class, 'destroy'])->name('destroy');
+        });
+
+        // Fasilitas Wisata
+        Route::prefix('fasilitas')->name('admin.fasilitas.')->group(function () {
+            Route::get('/', [FacilityController::class, 'index'])->name('index');
+            Route::get('/create', [FacilityController::class, 'create'])->name('create');
+            Route::post('/', [FacilityController::class, 'store'])->name('store');
+            Route::get('/{id}', [FacilityController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [FacilityController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [FacilityController::class, 'update'])->name('update');
+            Route::delete('/{id}', [FacilityController::class, 'destroy'])->name('destroy');
+        });
+
+        // Tipe Perjalanan
+        Route::prefix('tipe-perjalanan')->name('admin.tipe-perjalanan.')->group(function () {
+            Route::get('/', [TravelTypeController::class, 'index'])->name('index');
+            Route::get('/create', [TravelTypeController::class, 'create'])->name('create');
+            Route::post('/', [TravelTypeController::class, 'store'])->name('store');
+            Route::get('/{id}', [TravelTypeController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [TravelTypeController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [TravelTypeController::class, 'update'])->name('update');
+            Route::delete('/{id}', [TravelTypeController::class, 'destroy'])->name('destroy');
+        });
+
+        // Waktu Kunjungan
+        Route::prefix('waktu-kunjungan')->name('admin.waktu-kunjungan.')->group(function () {
+            Route::get('/', [VisitTimeController::class, 'index'])->name('index');
+            Route::get('/create', [VisitTimeController::class, 'create'])->name('create');
+            Route::post('/', [VisitTimeController::class, 'store'])->name('store');
+            Route::get('/{id}', [VisitTimeController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [VisitTimeController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [VisitTimeController::class, 'update'])->name('update');
+            Route::delete('/{id}', [VisitTimeController::class, 'destroy'])->name('destroy');
+        });
+
+        // Transportasi Wisata
+        Route::prefix('transportasi')->name('admin.transportasi.')->group(function () {
+            Route::get('/', [TransportationController::class, 'index'])->name('index');
+            Route::get('/create', [TransportationController::class, 'create'])->name('create');
+            Route::post('/', [TransportationController::class, 'store'])->name('store');
+            Route::get('/{id}', [TransportationController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [TransportationController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [TransportationController::class, 'update'])->name('update');
+            Route::delete('/{id}', [TransportationController::class, 'destroy'])->name('destroy');
         });
     });
 });

@@ -39,6 +39,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DestinationCategorySeeder::class,
             DestinationSubcategorySeeder::class,
+            ActivitySeeder::class,
+            FacilitySeeder::class,
+            TravelTypeSeeder::class,
+            VisitTimeSeeder::class,
+            TransportationSeeder::class,
         ]);
     }
 }

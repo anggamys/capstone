@@ -113,11 +113,11 @@
                     
                     <a href="{{ Route::has('admin.kategori-destinasi.index') ? route('admin.kategori-destinasi.index') : '#' }}" class="{{ $kategoriActive ? $activeSubClass : $inactiveSubClass }}">Kategori</a>
                     <a href="{{ Route::has('admin.sub-kategori-destinasi.index') ? route('admin.sub-kategori-destinasi.index') : '#' }}" class="{{ $subKategoriActive ? $activeSubClass : $inactiveSubClass }}">Subkategori</a>
-                    <a href="#" class="{{ $aktivitasActive ? $activeSubClass : $inactiveSubClass }}">Aktivitas</a>
-                    <a href="#" class="{{ $fasilitasActive ? $activeSubClass : $inactiveSubClass }}">Fasilitas</a>
-                    <a href="#" class="{{ $tipePerjalananActive ? $activeSubClass : $inactiveSubClass }}">Tipe Perjalanan</a>
-                    <a href="#" class="{{ $waktuKunjunganActive ? $activeSubClass : $inactiveSubClass }}">Waktu Kunjungan</a>
-                    <a href="#" class="{{ $transportasiActive ? $activeSubClass : $inactiveSubClass }}">Transportasi</a>
+                    <a href="{{ Route::has('admin.aktivitas.index') ? route('admin.aktivitas.index') : '#' }}" class="{{ $aktivitasActive ? $activeSubClass : $inactiveSubClass }}">Aktivitas</a>
+                    <a href="{{ Route::has('admin.fasilitas.index') ? route('admin.fasilitas.index') : '#' }}" class="{{ $fasilitasActive ? $activeSubClass : $inactiveSubClass }}">Fasilitas</a>
+                    <a href="{{ Route::has('admin.tipe-perjalanan.index') ? route('admin.tipe-perjalanan.index') : '#' }}" class="{{ $tipePerjalananActive ? $activeSubClass : $inactiveSubClass }}">Tipe Perjalanan</a>
+                    <a href="{{ Route::has('admin.waktu-kunjungan.index') ? route('admin.waktu-kunjungan.index') : '#' }}" class="{{ $waktuKunjunganActive ? $activeSubClass : $inactiveSubClass }}">Waktu Kunjungan</a>
+                    <a href="{{ Route::has('admin.transportasi.index') ? route('admin.transportasi.index') : '#' }}" class="{{ $transportasiActive ? $activeSubClass : $inactiveSubClass }}">Transportasi</a>
                     <a href="#" class="{{ $dataDestinasiActive ? $activeSubClass : $inactiveSubClass }}">Data Destinasi</a>
                 </div>
             </div>
