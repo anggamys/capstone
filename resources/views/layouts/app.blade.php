@@ -38,5 +38,8 @@
                 </main>
             </div>
         </div>
+
+        <!-- Premium Floating Toast Notification -->
+        <x-toast />
     </body>
 </html>

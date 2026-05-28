@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DestinationCategoryController;
+use App\Http\Controllers\DestinationSubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 // Guest Routes
@@ -49,32 +51,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         // Kategori Destinasi Wisata
         Route::prefix('kategori-destinasi')->name('admin.kategori-destinasi.')->group(function () {
-            Route::get('/', function () {
-                $query = \App\Models\DestinationCategory::query();
-                if (request('search')) {
-                    $query->where('name', 'like', '%' . request('search') . '%');
-                }
-                $categories = $query->paginate(5)->withQueryString();
-                return view('pages.admin.kategori-destinasi.index', compact('categories'));
-            })->name('index');
+            Route::get('/', [DestinationCategoryController::class, 'index'])->name('index');
+            Route::get('/create', [DestinationCategoryController::class, 'create'])->name('create');
+            Route::post('/', [DestinationCategoryController::class, 'store'])->name('store');
+            Route::get('/{id}', [DestinationCategoryController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [DestinationCategoryController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [DestinationCategoryController::class, 'update'])->name('update');
+            Route::delete('/{id}', [DestinationCategoryController::class, 'destroy'])->name('destroy');
         });
 
         // Sub Kategori Destinasi Wisata
         Route::prefix('sub-kategori-destinasi')->name('admin.sub-kategori-destinasi.')->group(function () {
-            Route::get('/', function () {
-                $query = \App\Models\DestinationSubcategory::with('category');
-                if (request('search')) {
-                    $search = request('search');
-                    $query->where(function ($q) use ($search) {
-                        $q->where('name', 'like', '%' . $search . '%')
-                          ->orWhereHas('category', function ($catQuery) use ($search) {
-                              $catQuery->where('name', 'like', '%' . $search . '%');
-                          });
-                    });
-                }
-                $subcategories = $query->paginate(5)->withQueryString();
-                return view('pages.admin.sub-kategori-destinasi.index', compact('subcategories'));
-            })->name('index');
+            Route::get('/', [DestinationSubcategoryController::class, 'index'])->name('index');
+            Route::get('/create', [DestinationSubcategoryController::class, 'create'])->name('create');
+            Route::post('/', [DestinationSubcategoryController::class, 'store'])->name('store');
+            Route::get('/{id}', [DestinationSubcategoryController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [DestinationSubcategoryController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [DestinationSubcategoryController::class, 'update'])->name('update');
+            Route::delete('/{id}', [DestinationSubcategoryController::class, 'destroy'])->name('destroy');
         });
     });
 });
