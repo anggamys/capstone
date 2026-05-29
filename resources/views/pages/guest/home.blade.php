@@ -32,10 +32,12 @@
     <div class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                    Lebih dari Sekadar <span class="text-[#89A8E0]">Destinasi</span>,<br/>
-                    <span class="text-[#89A8E0]">Banyuwangi</span> adalah Pengalaman
+                <h2 class="text-3xl md:text-5xl font-bold text-[#3F5C7D] mb-6 leading-tight font-sans">
+                    Lebih dari Sekadar <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Destinasi</span>,<br/>
+                    <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Banyuwangi</span> adalah Pengalaman
                 </h2>
+                <!-- Gradient Underline Divider -->
+                <div class="w-32 h-1.5 bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] mx-auto mt-6 mb-8 rounded-full"></div>
                 <p class="text-slate-500 leading-relaxed text-base font-light font-sans">
                     Setiap sudut Banyuwangi menyimpan cerita. Dari gemuruh api biru Kawah Ijen, hingga tenangnya ombak Pantai Pulau Merah. Kami hadir untuk membantu Anda merancang petualangan yang tak terlupakan di ujung timur Pulau Jawa.
                 </p>
@@ -136,8 +138,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-sans">
-                        Destinasi <span class="text-[#89A8E0]">Populer</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#3F5C7D] mb-4 font-sans">
+                        Destinasi <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Populer</span>
                     </h2>
                     <p class="text-slate-500 font-sans">Jelajahi tempat-tempat favorit pilihan wisatawan di Banyuwangi.</p>
                 </div>
@@ -183,8 +185,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-sans">
-                        Blog <span class="text-[#89A8E0]">Artikel</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#3F5C7D] mb-4 font-sans">
+                        Blog <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Artikel</span>
                     </h2>
                     <p class="text-slate-500 font-sans">Menarik, Informatif, dan Up to Date.</p>
                 </div>
@@ -226,11 +228,11 @@
     </div>
 
     <!-- 6. Section: Tim Pengembang Laras -->
-    <div class="py-24 bg-white">
+    <div class="py-24 bg-[#CDEBF2]/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="mb-20">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-sans">
-                    Tim Pengembang <span class="text-[#89A8E0]">Laras</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#3F5C7D] mb-4 font-sans">
+                    Tim Pengembang <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Laras</span>
                 </h2>
                 <p class="text-slate-500 max-w-3xl mx-auto font-sans text-sm md:text-base leading-relaxed">
                     Tim lintas disiplin yang menggabungkan keahlian ui ux, full-stack development, dan machine learning untuk menciptakan solusi digital yang bermanfaat bagi pariwisata Banyuwangi.

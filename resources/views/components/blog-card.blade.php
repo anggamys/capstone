@@ -6,7 +6,7 @@
     </div>
     <div class="p-6 flex flex-col flex-grow items-start text-left">
         <span class="text-slate-400 text-xs font-medium mb-2 font-sans">{{ $category }} • {{ $date }}</span>
-        <h3 class="text-lg font-bold text-slate-900 mb-3 group-hover:text-[#3F5C7D] transition-colors leading-snug font-sans">{{ $title }}</h3>
+        <h3 class="text-lg font-bold text-[#3F5C7D] mb-3 group-hover:text-[#3F5C7D] transition-colors leading-snug font-sans">{{ $title }}</h3>
         <p class="text-slate-500 text-sm leading-relaxed mb-6 font-light font-sans">{{ $description }}</p>
         <a href="{{ $link }}" class="text-[#3F5C7D] font-semibold text-sm hover:underline mt-auto flex items-center gap-1 font-sans">
             Baca Selengkapnya

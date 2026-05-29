@@ -17,9 +17,10 @@
                 {{ $name }}
             </h4>
             @if($linkedin)
-                <a href="https://{{ str_replace(['https://', 'http://'], '', $linkedin) }}" target="_blank" class="w-7 h-7 rounded-lg bg-sky-50 hover:bg-sky-100 flex items-center justify-center text-[#0a66c2] transition-colors shrink-0 shadow-sm border border-sky-100" title="LinkedIn {{ $name }}">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.8v8h2.8v-4.87c0-.26.05-.52.12-.7a.78.78 0 0 1 .72-.53c.47 0 .69.43.69 1v5.1h2.8M6.5 8.44a1.66 1.66 0 1 0 0-3.3 1.66 0 0 0 0 3.3M8 18.5v-8H5v8h3z"/>
+                <a href="https://{{ str_replace(['https://', 'http://'], '', $linkedin) }}" target="_blank" class="transition-transform hover:scale-110 shrink-0 inline-block" title="LinkedIn {{ $name }}">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="24" height="24" rx="4" fill="#0a66c2" />
+                        <path d="M8 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill="white" />
                     </svg>
                 </a>
             @endif
