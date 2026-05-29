@@ -16,5 +16,10 @@ class DestinationCategorySeeder extends Seeder
         DestinationCategory::firstOrCreate(['slug' => 'budaya'], ['name' => 'Budaya', 'status' => 'active']);
         DestinationCategory::firstOrCreate(['slug' => 'pantai'], ['name' => 'Pantai', 'status' => 'active']);
         DestinationCategory::firstOrCreate(['slug' => 'hutan'], ['name' => 'Hutan', 'status' => 'active']);
+        DestinationCategory::firstOrCreate(['slug' => 'kuliner'], ['name' => 'Kuliner', 'status' => 'active']);
+        DestinationCategory::firstOrCreate(['slug' => 'sejarah'], ['name' => 'Sejarah', 'status' => 'active']);
+        DestinationCategory::firstOrCreate(['slug' => 'edukasi'], ['name' => 'Edukasi', 'status' => 'active']);
+        DestinationCategory::firstOrCreate(['slug' => 'religi'], ['name' => 'Religi', 'status' => 'active']);
+        DestinationCategory::firstOrCreate(['slug' => 'agrowisata'], ['name' => 'Agrowisata', 'status' => 'active']);
     }
 }
