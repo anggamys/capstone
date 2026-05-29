@@ -8,6 +8,7 @@ use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\TravelTypeController;
 use App\Http\Controllers\VisitTimeController;
 use App\Http\Controllers\TransportationController;
+use App\Http\Controllers\DestinationController;
 use Illuminate\Support\Facades\Route;
 
 // Guest Routes
@@ -129,6 +130,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/{id}/edit', [TransportationController::class, 'edit'])->name('edit');
             Route::put('/{id}', [TransportationController::class, 'update'])->name('update');
             Route::delete('/{id}', [TransportationController::class, 'destroy'])->name('destroy');
+        });
+
+        // Destinasi Wisata
+        Route::prefix('destinasi')->name('admin.destinasi.')->group(function () {
+            Route::get('/', [DestinationController::class, 'index'])->name('index');
+            Route::get('/create', [DestinationController::class, 'create'])->name('create');
+            Route::post('/', [DestinationController::class, 'store'])->name('store');
+            Route::get('/{id}', [DestinationController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [DestinationController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [DestinationController::class, 'update'])->name('update');
+            Route::delete('/{id}', [DestinationController::class, 'destroy'])->name('destroy');
         });
     });
 });

@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
             TravelTypeSeeder::class,
             VisitTimeSeeder::class,
             TransportationSeeder::class,
+            DestinationSeeder::class,
         ]);
     }
 }

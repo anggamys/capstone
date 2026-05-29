@@ -18,8 +18,6 @@ class Destination extends Model
         'description',
         'address',
         'district',
-        'latitude',
-        'longitude',
         'google_maps_url',
         'main_image',
         'ticket_price',
@@ -32,8 +30,6 @@ class Destination extends Model
     ];
 
     protected $casts = [
-        'latitude' => 'decimal:7',
-        'longitude' => 'decimal:7',
         'ticket_price' => 'integer',
         'operational_hours' => 'string',
         'visit_duration_hours' => 'integer',

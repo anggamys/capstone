@@ -118,7 +118,7 @@
                     <a href="{{ Route::has('admin.tipe-perjalanan.index') ? route('admin.tipe-perjalanan.index') : '#' }}" class="{{ $tipePerjalananActive ? $activeSubClass : $inactiveSubClass }}">Tipe Perjalanan</a>
                     <a href="{{ Route::has('admin.waktu-kunjungan.index') ? route('admin.waktu-kunjungan.index') : '#' }}" class="{{ $waktuKunjunganActive ? $activeSubClass : $inactiveSubClass }}">Waktu Kunjungan</a>
                     <a href="{{ Route::has('admin.transportasi.index') ? route('admin.transportasi.index') : '#' }}" class="{{ $transportasiActive ? $activeSubClass : $inactiveSubClass }}">Transportasi</a>
-                    <a href="#" class="{{ $dataDestinasiActive ? $activeSubClass : $inactiveSubClass }}">Data Destinasi</a>
+                    <a href="{{ Route::has('admin.destinasi.index') ? route('admin.destinasi.index') : '#' }}" class="{{ $dataDestinasiActive ? $activeSubClass : $inactiveSubClass }}">Data Destinasi</a>
                 </div>
             </div>
 
