@@ -22,9 +22,7 @@
         
         <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.608 10.608Z" />
-                </svg>
+                <x-lucide-search class="w-5 h-5" stroke-width="2.5" />
             </span>
             <input type="text" 
                    name="{{ $name }}" 
@@ -37,9 +35,7 @@
     <!-- Action Button (e.g. Tambah Data) -->
     @if($action)
         <a href="{{ $action }}" class="inline-flex items-center justify-center px-6 py-3 bg-[#3F5C7D] hover:bg-[#344d6b] text-white text-sm font-semibold rounded-2xl shadow-md hover:shadow-lg transition-all duration-200 shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4 mr-2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
+            <x-lucide-plus class="w-4 h-4 mr-2" stroke-width="2.5" />
             <span>{{ $buttonText }}</span>
         </a>
     @endif

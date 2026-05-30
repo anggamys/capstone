@@ -25,9 +25,7 @@
                 <!-- Section Title with Info Icon -->
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
                     <span class="p-2 bg-[#F4F7FE] text-[#3F5C7D] rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 1 1 1.085 1.085l-.04.04m-2.137.882a.5.5 0 0 0-.276.182l-.4.5a.5.5 0 0 0 .117.708l.5.4a.5.5 0 0 0 .708-.117l.4-.5a.5.5 0 0 0-.117-.708l-.5-.4a.5.5 0 0 0-.276-.117m-1.724-6.38a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
+                        <x-lucide-info class="w-5 h-5" stroke-width="2.5" />
                     </span>
                     <h2 class="text-base font-bold text-[#2B3674]">Sub Kategori Destinasi</h2>
                 </div>

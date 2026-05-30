@@ -3,15 +3,11 @@
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-slate-100 bg-slate-50 text-slate-400 cursor-not-allowed">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+                <x-lucide-chevron-left class="w-4 h-4" stroke-width="2.5" />
             </span>
         @else
             <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-slate-100 bg-white text-[#2B3674] hover:bg-slate-50 transition-colors duration-200">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+                <x-lucide-chevron-left class="w-4 h-4" stroke-width="2.5" />
             </a>
         @endif
 
@@ -43,15 +39,11 @@
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
             <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-slate-100 bg-white text-[#2B3674] hover:bg-slate-50 transition-colors duration-200">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
+                <x-lucide-chevron-right class="w-4 h-4" stroke-width="2.5" />
             </a>
         @else
             <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl border border-slate-100 bg-slate-50 text-slate-400 cursor-not-allowed">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
+                <x-lucide-chevron-right class="w-4 h-4" stroke-width="2.5" />
             </span>
         @endif
     </nav>

@@ -1,6 +1,6 @@
 @props(['header'])
 
-<header class="bg-white/80 backdrop-blur-md border-b border-indigo-100/20 sticky top-0 z-40 px-6 py-4 flex items-center justify-between">
+<header class="bg-white/80 backdrop-blur-md border-b border-indigo-100/20 sticky top-0 z-40 px-6 md:px-8 py-5 flex items-center justify-between">
     <!-- Left Section: Menu Toggle & Title -->
     <div class="flex items-center">
         <!-- Hamburger Menu for Mobile (Visible on <md) -->
@@ -10,11 +10,28 @@
             </svg>
         </button>
 
-        <!-- Page Header Title -->
+        <!-- Page Header Title (Breadcrumbs) -->
         @isset($header)
-            <div class="text-lg font-bold text-[#3F5C7D] tracking-tight">
-                {{ $header }}
-            </div>
+            @php
+                $headerStr = (string) $header;
+                $parts = array_map('trim', explode('|', $headerStr));
+            @endphp
+            <nav class="flex items-center gap-2 text-base md:text-lg font-bold" aria-label="Breadcrumb">
+                @if (count($parts) > 1)
+                    @foreach ($parts as $index => $part)
+                        @if ($index > 0)
+                            <x-lucide-chevron-right class="w-4 h-4 text-slate-300 shrink-0" stroke-width="3" />
+                        @endif
+                        @if ($index === count($parts) - 1)
+                            <span class="text-[#3F5C7D] tracking-tight">{{ $part }}</span>
+                        @else
+                            <span class="text-slate-400 hover:text-slate-500 transition-colors duration-150">{{ $part }}</span>
+                        @endif
+                    @endforeach
+                @else
+                    <span class="text-[#3F5C7D] tracking-tight">{{ $headerStr }}</span>
+                @endif
+            </nav>
         @endisset
     </div>
 

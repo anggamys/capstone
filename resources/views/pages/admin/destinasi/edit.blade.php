@@ -25,9 +25,7 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-indigo-100/10 mb-6">
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
                     <span class="p-2 bg-[#F4F7FE] text-[#3F5C7D] rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 1 1 1.085 1.085l-.04.04m-2.137.882a.5.5 0 0 0-.276.182l-.4.5a.5.5 0 0 0 .117.708l.5.4a.5.5 0 0 0 .708-.117l.4-.5a.5.5 0 0 0-.117-.708l-.5-.4a.5.5 0 0 0-.276-.117m-1.724-6.38a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
+                        <x-lucide-info class="w-5 h-5" stroke-width="2.5" />
                     </span>
                     <h2 class="text-base font-bold text-[#2B3674]">Informasi Umum</h2>
                 </div>
@@ -166,10 +164,7 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-indigo-100/10 mb-6">
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
                     <span class="p-2 bg-[#F4F7FE] text-[#3F5C7D] rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1 1 15 0Z" />
-                        </svg>
+                        <x-lucide-map-pin class="w-5 h-5" stroke-width="2.5" />
                     </span>
                     <h2 class="text-base font-bold text-[#2B3674]">Lokasi Destinasi</h2>
                 </div>
@@ -250,9 +245,7 @@
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-indigo-100/10 mb-6">
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
                     <span class="p-2 bg-[#F4F7FE] text-[#3F5C7D] rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
+                        <x-lucide-clock class="w-5 h-5" stroke-width="2.5" />
                     </span>
                     <h2 class="text-base font-bold text-[#2B3674]">Informasi Kunjungan</h2>
                 </div>
@@ -355,9 +348,7 @@
             }">
                 <div class="flex items-center gap-3 mb-8 border-b border-slate-100 pb-4">
                     <span class="p-2 bg-[#F4F7FE] text-[#3F5C7D] rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.096L15 15l-5.187.904ZM18.097 5.196 17.5 10l-.597-4.804L12 4.5l4.903-.597L17.5 0l.597 4.097L22.5 4.5l-4.403.696Z" />
-                        </svg>
+                        <x-lucide-sparkles class="w-5 h-5" stroke-width="2.5" />
                     </span>
                     <h2 class="text-base font-bold text-[#2B3674]">Kriteria Rekomendasi</h2>
                 </div>
