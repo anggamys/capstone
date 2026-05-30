@@ -120,6 +120,41 @@ This project includes a simple command set for setup, development, and testing.
 - **Development Server**: `composer run dev`
 - **Project Setup**: `composer run setup`
 
+## 🔄 Syncing Your Fork
+
+If you have forked this repository and want to pull the latest changes from the main repository (upstream), follow these steps:
+
+### Option 1: Using GitHub Web + Terminal (Simplest)
+1. On your fork's GitHub repository page, click the **Sync fork** button and select **Update branch**.
+2. Run the following command in your local terminal to pull the updates:
+   ```bash
+   git pull origin main
+   ```
+
+### Option 2: Using Terminal Only
+1. Register the original repository as `upstream` (only needed once):
+   ```bash
+   git remote add upstream https://github.com/dickyhaa/cp-banyuwangidestination.git
+   ```
+2. Fetch and merge the latest changes:
+   ```bash
+   git fetch upstream
+   git checkout main
+   git merge upstream/main
+   ```
+3. Push the updates to your GitHub fork:
+   ```bash
+   git push origin main
+   ```
+
+> [!IMPORTANT]
+> After syncing, if there are changes to the project dependencies, make sure to update them and rebuild assets:
+> ```bash
+> composer install
+> npm install
+> npm run build
+> ```
+
 ## 📁 Project Structure
 
 - `app/` - Laravel backend application code
