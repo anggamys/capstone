@@ -8,17 +8,14 @@
     <div class="p-5 flex flex-col flex-grow items-start text-left">
         <!-- Location indicator -->
         <div class="flex items-center gap-1.5 text-slate-400 text-sm font-medium mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-slate-400 shrink-0">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-            </svg>
+            <x-lucide-map-pin class="w-4 h-4 text-slate-400 shrink-0" />
             <span class="text-slate-500 font-sans font-light">{{ $location }}</span>
         </div>
         <h3 class="text-xl font-bold text-[#3F5C7D] mb-2 font-sans leading-tight line-clamp-1">{{ $title }}</h3>
         <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 font-light font-sans line-clamp-2">{{ $description }}</p>
         <a href="{{ $link }}" class="text-[#89A8E0] hover:text-[#7F9ED2] font-semibold text-sm transition-colors mt-auto flex items-center gap-1.5 font-sans">
             Lihat Detail
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+            <x-lucide-arrow-right class="w-4 h-4" stroke-width="2.5" />
         </a>
     </div>
 </div>

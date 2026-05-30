@@ -49,11 +49,7 @@
                 <!-- Column 2: Visi Kami (col-span-3) -->
                 <div class="col-span-12 lg:col-span-3 p-8 rounded-[2rem] bg-white border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow flex flex-col items-center text-center justify-center">
                     <div class="w-12 h-12 rounded-full bg-[#3F5C7D] flex items-center justify-center text-white mb-6">
-                        <!-- Eye Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                            <circle cx="12" cy="12" r="3" />
-                        </svg>
+                        <x-lucide-eye class="w-6 h-6" />
                     </div>
                     <p class="text-slate-600 font-sans text-xs leading-relaxed text-sm md:text-base">
                         Menjadi pintu gerbang utama yang memperkenalkan pesona otentik Banyuwangi ke dunia, sekaligus menjadi pelopor pariwisata berkelanjutan yang menjunjung tinggi kearifan lokal.
@@ -63,43 +59,24 @@
                 <!-- Column 3: Misi Kami (col-span-4) -->
                 <div class="col-span-12 lg:col-span-4 p-8 rounded-[2rem] bg-white border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] hover:shadow-lg transition-shadow flex flex-col justify-center">
                     <div class="w-12 h-12 rounded-full bg-[#3F5C7D] flex items-center justify-center text-white mb-6 mx-auto">
-                        <!-- Target/Dartboard Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <circle cx="10" cy="14" r="8" />
-                            <circle cx="10" cy="14" r="4" />
-                            <circle cx="10" cy="14" r="1.5" />
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 5l-6.5 6.5M19 5l-3 .5M19 5l-.5 3" />
-                        </svg>
+                        <x-lucide-target class="w-6 h-6" />
                     </div>
                     <ul class="space-y-6">
                         <li class="flex items-start gap-3">
                             <div class="w-7 h-7 rounded-full bg-[#E6F7FA] text-[#3F5C7D] flex items-center justify-center shrink-0">
-                                <!-- Leaf Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-[#3F5C7D]">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M12 3c-4 4-5 8-5 11 0 3.3 2.7 6 5 7M12 3c4 4 5 8 5 11 0 3.3-2.7 6-5 7" />
-                                </svg>
+                                <x-lucide-leaf class="w-4 h-4 text-[#3F5C7D]" />
                             </div>
                             <span class="text-slate-600 font-sans text-xs md:text-sm leading-relaxed">Mendukung praktik pariwisata yang tidak merusak lingkungan alam serta menjaga ekosistem Banyuwangi.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-7 h-7 rounded-full bg-[#E6F7FA] text-[#3F5C7D] flex items-center justify-center shrink-0">
-                                <!-- People/Users Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-[#3F5C7D]">
-                                    <circle cx="18" cy="6" r="3" />
-                                    <circle cx="6" cy="12" r="3" />
-                                    <circle cx="18" cy="18" r="3" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 10.5l6-3m-6 9l6 3" />
-                                </svg>
+                                <x-lucide-users class="w-4 h-4 text-[#3F5C7D]" />
                             </div>
                             <span class="text-slate-600 font-sans text-xs md:text-sm leading-relaxed">Melibatkan komunitas lokal secara aktif dalam ekosistem pariwisata untuk meningkatkan kesejahteraan bersama.</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <div class="w-7 h-7 rounded-full bg-[#E6F7FA] text-[#3F5C7D] flex items-center justify-center shrink-0">
-                                <!-- Compass/Search Icon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-[#3F5C7D]">
-                                    <circle cx="10.5" cy="10.5" r="5.5" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.5 14.5l5.5 5.5" />
-                                </svg>
+                                <x-lucide-compass class="w-4 h-4 text-[#3F5C7D]" />
                             </div>
                             <span class="text-slate-600 font-sans text-xs md:text-sm leading-relaxed">Menyediakan kurasi pengalaman perjalanan yang bermakna, edukatif, dan tak terlupakan bagi setiap pengunjung.</span>
                         </li>
