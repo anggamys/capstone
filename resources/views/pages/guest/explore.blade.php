@@ -46,8 +46,8 @@
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Search & Info Bar (Centered) -->
-            <div class="mb-10 flex flex-col items-center justify-center text-center max-w-xl mx-auto gap-4">
+            <!-- Search Bar (Centered) -->
+            <div class="mb-10 flex flex-col items-center justify-center text-center max-w-xl mx-auto">
                 <!-- Search Input -->
                 <div class="relative w-full shadow-sm rounded-2xl">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-slate-400">
@@ -73,16 +73,11 @@
                         </svg>
                     </button>
                 </div>
-                
-                <!-- Results Count Indicator -->
-                <div class="text-xs text-slate-400 font-sans font-light">
-                    Menampilkan <span class="font-semibold text-[#3F5C7D]" x-text="visibleCount"></span> dari {{ $destinations->count() }} destinasi
-                </div>
             </div>
 
-            <!-- Category Tabs (Horizontal scroll on mobile, centered on desktop) -->
-            <div class="mb-12 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
-                <div class="flex gap-2.5 min-w-max sm:w-full sm:justify-center">
+            <!-- Category Tabs (Stacked & wrapped on mobile, centered) -->
+            <div class="mb-6">
+                <div class="flex flex-wrap gap-2.5 justify-center">
                     <!-- 'Semua' Tab -->
                     <button 
                         @click="selectedCategory = 'semua'"
@@ -105,6 +100,13 @@
                             {{ $cat->name }}
                         </button>
                     @endforeach
+                </div>
+            </div>
+
+            <!-- Results Count Indicator (Below Categories) -->
+            <div class="mb-10 text-center">
+                <div class="text-xs text-slate-400 font-sans font-light">
+                    Menampilkan <span class="font-semibold text-[#3F5C7D]" x-text="visibleCount"></span> dari {{ $destinations->count() }} destinasi
                 </div>
             </div>
 

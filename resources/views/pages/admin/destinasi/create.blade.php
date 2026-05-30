@@ -275,7 +275,7 @@
 
                         <!-- Jam Operasional -->
                         <div>
-                            <label for="operational_hours" class="block text-sm font-bold text-[#2B3674] mb-2">Jam Operasional</label>
+                            <label for="operational_hours" class="block text-sm font-bold text-[#2B3674] mb-2">Jam Operasional (Contoh: 08.00 - 17.00 WIB)</label>
                             <x-form-input 
                                    name="operational_hours" 
                                    id="operational_hours" 
@@ -289,7 +289,7 @@
 
                         <!-- Durasi Kunjungan -->
                         <div>
-                            <label for="visit_duration_hours" class="block text-sm font-bold text-[#2B3674] mb-2">Estimasi Durasi Kunjungan (jam)</label>
+                            <label for="visit_duration_hours" class="block text-sm font-bold text-[#2B3674] mb-2">Estimasi Durasi Kunjungan (Satuan Jam)</label>
                             <x-form-input 
                                    name="visit_duration_hours" 
                                    id="visit_duration_hours" 
