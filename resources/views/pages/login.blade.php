@@ -27,8 +27,8 @@
         }
     </style>
 </head>
-<body class="antialiased min-h-screen relative flex flex-col justify-between items-center py-6 px-4 bg-cover bg-center bg-no-repeat bg-fixed overflow-x-hidden" 
-      style="background-image: url('{{ asset('images/bg-login.jpg') }}');">
+{!! '<' . 'style>.login-bg { background-image: url(' . asset('images/bg-login.jpg') . '); }</' . 'style>' !!}
+<body class="antialiased min-h-screen relative flex flex-col justify-between items-center py-6 px-4 bg-cover bg-center bg-no-repeat bg-fixed overflow-x-hidden login-bg">
     
     <!-- Blue gradient overlay matching the mockup color tones -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#153050]/80 via-[#0e2136]/55 to-[#081524]/90 z-0 pointer-events-none"></div>

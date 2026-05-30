@@ -10,6 +10,10 @@ class Destination extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $appends = [
+        'image_url',
+    ];
+
     protected $fillable = [
         'destination_category_id',
         'destination_subcategory_id',
@@ -70,5 +74,22 @@ class Destination extends Model
     public function transportations()
     {
         return $this->belongsToMany(Transportation::class, 'destination_transportation');
+    }
+
+    public function getImageUrlAttribute()
+    {
+        if (!$this->main_image) {
+            return asset('images/bg-login.jpg');
+        }
+
+        if (str_starts_with($this->main_image, 'http://') || str_starts_with($this->main_image, 'https://')) {
+            return $this->main_image;
+        }
+
+        if (str_starts_with($this->main_image, 'images/')) {
+            return asset($this->main_image);
+        }
+
+        return asset('storage/' . $this->main_image);
     }
 }

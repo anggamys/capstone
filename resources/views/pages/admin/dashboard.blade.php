@@ -7,7 +7,8 @@
         <!-- Banner Section (Mount Ijen Panorama Background) -->
         <div class="relative bg-slate-900 rounded-[2rem] overflow-hidden shadow-md mb-8 py-10 px-6 md:py-14 md:px-12 flex flex-col items-center justify-center text-center min-h-[220px]">
             <!-- Background Image -->
-            <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/dashboard-banner.png') }}');"></div>
+            {!! '<' . 'style>.dashboard-banner-bg { background-image: url(' . asset('images/dashboard-banner.png') . '); }</' . 'style>' !!}
+            <div class="absolute inset-0 bg-cover bg-center z-0 dashboard-banner-bg"></div>
 
             <!-- Banner Content -->
             <div class="relative z-10 text-white max-w-3xl">

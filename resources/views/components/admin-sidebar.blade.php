@@ -1,8 +1,8 @@
 @php
     $dashboardActive = request()->routeIs('dashboard');
     $homeActive = request()->routeIs('home');
-    $blogKategoriActive = request()->routeIs('admin.kategori-blog-artikel.*');
-    $blogArtikelActive = request()->routeIs('admin.blog-artikel.*');
+    $blogKategoriActive = request()->routeIs('admin.kategori-blog.*');
+    $blogActive = request()->routeIs('admin.blog.*');
     
     // For placeholders/others
     $kategoriActive = request()->is('admin/kategori-destinasi*');
@@ -40,7 +40,7 @@
      class="fixed inset-y-0 left-0 z-50 w-72 shrink-0 bg-[#F1F3FF] flex flex-col justify-between border-r border-indigo-100/10 transition-transform duration-300 md:translate-x-0 md:static md:h-screen md:sticky md:top-0"
      x-data="{ 
          openDestinasi: {{ request()->is('admin/kategori-destinasi*', 'admin/sub-kategori-destinasi*', 'admin/aktivitas*', 'admin/fasilitas*', 'admin/tipe-perjalanan*', 'admin/waktu-kunjungan*', 'admin/transportasi*', 'admin/destinasi*') ? 'true' : 'true' }},
-         openBlog: {{ request()->routeIs('admin.kategori-blog-artikel.*', 'admin.blog-artikel.*') ? 'true' : 'true' }},
+         openBlog: {{ request()->routeIs('admin.kategori-blog.*', 'admin.blog.*') ? 'true' : 'true' }},
          openLainnya: {{ request()->is('admin/riwayat-preferensi*') ? 'true' : 'true' }}
      }">
     
@@ -122,7 +122,7 @@
                 </div>
             </div>
 
-            <!-- ================= GROUP 2: Manajemen Blog Artikel ================= -->
+            <!-- ================= GROUP 2: Manajemen Blog ================= -->
             <div class="space-y-1">
                 <button @click="openBlog = !openBlog" 
                         class="w-full flex items-center justify-between px-6 mt-3.5 mb-1 py-2 text-left focus:outline-none group">
@@ -131,7 +131,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
                         </svg>
                         <span class="text-[11px] font-bold tracking-wider text-[#89A8E0]/80 uppercase transition-colors group-hover:text-[#3F5C7D]">
-                            Manajemen Blog Artikel
+                            Manajemen Blog
                         </span>
                     </div>
                     <svg class="h-4 w-4 text-[#89A8E0]/80 transition-transform duration-200 group-hover:text-[#3F5C7D]" 
@@ -150,14 +150,14 @@
                      x-transition:leave-end="opacity-0 transform -translate-y-2"
                      class="space-y-1">
                     
-                    <a href="{{ Route::has('admin.kategori-blog-artikel.index') ? route('admin.kategori-blog-artikel.index') : '#' }}" 
+                    <a href="{{ Route::has('admin.kategori-blog.index') ? route('admin.kategori-blog.index') : '#' }}" 
                        class="{{ $blogKategoriActive ? $activeSubClass : $inactiveSubClass }}">
-                        Kategori Blog Artikel
+                        Kategori Blog
                     </a>
                     
-                    <a href="{{ Route::has('admin.blog-artikel.index') ? route('admin.blog-artikel.index') : '#' }}" 
-                       class="{{ $blogArtikelActive ? $activeSubClass : $inactiveSubClass }}">
-                        Data Blog Artikel
+                    <a href="{{ Route::has('admin.blog.index') ? route('admin.blog.index') : '#' }}" 
+                       class="{{ $blogActive ? $activeSubClass : $inactiveSubClass }}">
+                        Data Blog
                     </a>
                 </div>
             </div>

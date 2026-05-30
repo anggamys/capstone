@@ -4,7 +4,8 @@
     <!-- 1. Hero Section -->
     <div class="relative bg-slate-900 overflow-hidden min-h-screen flex items-center pt-20">
         <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('{{ asset('images/bg-login.jpg') }}');"></div>
+        {!! '<' . 'style>.hero-bg { background-image: url(' . asset('images/bg-login.jpg') . '); }</' . 'style>' !!}
+        <div class="absolute inset-0 bg-cover bg-center z-0 hero-bg"></div>
         <!-- Dark gradient overlay matching mockup -->
         <div class="absolute inset-0 bg-gradient-to-b from-[#12263f]/30 via-[#12263f]/40 to-[#12263f]/85 z-10"></div>
 
@@ -156,7 +157,7 @@
                     location="Licin, Banyuwangi" 
                     title="Kawah Ijen" 
                     description="Fenomena blue fire yang menakjubkan dan kawah asam terbesar di dunia." 
-                    image="https://images.unsplash.com/photo-1578507065211-1768857cf1b7?auto=format&fit=crop&w=600&q=80" 
+                    image="{{ asset('images/kawah-ijen.png') }}" 
                     link="/explore" />
 
                 <!-- Destinasi 2 -->
@@ -165,7 +166,7 @@
                     location="Pesanggaran, Banyuwangi" 
                     title="Pulau Merah" 
                     description="Nikmati keindahan sunset emas dan bukit merah yang berada di tepi pantai." 
-                    image="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" 
+                    image="{{ asset('images/pulau-merah.png') }}" 
                     link="/explore" />
 
                 <!-- Destinasi 3 -->
@@ -174,7 +175,7 @@
                     location="Benculuk, Banyuwangi" 
                     title="De Djawatan" 
                     description="Hutan trembesi magis ala film Lord of the Rings di Banyuwangi." 
-                    image="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" 
+                    image="{{ asset('images/de-djawatan.png') }}" 
                     link="/explore" />
             </div>
         </div>

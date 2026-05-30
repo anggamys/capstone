@@ -1,5 +1,5 @@
 <x-guest-portal-layout>
-    <x-slot name="title">Blog & Berita - Laras Banyuwangi</x-slot>
+    <x-slot name="title">Blog Arikel - Laras Banyuwangi</x-slot>
 
     <!-- Header Section -->
     <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-20 text-center text-white overflow-hidden">
@@ -21,7 +21,7 @@
     <div class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white p-12 rounded-3xl border border-slate-100 shadow-sm text-center">
-                <p class="text-slate-500 font-sans">Halaman Blog & Artikel sedang dalam proses pengembangan.</p>
+                <p class="text-slate-500 font-sans">Halaman Blog sedang dalam proses pengembangan.</p>
             </div>
         </div>
     </div>

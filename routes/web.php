@@ -10,6 +10,8 @@ use App\Http\Controllers\VisitTimeController;
 use App\Http\Controllers\TransportationController;
 use App\Http\Controllers\DestinationController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Destination;
+use App\Models\DestinationCategory;
 
 // Guest Routes
 Route::get('/', function () {
@@ -17,7 +19,9 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/explore', function () {
-    return view('pages.guest.explore');
+    $categories = DestinationCategory::where('status', 'active')->orderBy('name')->get();
+    $destinations = Destination::where('status', 'active')->with('category')->get();
+    return view('pages.guest.explore', compact('categories', 'destinations'));
 })->name('explore');
 
 Route::get('/planner', function () {
@@ -39,12 +43,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::prefix('admin')->group(function () {
-        // Manajemen Blog Artikel
-        Route::prefix('blog-artikel')->name('admin.blog-artikel.')->group(function () {
-            Route::get('/', function () { return view('pages.admin.blog-artikel.index'); })->name('index');
-            Route::get('/create', function () { return view('pages.admin.blog-artikel.create'); })->name('create');
-            Route::get('/{id}', function () { return view('pages.admin.blog-artikel.show'); })->name('show');
-            Route::get('/{id}/edit', function () { return view('pages.admin.blog-artikel.edit'); })->name('edit');
+        // Manajemen Blog
+        Route::prefix('blog')->name('admin.blog.')->group(function () {
+            Route::get('/', function () { return view('pages.admin.blog.index'); })->name('index');
+            Route::get('/create', function () { return view('pages.admin.blog.create'); })->name('create');
+            Route::get('/{id}', function () { return view('pages.admin.blog.show'); })->name('show');
+            Route::get('/{id}/edit', function () { return view('pages.admin.blog.edit'); })->name('edit');
         });
 
         // Kategori Artikel Blog

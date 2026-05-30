@@ -21,6 +21,7 @@ class DestinationSeeder extends Seeder
     {
         $alam = DestinationCategory::where('slug', 'alam')->first();
         $pantai = DestinationCategory::where('slug', 'pantai')->first();
+        $hutan = DestinationCategory::where('slug', 'hutan')->first();
 
         $kawahSub = DestinationSubcategory::where('slug', 'kawah')->first();
         $gunungSub = DestinationSubcategory::where('slug', 'gunung')->first();
@@ -43,7 +44,7 @@ class DestinationSeeder extends Seeder
                 'address' => 'Paltuding, Licin, Kabupaten Banyuwangi, Jawa Timur',
                 'district' => 'Licin',
                 'google_maps_url' => 'https://maps.app.goo.gl/EHib4qdMK5KRZhK17',
-                'main_image' => asset('images/bg-login.jpg'),
+                'main_image' => 'images/kawah-ijen.png',
                 'ticket_price' => 15000,
                 'operational_hours' => '02:00 - 12:00 WIB',
                 'visit_duration_hours' => '4',
@@ -78,7 +79,7 @@ class DestinationSeeder extends Seeder
                 'address' => 'Sumberagung, Pesanggaran, Kabupaten Banyuwangi, Jawa Timur',
                 'district' => 'Pesanggaran',
                 'google_maps_url' => 'https://maps.app.goo.gl/https://maps.app.goo.gl/GvKfFuuq6Po4MBfr7',
-                'main_image' => asset('images/bg-login.jpg'),
+                'main_image' => 'images/pulau-merah.png',
                 'ticket_price' => 10000,
                 'operational_hours' => '07:00 - 18:00 WIB',
                 'visit_duration_hours' => '3',
@@ -458,5 +459,33 @@ class DestinationSeeder extends Seeder
         $reptil->travelTypes()->sync($travelTypes);
         $reptil->visitTimes()->sync($visitTimes);
         $reptil->transportations()->sync($transportations);
+
+        // 16. De Djawatan
+        $djawatan = Destination::firstOrCreate(
+            ['slug' => 'de-djawatan'],
+            [
+                'destination_category_id' => $hutan->id,
+                'destination_subcategory_id' => null,
+                'name' => 'De Djawatan',
+                'description' => 'De Djawatan adalah kawasan hutan wisata yang dikelola oleh Perhutani dengan pemandangan pohon trembesi raksasa yang tertutup lumut, menciptakan nuansa magis seperti hutan fiksi Fangorn Forest dalam film Lord of the Rings. Tempat ini memiliki luas sekitar 3,8 hektar dan menjadi destinasi favorit wisatawan untuk berfoto, bersantai di bawah keteduhan pohon, menikmati kesejukan udara, serta menikmati keindahan alam hutan yang asri.',
+                'address' => 'Benculuk, Cluring, Kabupaten Banyuwangi, Jawa Timur',
+                'district' => 'Benculuk',
+                'google_maps_url' => 'https://maps.app.goo.gl/dejawatan',
+                'main_image' => 'images/de-djawatan.png',
+                'ticket_price' => 7500,
+                'operational_hours' => '08:00 - 17:00 WIB',
+                'visit_duration_hours' => '2',
+                'rating' => 4.7,
+                'access_level' => 'Mudah',
+                'generated_tags' => ['Hutan', 'Trembesi', 'Foto', 'Magis'],
+                'status' => 'active',
+            ]
+        );
+
+        $djawatan->activities()->sync($activities);
+        $djawatan->facilities()->sync($facilities);
+        $djawatan->travelTypes()->sync($travelTypes);
+        $djawatan->visitTimes()->sync($visitTimes);
+        $djawatan->transportations()->sync($transportations);
     }
 }
