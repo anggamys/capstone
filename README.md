@@ -1,12 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 # 🌋 Banyuwangi Destination
 
 ![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel)
@@ -32,9 +23,13 @@ A modern Laravel web application built to provide tourism destination recommenda
 
 ## 📋 Prerequisites
 
-Ensure you have the following installed on your local machine:
+Ensure you have a local development environment. You can use all-in-one local servers like:
+- **Windows**: [Laragon](https://laragon.org/) (Highly recommended; includes PHP, Composer, MySQL, and Node.js automatically) or [XAMPP](https://www.apachefriends.org/)
+- **macOS / Windows**: [Laravel Herd](https://herd.laravel.com/)
+- **Docker**: [Laravel Sail](https://laravel.com/docs/sail)
 
-- [PHP](https://www.php.net/) >= 8.3
+If you are installing software components individually, ensure you have:
+- [PHP](https://www.php.net/) >= 8.3 (with `pdo_sqlite` extension enabled for running tests)
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/) (v20+ recommended) & npm
 - [MySQL](https://www.mysql.com/)
@@ -50,13 +45,13 @@ cd cp-banyuwangidestination
 
 ### 2. Automated Setup (Recommended)
 
-You can use the built-in composer script to handle the entire setup process (installing dependencies, copying `.env`, generating key, running migrations, and building assets):
+You can use the built-in composer script to handle the entire setup process (installing dependencies, copying `.env`, creating the default SQLite database file, generating key, running migrations, seeding initial destination and admin data, and building frontend assets):
 
 ```bash
 composer run setup
 ```
 
-_Note: Make sure your database `cp_banyuwangi_destination` exists before running this command, or adjust your `.env` accordingly._
+_Note: By default, the automated setup uses SQLite. If you want to use MySQL instead, copy `.env.example` to `.env` and configure your database settings (including creating the `cp_banyuwangidestination` database) BEFORE running `composer run setup`._
 
 ### 3. Manual Setup
 
@@ -88,7 +83,7 @@ Configure your `.env` file for your local database:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=cp_banyuwangi_destination
+DB_DATABASE=cp_banyuwangidestination
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -120,9 +115,7 @@ npm run dev
 
 This project includes a simple command set for setup, development, and testing.
 
-Or run them individually:
-
-- **PHP Tests**: `php artisan test` or `composer run test`
+- **PHP Tests**: `php artisan test` or `composer run test` (requires the SQLite extension `pdo_sqlite` to be enabled in PHP CLI)
 - **Frontend Build**: `npm run build`
 - **Development Server**: `composer run dev`
 - **Project Setup**: `composer run setup`
@@ -137,3 +130,7 @@ Or run them individually:
 - `resources/js/` - Frontend JavaScript entry point and helper scripts
 - `routes/` - Web and console route definitions
 - `tests/` - PestPHP test files
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](LICENSE).
