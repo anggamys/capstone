@@ -77,7 +77,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 
                 <!-- Card 1: Tambah Destinasi -->
-                <a href="#" class="flex items-center justify-center p-8 bg-[#3F5C7D] hover:bg-[#344d6b] text-white rounded-2xl shadow-md transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] font-semibold text-lg">
+                <a href="{{ route('admin.destinasi.create') }}" class="flex items-center justify-center p-8 bg-[#3F5C7D] hover:bg-[#344d6b] text-white rounded-2xl shadow-md transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] font-semibold text-lg">
                     <!-- Map Pin Plus Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-3 shrink-0">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1 1 15 0Z" />
@@ -87,7 +87,7 @@
                 </a>
 
                 <!-- Card 2: Tambah Blog Artikel -->
-                <a href="{{ Route::has('admin.blog-artikel.create') ? route('admin.blog-artikel.create') : '#' }}" class="flex items-center justify-center p-8 bg-[#3F5C7D] hover:bg-[#344d6b] text-white rounded-2xl shadow-md transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] font-semibold text-lg">
+                <a href="{{ Route::has('admin.blog.create') ? route('admin.blog.create') : '#' }}" class="flex items-center justify-center p-8 bg-[#3F5C7D] hover:bg-[#344d6b] text-white rounded-2xl shadow-md transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] font-semibold text-lg">
                     <!-- Document Text Plus Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 mr-3 shrink-0">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />

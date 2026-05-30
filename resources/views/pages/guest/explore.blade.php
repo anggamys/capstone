@@ -129,7 +129,7 @@
                             :title="$dest->name" 
                             :description="Str::limit($dest->description, 100)" 
                             :image="$dest->image_url" 
-                            link="#" 
+                            :link="route('explore.show', $dest->slug)" 
                         />
                     </div>
                 @endforeach

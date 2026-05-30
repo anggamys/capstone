@@ -89,7 +89,7 @@
                                 </div>
                                 <div>
                                     <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1">Kecamatan</span>
-                                    <p class="text-sm font-bold text-[#2B3674]">{{ $destination->district ?? '-' }}</p>
+                                    <p class="text-sm font-semibold text-slate-700 leading-relaxed">{{ $destination->district ?? '-' }}</p>
                                 </div>
                             </div>
 
@@ -134,9 +134,9 @@
                     <div class="space-y-6">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-bold text-slate-400 uppercase">Harga Tiket</span>
-                            <span class="text-sm font-bold text-[#2B3674]">
+                            <span class="text-sm font-semibold text-slate-700">
                                 @if($destination->ticket_price == 0)
-                                    <span class="text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg text-xs">Gratis</span>
+                                    <span class="text-emerald-600 font-semibold bg-emerald-50 px-2.5 py-1 rounded-lg text-xs border border-emerald-100">Gratis</span>
                                 @else
                                     Rp {{ number_format($destination->ticket_price, 0, ',', '.') }}
                                 @endif
@@ -152,7 +152,7 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-bold text-slate-400 uppercase">Rating</span>
-                            <span class="inline-flex items-center gap-1 text-sm font-bold text-[#2B3674]">
+                            <span class="inline-flex items-center gap-1 text-sm font-semibold text-slate-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-amber-400">
                                     <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
                                 </svg>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-bold text-slate-400 uppercase">Akses Perjalanan</span>
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#F4F7FE] text-[#3F5C7D]">
+                            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#E6F7FA]/50 text-[#3F5C7D] border border-[#CDEBF2]/60">
                                 {{ $destination->access_level }}
                             </span>
                         </div>
@@ -196,9 +196,9 @@
                         <!-- Aktivitas -->
                         <div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Aktivitas</span>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-1.5">
                                 @forelse($destination->activities as $act)
-                                    <span class="bg-[#F4F7FE] text-[#3F5C7D] px-2.5 py-1 rounded-lg text-[11px] font-bold border border-indigo-100/10">{{ $act->name }}</span>
+                                    <span class="bg-[#E6F7FA]/50 text-[#3F5C7D] px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#CDEBF2]/60">{{ $act->name }}</span>
                                 @empty
                                     <span class="text-xs text-slate-400 italic">Belum ada aktivitas.</span>
                                 @endforelse
@@ -208,9 +208,9 @@
                         <!-- Fasilitas -->
                         <div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Fasilitas</span>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-1.5">
                                 @forelse($destination->facilities as $fac)
-                                    <span class="bg-[#F4F7FE] text-[#3F5C7D] px-2.5 py-1 rounded-lg text-[11px] font-bold border border-indigo-100/10">{{ $fac->name }}</span>
+                                    <span class="bg-[#E6F7FA]/50 text-[#3F5C7D] px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#CDEBF2]/60">{{ $fac->name }}</span>
                                 @empty
                                     <span class="text-xs text-slate-400 italic">Belum ada fasilitas.</span>
                                 @endforelse
@@ -220,9 +220,9 @@
                         <!-- Tipe Perjalanan -->
                         <div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Tipe Perjalanan</span>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-1.5">
                                 @forelse($destination->travelTypes as $type)
-                                    <span class="bg-[#F4F7FE] text-[#3F5C7D] px-2.5 py-1 rounded-lg text-[11px] font-bold border border-indigo-100/10">{{ $type->name }}</span>
+                                    <span class="bg-[#E6F7FA]/50 text-[#3F5C7D] px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#CDEBF2]/60">{{ $type->name }}</span>
                                 @empty
                                     <span class="text-xs text-slate-400 italic">Belum ada tipe perjalanan.</span>
                                 @endforelse
@@ -232,9 +232,9 @@
                         <!-- Waktu Kunjungan -->
                         <div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Waktu Kunjungan</span>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-1.5">
                                 @forelse($destination->visitTimes as $time)
-                                    <span class="bg-[#F4F7FE] text-[#3F5C7D] px-2.5 py-1 rounded-lg text-[11px] font-bold border border-indigo-100/10">{{ $time->name }}</span>
+                                    <span class="bg-[#E6F7FA]/50 text-[#3F5C7D] px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#CDEBF2]/60">{{ $time->name }}</span>
                                 @empty
                                     <span class="text-xs text-slate-400 italic">Belum ada waktu kunjungan.</span>
                                 @endforelse
@@ -244,9 +244,9 @@
                         <!-- Transportasi -->
                         <div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">Transportasi</span>
-                            <div class="flex flex-wrap gap-2">
+                            <div class="flex flex-wrap gap-1.5">
                                 @forelse($destination->transportations as $trans)
-                                    <span class="bg-[#F4F7FE] text-[#3F5C7D] px-2.5 py-1 rounded-lg text-[11px] font-bold border border-indigo-100/10">{{ $trans->name }}</span>
+                                    <span class="bg-[#E6F7FA]/50 text-[#3F5C7D] px-3.5 py-1.5 rounded-full text-xs font-semibold border border-[#CDEBF2]/60">{{ $trans->name }}</span>
                                 @empty
                                     <span class="text-xs text-slate-400 italic">Belum ada transportasi.</span>
                                 @endforelse

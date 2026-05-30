@@ -158,7 +158,7 @@
                     title="Kawah Ijen" 
                     description="Fenomena blue fire yang menakjubkan dan kawah asam terbesar di dunia." 
                     image="{{ asset('images/kawah-ijen.png') }}" 
-                    link="/explore" />
+                    link="/explore/kawah-ijen" />
 
                 <!-- Destinasi 2 -->
                 <x-destination-card 
@@ -167,7 +167,7 @@
                     title="Pulau Merah" 
                     description="Nikmati keindahan sunset emas dan bukit merah yang berada di tepi pantai." 
                     image="{{ asset('images/pulau-merah.png') }}" 
-                    link="/explore" />
+                    link="/explore/pantai-pulau-merah" />
 
                 <!-- Destinasi 3 -->
                 <x-destination-card 
@@ -176,7 +176,7 @@
                     title="De Djawatan" 
                     description="Hutan trembesi magis ala film Lord of the Rings di Banyuwangi." 
                     image="{{ asset('images/de-djawatan.png') }}" 
-                    link="/explore" />
+                    link="/explore/de-djawatan" />
             </div>
         </div>
     </div>

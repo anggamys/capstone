@@ -24,6 +24,14 @@ Route::get('/explore', function () {
     return view('pages.guest.explore', compact('categories', 'destinations'));
 })->name('explore');
 
+Route::get('/explore/{slug}', function ($slug) {
+    $destination = Destination::where('slug', $slug)
+        ->where('status', 'active')
+        ->with(['category', 'subcategory', 'activities', 'facilities', 'travelTypes', 'visitTimes', 'transportations'])
+        ->firstOrFail();
+    return view('pages.guest.show', compact('destination'));
+})->name('explore.show');
+
 Route::get('/planner', function () {
     return view('pages.guest.planner');
 })->name('planner');
@@ -39,7 +47,10 @@ Route::get('/about', function () {
 // Admin Protected Routes
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('pages.admin.dashboard');
+        $totalDestinasi = \App\Models\Destination::count();
+        $totalBlogArtikel = 3; // Mock count matching static blog cards
+        $totalRekomendasiUser = 24; // Mock count for user recommendations
+        return view('pages.admin.dashboard', compact('totalDestinasi', 'totalBlogArtikel', 'totalRekomendasiUser'));
     })->name('dashboard');
 
     Route::prefix('admin')->group(function () {

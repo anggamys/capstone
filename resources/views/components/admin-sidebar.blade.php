@@ -39,9 +39,9 @@
 <div :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
      class="fixed inset-y-0 left-0 z-50 w-72 shrink-0 bg-[#F1F3FF] flex flex-col justify-between border-r border-indigo-100/10 transition-transform duration-300 md:translate-x-0 md:static md:h-screen md:sticky md:top-0"
      x-data="{ 
-         openDestinasi: {{ request()->is('admin/kategori-destinasi*', 'admin/sub-kategori-destinasi*', 'admin/aktivitas*', 'admin/fasilitas*', 'admin/tipe-perjalanan*', 'admin/waktu-kunjungan*', 'admin/transportasi*', 'admin/destinasi*') ? 'true' : 'true' }},
-         openBlog: {{ request()->routeIs('admin.kategori-blog.*', 'admin.blog.*') ? 'true' : 'true' }},
-         openLainnya: {{ request()->is('admin/riwayat-preferensi*') ? 'true' : 'true' }}
+         openDestinasi: {{ request()->is('admin/kategori-destinasi*', 'admin/sub-kategori-destinasi*', 'admin/aktivitas*', 'admin/fasilitas*', 'admin/tipe-perjalanan*', 'admin/waktu-kunjungan*', 'admin/transportasi*', 'admin/destinasi*') ? 'true' : 'false' }},
+         openBlog: {{ request()->routeIs('admin.kategori-blog.*', 'admin.blog.*') ? 'true' : 'false' }},
+         openLainnya: {{ request()->is('admin/riwayat-preferensi*') ? 'true' : 'false' }}
      }">
     
     <!-- Sidebar Scrollable Content -->
