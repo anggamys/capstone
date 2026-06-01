@@ -12,7 +12,7 @@
             </p>
         </div>
         <!-- Wave SVG -->
-        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-0">
+        <div class="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-0">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"
                 class="relative block w-full h-[50px] text-white fill-current">
                 <path d="M0,80 C360,130 720,30 1200,80 L1200,120 L0,120 Z"></path>
