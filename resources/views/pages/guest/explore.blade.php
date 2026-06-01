@@ -6,7 +6,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">Jelajah Destinasi</h1>
             <p class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans">
-                Temukan keindahan alam tersembunyi, seni budaya yang sakral, dan kuliner khas Banyuwangi yang menggugah selera.
+                Temukan keindahan alam tersembunyi, seni budaya yang sakral,<br class="hidden md:block" />
+                dan kuliner khas Banyuwangi yang menggugah selera.
             </p>
         </div>
         <!-- Wave SVG -->
