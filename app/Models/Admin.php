@@ -31,4 +31,12 @@ class Admin extends Authenticatable
             'deleted_at' => 'datetime',
         ];
     }
+
+    /**
+     * Get the blogs written by this admin.
+     */
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class, 'admin_id');
+    }
 }

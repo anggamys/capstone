@@ -9,13 +9,21 @@ use App\Http\Controllers\TravelTypeController;
 use App\Http\Controllers\VisitTimeController;
 use App\Http\Controllers\TransportationController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\CategoryBlogController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Destination;
 use App\Models\DestinationCategory;
+use App\Models\Blog;
 
 // Guest Routes
 Route::get('/', function () {
-    return view('pages.guest.home');
+    $blogs = Blog::where('status', 'published')
+        ->with(['category', 'admin'])
+        ->latest('published_at')
+        ->limit(3)
+        ->get();
+    return view('pages.guest.home', compact('blogs'));
 })->name('home');
 
 Route::get('/explore', function () {
@@ -37,8 +45,86 @@ Route::get('/planner', function () {
 })->name('planner');
 
 Route::get('/blog', function () {
-    return view('pages.guest.blog');
+    $search = request()->query('search');
+    $categorySlug = request()->query('category');
+
+    // Total semua blog yang berstatus published di database
+    $totalCount = Blog::where('status', 'published')->count();
+
+    // Ambil kategori aktif untuk tab filter
+    $categories = \App\Models\CategoryBlog::where('status', 'active')->orderBy('name')->get();
+
+    // Tentukan blog utama/featured (hanya di halaman 1 dan tanpa filter/pencarian aktif)
+    // Namun kita harus selalu mengecualikan ID-nya di semua halaman agar tidak terjadi duplikasi
+    $featuredBlog = null;
+    $featuredBlogId = null;
+    if (!$search && (!$categorySlug || $categorySlug === 'semua')) {
+        $latestBlog = Blog::where('status', 'published')
+            ->with(['category', 'admin'])
+            ->latest('published_at')
+            ->first();
+        
+        if ($latestBlog) {
+            $featuredBlogId = $latestBlog->id;
+            if (!request()->has('page') || request()->query('page') == 1) {
+                $featuredBlog = $latestBlog;
+            }
+        }
+    }
+
+    $query = Blog::where('status', 'published')
+        ->with(['category', 'admin'])
+        ->latest('published_at');
+
+    // Jika ada blog utama, selalu kecualikan dari daftar grid di semua halaman
+    if ($featuredBlogId) {
+        $query->where('id', '!=', $featuredBlogId);
+    }
+
+    // Terapkan pencarian jika ada
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('title', 'like', '%' . $search . '%')
+              ->orWhere('content', 'like', '%' . $search . '%');
+        });
+    }
+
+    // Terapkan filter kategori jika ada
+    if ($categorySlug && $categorySlug !== 'semua') {
+        $query->whereHas('category', function($q) use ($categorySlug) {
+            $q->where('slug', $categorySlug);
+        });
+    }
+
+    $blogs = $query->paginate(6)->withQueryString();
+
+    // Hitung jumlah yang disaring (filteredCount)
+    if (!$search && (!$categorySlug || $categorySlug === 'semua')) {
+        $filteredCount = $totalCount;
+    } else {
+        $filteredCount = $blogs->total();
+    }
+
+    return view('pages.guest.blog', compact('blogs', 'featuredBlog', 'categories', 'totalCount', 'filteredCount'));
 })->name('blog');
+
+Route::get('/blog/{slug}', function ($slug) {
+    $blog = Blog::where('slug', $slug)
+        ->where('status', 'published')
+        ->with(['category', 'admin'])
+        ->firstOrFail();
+    
+    // Tingkatkan jumlah tayangan (views) blog
+    $blog->increment('views');
+    
+    $recentBlogs = Blog::where('status', 'published')
+        ->where('id', '!=', $blog->id)
+        ->latest('published_at')
+        ->limit(5)
+        ->get();
+
+    return view('pages.guest.blog-show', compact('blog', 'recentBlogs'));
+})->name('blog.show');
 
 Route::get('/about', function () {
     return view('pages.guest.about');
@@ -47,8 +133,8 @@ Route::get('/about', function () {
 // Admin Protected Routes
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
-        $totalDestinasi = \App\Models\Destination::count();
-        $totalBlogArtikel = 3; // Mock count matching static blog cards
+        $totalDestinasi = Destination::count();
+        $totalBlogArtikel = Blog::count();
         $totalRekomendasiUser = 24; // Mock count for user recommendations
         return view('pages.admin.dashboard', compact('totalDestinasi', 'totalBlogArtikel', 'totalRekomendasiUser'));
     })->name('dashboard');
@@ -56,18 +142,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('admin')->group(function () {
         // Manajemen Blog
         Route::prefix('blog')->name('admin.blog.')->group(function () {
-            Route::get('/', function () { return view('pages.admin.blog.index'); })->name('index');
-            Route::get('/create', function () { return view('pages.admin.blog.create'); })->name('create');
-            Route::get('/{id}', function () { return view('pages.admin.blog.show'); })->name('show');
-            Route::get('/{id}/edit', function () { return view('pages.admin.blog.edit'); })->name('edit');
+            Route::get('/', [BlogController::class, 'index'])->name('index');
+            Route::get('/create', [BlogController::class, 'create'])->name('create');
+            Route::post('/', [BlogController::class, 'store'])->name('store');
+            Route::get('/{id}', [BlogController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [BlogController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [BlogController::class, 'update'])->name('update');
+            Route::delete('/{id}', [BlogController::class, 'destroy'])->name('destroy');
         });
 
         // Kategori Artikel Blog
-        Route::prefix('kategori-blog-artikel')->name('admin.kategori-blog-artikel.')->group(function () {
-            Route::get('/', function () { return view('pages.admin.kategori-blog-artikel.index'); })->name('index');
-            Route::get('/create', function () { return view('pages.admin.kategori-blog-artikel.create'); })->name('create');
-            Route::get('/{id}', function () { return view('pages.admin.kategori-blog-artikel.show'); })->name('show');
-            Route::get('/{id}/edit', function () { return view('pages.admin.kategori-blog-artikel.edit'); })->name('edit');
+        Route::prefix('kategori-blog-artikel')->name('admin.kategori-blog.')->group(function () {
+            Route::get('/', [CategoryBlogController::class, 'index'])->name('index');
+            Route::get('/create', [CategoryBlogController::class, 'create'])->name('create');
+            Route::post('/', [CategoryBlogController::class, 'store'])->name('store');
+            Route::get('/{id}', [CategoryBlogController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [CategoryBlogController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [CategoryBlogController::class, 'update'])->name('update');
+            Route::delete('/{id}', [CategoryBlogController::class, 'destroy'])->name('destroy');
         });
 
         // Kategori Destinasi Wisata
