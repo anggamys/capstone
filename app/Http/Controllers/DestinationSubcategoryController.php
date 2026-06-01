@@ -35,7 +35,7 @@ class DestinationSubcategoryController extends Controller
             });
         }
         
-        $subcategories = $query->paginate(5)->withQueryString();
+        $subcategories = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.sub-kategori-destinasi.index', compact('subcategories'));
     }
 

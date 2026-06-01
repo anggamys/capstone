@@ -40,7 +40,7 @@ class BlogController extends Controller
             });
         }
 
-        $blogs = $query->paginate(5)->withQueryString();
+        $blogs = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.blog.index', compact('blogs'));
     }
 

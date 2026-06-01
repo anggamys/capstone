@@ -29,7 +29,7 @@ class DestinationCategoryController extends Controller
                 }
             });
         }
-        $categories = $query->paginate(5)->withQueryString();
+        $categories = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.kategori-destinasi.index', compact('categories'));
     }
 

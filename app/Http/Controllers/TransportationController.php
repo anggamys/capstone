@@ -29,7 +29,7 @@ class TransportationController extends Controller
                 }
             });
         }
-        $transportations = $query->paginate(5)->withQueryString();
+        $transportations = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.transportasi.index', compact('transportations'));
     }
 

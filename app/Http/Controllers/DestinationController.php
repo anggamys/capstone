@@ -45,7 +45,7 @@ class DestinationController extends Controller
             });
         }
 
-        $destinations = $query->paginate(5)->withQueryString();
+        $destinations = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.destinasi.index', compact('destinations'));
     }
 

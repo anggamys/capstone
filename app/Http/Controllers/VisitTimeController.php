@@ -29,7 +29,7 @@ class VisitTimeController extends Controller
                 }
             });
         }
-        $visitTimes = $query->paginate(5)->withQueryString();
+        $visitTimes = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.waktu-kunjungan.index', compact('visitTimes'));
     }
 

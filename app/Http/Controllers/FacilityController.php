@@ -29,7 +29,7 @@ class FacilityController extends Controller
                 }
             });
         }
-        $facilities = $query->paginate(5)->withQueryString();
+        $facilities = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.fasilitas.index', compact('facilities'));
     }
 

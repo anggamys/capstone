@@ -29,7 +29,7 @@ class TravelTypeController extends Controller
                 }
             });
         }
-        $travelTypes = $query->paginate(5)->withQueryString();
+        $travelTypes = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.tipe-perjalanan.index', compact('travelTypes'));
     }
 

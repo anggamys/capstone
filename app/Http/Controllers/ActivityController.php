@@ -29,7 +29,7 @@ class ActivityController extends Controller
                 }
             });
         }
-        $activities = $query->paginate(5)->withQueryString();
+        $activities = $query->latest()->paginate(5)->withQueryString();
         return view('pages.admin.aktivitas.index', compact('activities'));
     }
 
