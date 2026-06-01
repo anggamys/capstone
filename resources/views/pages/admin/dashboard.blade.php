@@ -16,7 +16,7 @@
                     Selamat Datang di Panel Admin Laras Banyuwangi
                 </h1>
                 <p class="text-xs md:text-sm text-slate-100/90 leading-relaxed font-light font-sans max-w-xl mx-auto">
-                    Pantau destinasi, blog artikel dan hasil rekomendasi destinasi secara real-time.
+                    Pantau destinasi, blog dan hasil rekomendasi destinasi secara real-time.
                 </p>
             </div>
         </div>
@@ -43,7 +43,7 @@
                     <x-lucide-file-text class="w-6 h-6" />
                 </div>
                 <div class="ml-4">
-                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Total Blog Artikel</span>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Total Blog</span>
                     <span class="text-2xl font-bold text-[#2b3674] mt-0.5 block">{{ $totalBlogArtikel ?? 0 }}</span>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 <a href="{{ Route::has('admin.blog.create') ? route('admin.blog.create') : '#' }}" class="flex items-center justify-center p-8 bg-[#3F5C7D] hover:bg-[#344d6b] text-white rounded-2xl shadow-md transition-all duration-300 transform hover:scale-[1.01] active:scale-[0.99] font-semibold text-lg">
                     <!-- Document Text Plus Icon -->
                     <x-lucide-file-plus class="w-6 h-6 mr-3 shrink-0" />
-                    <span>Tambah Blog Artikel</span>
+                    <span>Tambah Blog</span>
                 </a>
 
             </div>

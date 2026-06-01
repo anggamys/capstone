@@ -31,7 +31,7 @@
             
             <!-- Pagination Controls -->
             <div>
-                {{ $items->links('components.admin-pagination') }}
+                {{ $items->onEachSide(1)->links('components.admin-pagination') }}
             </div>
         </div>
     @elseif($items)

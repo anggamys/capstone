@@ -45,6 +45,8 @@ class DatabaseSeeder extends Seeder
             VisitTimeSeeder::class,
             TransportationSeeder::class,
             DestinationSeeder::class,
+            CategoryBlogSeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }

@@ -18,11 +18,12 @@
                     Cari dan rencanakan liburan impian Anda, mulai dari menjelajahi keindahan alam, hingga mendapatkan rekomendasi itinerary pintar.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="/explore" class="px-8 py-4 bg-[#3F5C7D] hover:bg-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg transition-all hover:shadow-xl hover:translate-y-[-1px] active:translate-y-[1px]">
-                        Mulai Jelajah
+                    <a href="/planner" class="px-8 py-4 bg-[#3F5C7D] hover:bg-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg transition-all hover:shadow-xl hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-2">
+                        <x-lucide-sparkles class="w-4 h-4 text-white" stroke-width="2.5" />
+                        Mulai AI Planner
                     </a>
-                    <a href="/planner" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full text-center border border-white/20 transition-all hover:translate-y-[-1px] active:translate-y-[1px] backdrop-blur-sm">
-                        AI Planner
+                    <a href="/explore" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-full text-center border border-white/20 transition-all hover:translate-y-[-1px] active:translate-y-[1px] backdrop-blur-sm flex items-center justify-center">
+                        Jelajah Destinasi
                     </a>
                 </div>
             </div>
@@ -69,7 +70,7 @@
                         <x-lucide-newspaper class="w-6 h-6" />
                     </div>
                     <h3 class="text-xl font-bold text-[#3F5C7D] mb-3">Blog Banyuwangi</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-sans">Temukan artikel menarik, cerita budaya khas Osing, kuliner tradisional, serta tips perjalanan terbaru.</p>
+                    <p class="text-slate-500 text-sm leading-relaxed font-sans">Temukan blog menarik, cerita budaya khas Osing, kuliner tradisional, serta tips perjalanan terbaru.</p>
                 </div>
             </div>
         </div>
@@ -112,8 +113,9 @@
                         </div>
                     </div>
 
-                    <a href="/planner" class="px-8 py-4 bg-[#3F5C7D] hover:bg-[#344d6b] text-white font-semibold rounded-full shadow-md transition-all hover:shadow-lg">
-                        Coba AI Planner
+                    <a href="/planner" class="px-8 py-4 bg-[#3F5C7D] hover:bg-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg transition-all hover:shadow-xl hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-2">
+                        <x-lucide-sparkles class="w-4 h-4 text-white" stroke-width="2.5" />
+                        Mulai AI Planner
                     </a>
                 </div>
 
@@ -175,49 +177,37 @@
         </div>
     </div>
 
-    <!-- 5. Section: Blog & Artikel -->
+    <!-- 5. Section: Blog -->
     <div class="py-24 bg-[#E6F7FA]/20 border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16">
                 <div>
                     <h2 class="text-3xl md:text-4xl font-bold text-[#3F5C7D] mb-4 font-sans">
-                        Blog <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Artikel</span>
+                        Blog <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Terbaru</span>
                     </h2>
-                    <p class="text-slate-500 font-sans">Menarik, Informatif, dan Up to Date.</p>
+                    <p class="text-slate-500 font-sans">Blog Terbaru Seputar Banyuwangi dan Wisata</p>
                 </div>
-                <a href="/blog" class="text-[#3F5C7D] font-semibold text-sm hover:underline mt-4 md:mt-0 flex items-center gap-1 font-sans">
-                    Lihat semua artikel
+                <a href="{{ route('blog') }}" class="text-[#3F5C7D] font-semibold text-sm hover:underline mt-4 md:mt-0 flex items-center gap-1 font-sans">
+                    Lihat semua blog
                     <x-lucide-arrow-right class="w-4 h-4" stroke-width="2.5" />
                 </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Blog 1 -->
-                <x-blog-card 
-                    category="Kuliner" 
-                    date="10 Juni 2026" 
-                    title="5 Makanan Khas Banyuwangi yang Wajib Dicoba" 
-                    description="Dari pedasnya Nasi Tempong hingga gurihnya Rujak Soto yang unik..." 
-                    image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" 
-                    link="/blog" />
-
-                <!-- Blog 2 -->
-                <x-blog-card 
-                    category="Tips" 
-                    date="15 Juni 2026" 
-                    title="Panduan Transportasi Keliling Banyuwangi" 
-                    description="Tips memilih transportasi terbaik untuk keliling destinasi..." 
-                    image="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80" 
-                    link="/blog" />
-
-                <!-- Blog 3 -->
-                <x-blog-card 
-                    category="Budaya" 
-                    date="20 Juni 2026" 
-                    title="Mengenal Lebih Dekat Suku Osing" 
-                    description="Menelusuri sejarah, tradisi, dan keunikan adat suku asli Banyuwangi..." 
-                    image="https://images.unsplash.com/photo-1590756254933-2873d72a83b6?auto=format&fit=crop&w=600&q=80" 
-                    link="/blog" />
+                @forelse($blogs as $blog)
+                    <x-blog-card 
+                        :category="$blog->category?->name ?? 'Umum'" 
+                        :date="$blog->published_at ? $blog->published_at->translatedFormat('d F Y') : $blog->created_at->translatedFormat('d F Y')" 
+                        :title="$blog->title" 
+                        :description="\Illuminate\Support\Str::limit(strip_tags($blog->content), 120)" 
+                        :image="$blog->image_url" 
+                        :link="route('blog.show', $blog->slug)"
+                        :author="$blog->admin?->name ?? 'Admin Laras'" />
+                @empty
+                    <div class="col-span-3 text-center py-12 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                        <p class="text-slate-500 font-sans font-light">Belum ada blog yang diterbitkan.</p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
