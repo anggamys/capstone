@@ -93,7 +93,7 @@
             const nameInput = document.getElementById('name');
             const slugInput = document.getElementById('slug');
             
-            let isSlugManuallyEdited = true; // For editing, keep manual by default to not overwrite existing slug unless cleared
+            let isSlugManuallyEdited = false;
 
             nameInput.addEventListener('input', function() {
                 if (!isSlugManuallyEdited) {

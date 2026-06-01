@@ -2,11 +2,12 @@
     <x-slot name="title">Blog - Laras Banyuwangi</x-slot>
 
     <!-- Header Section -->
-    <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-14 text-center text-white overflow-hidden">
+    <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-20 text-center text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">Blog</h1>
             <p class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans">
-                Cerita budaya, petualangan wisata, dan tips berlibur seru di Banyuwangi.
+                Cerita budaya, petualangan wisata, dan<br class="hidden md:block" />
+                tips berlibur seru di Banyuwangi.
             </p>
         </div>
         <!-- Wave SVG -->

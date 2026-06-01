@@ -12,7 +12,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-white py-24 md:py-32 text-center">
             <div class="max-w-4xl mx-auto">
                 <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-tight font-sans">
-                    Temukan Destinasi Wisata Banyuwangi yang Selaras dengan Pilihanmu
+                    Temukan Destinasi Wisata<br class="hidden md:block" />
+                    Banyuwangi yang<br class="hidden md:block" />
+                    Selaras dengan Pilihanmu
                 </h1>
                 <p
                     class="text-lg md:text-xl text-slate-100/90 mb-10 leading-relaxed font-light max-w-3xl mx-auto font-sans">
@@ -243,7 +245,7 @@
                         class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Laras</span>
                 </h2>
                 <p class="text-slate-500 max-w-3xl mx-auto font-sans text-sm md:text-base leading-relaxed">
-                    Tim lintas disiplin yang menggabungkan keahlian ui ux, full-stack development, dan machine learning
+                    Tim lintas disiplin yang menggabungkan keahlian ui ux, full-stack development, dan machine learning<br class="hidden md:block" />
                     untuk menciptakan solusi digital yang bermanfaat bagi pariwisata Banyuwangi.
                 </p>
             </div>

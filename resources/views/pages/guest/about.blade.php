@@ -6,7 +6,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">Tentang Kami</h1>
             <p
-                class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans mb-8 md:mb-10">
+                class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans">
                 Kami hadir untuk membantu wisatawan menemukan pengalaman terbaik<br class="hidden md:block" />
                 di Banyuwangi melalui teknologi dan rekomendasi cerdas.
             </p>
@@ -15,7 +15,7 @@
         <div class="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-0">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"
                 class="relative block w-full h-[50px] text-white fill-current">
-                <path d="M0,80 C360,130 720,30 1200,80 L1200,120 L0,120 Z"></path>
+                <path d="M0,60 C300,10 600,110 900,60 C1050,35 1150,45 1200,60 L1200,120 L0,120 Z"></path>
             </svg>
         </div>
     </div>
@@ -120,7 +120,7 @@
                         class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Laras</span>
                 </h2>
                 <p class="text-slate-500 max-w-3xl mx-auto font-sans text-sm md:text-base leading-relaxed">
-                    Tim lintas disiplin yang menggabungkan keahlian ui ux, full-stack development, dan machine learning
+                    Tim lintas disiplin yang menggabungkan keahlian ui ux, full-stack development, dan machine learning<br class="hidden md:block" />
                     untuk menciptakan solusi digital yang bermanfaat bagi pariwisata Banyuwangi.
                 </p>
             </div>

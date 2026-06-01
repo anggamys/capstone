@@ -194,7 +194,7 @@
             // 1. Slug Generator
             const titleInput = document.getElementById('title');
             const slugInput = document.getElementById('slug');
-            let isSlugManuallyEdited = true; // Kept manually edited for edit page by default
+            let isSlugManuallyEdited = false;
 
             titleInput.addEventListener('input', function() {
                 if (!isSlugManuallyEdited) {

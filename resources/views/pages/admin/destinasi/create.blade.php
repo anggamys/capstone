@@ -47,13 +47,12 @@
                     <!-- Slug -->
                     <div>
                         <label for="slug" class="block text-sm font-bold text-[#2B3674] mb-2">URL Slug</label>
-                        <x-form-input 
+                        <input type="text" 
                                name="slug" 
                                id="slug" 
                                value="{{ old('slug') }}" 
                                placeholder="contoh-kawah-ijen-blue-fire" 
-                               class="font-medium font-mono"
-                        />
+                               class="w-full px-5 py-4 bg-[#F4F7FE] text-[#2B3674] placeholder-[#8F9BBA] rounded-2xl border-none focus:ring-2 focus:ring-[#89A8E0]/40 focus:outline-none transition-all duration-200 text-sm font-medium font-mono">
                         <p class="text-[11px] text-slate-400 mt-1.5 ml-1 font-medium">Slug akan digunakan sebagai alamat url destinasi (SEO Friendly).</p>
                         @error('slug')
                             <p class="text-xs text-rose-500 font-semibold mt-1.5 ml-1">{{ $message }}</p>

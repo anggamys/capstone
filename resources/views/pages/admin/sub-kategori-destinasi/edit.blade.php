@@ -107,7 +107,7 @@
             const nameInput = document.getElementById('name');
             const slugInput = document.getElementById('slug');
             
-            let isSlugManuallyEdited = slugInput.value !== '';
+            let isSlugManuallyEdited = false;
 
             nameInput.addEventListener('input', function() {
                 if (!isSlugManuallyEdited) {
