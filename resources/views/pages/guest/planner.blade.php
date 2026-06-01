@@ -6,11 +6,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">AI Planner</h1>
             <p class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans">
-                Rencanakan itinerary perjalanan Anda secara otomatis dibantu teknologi AI pintar.
+                Rencanakan itinerary perjalanan Anda<br class="hidden md:block" />
+                secara otomatis dibantu teknologi AI pintar.
             </p>
         </div>
         <!-- Wave SVG -->
-        <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-0">
+        <div class="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-0">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[50px] text-slate-50 fill-current">
                 <path d="M0,60 C300,10 600,110 900,60 C1050,35 1150,45 1200,60 L1200,120 L0,120 Z"></path>
             </svg>
