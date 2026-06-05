@@ -22,9 +22,18 @@
         body {
             font-family: 'Outfit', sans-serif;
         }
+
+        #cursor-glow {
+            background: 
+                radial-gradient(180px circle at var(--x, 0px) var(--y, 0px), rgba(142, 211, 216, 0.15), transparent 80%),
+                radial-gradient(450px circle at var(--x, 0px) var(--y, 0px), rgba(137, 168, 224, 0.08), transparent 80%);
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen bg-slate-50 flex flex-col justify-between text-slate-800">
+
+    <!-- Cursor Glow Effect Overlay -->
+    <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[9999] opacity-0 transition-opacity duration-300 hidden md:block"></div>
 
     <!-- Navbar Component -->
     <x-guest-navbar />
@@ -37,5 +46,31 @@
     <!-- Footer Component -->
     <x-guest-footer />
 
+    <!-- Script for Cursor Glow Effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const glow = document.getElementById('cursor-glow');
+            if (!glow) return;
+
+            if (window.matchMedia('(pointer: fine)').matches) {
+                document.addEventListener('mousemove', (e) => {
+                    glow.style.setProperty('--x', `${e.clientX}px`);
+                    glow.style.setProperty('--y', `${e.clientY}px`);
+                });
+
+                document.addEventListener('mouseenter', () => {
+                    glow.style.opacity = '1';
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    glow.style.opacity = '0';
+                });
+
+                document.addEventListener('mousemove', () => {
+                    glow.style.opacity = '1';
+                }, { once: true });
+            }
+        });
+    </script>
 </body>
 </html>
