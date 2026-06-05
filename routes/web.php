@@ -27,9 +27,45 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/explore', function () {
+    $search = request()->query('search');
+    $categorySlug = request()->query('category');
+
+    // Total semua destinasi aktif di database
+    $totalCount = Destination::where('status', 'active')->count();
+
+    // Ambil kategori aktif untuk tab filter
     $categories = DestinationCategory::where('status', 'active')->orderBy('name')->get();
-    $destinations = Destination::where('status', 'active')->with('category')->get();
-    return view('pages.guest.explore', compact('categories', 'destinations'));
+
+    $query = Destination::where('status', 'active')
+        ->with('category')
+        ->latest();
+
+    // Terapkan pencarian jika ada
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('name', 'like', '%' . $search . '%')
+              ->orWhere('district', 'like', '%' . $search . '%')
+              ->orWhere('description', 'like', '%' . $search . '%');
+        });
+    }
+
+    // Terapkan filter kategori jika ada
+    if ($categorySlug && $categorySlug !== 'semua') {
+        $query->whereHas('category', function($q) use ($categorySlug) {
+            $q->where('slug', $categorySlug);
+        });
+    }
+
+    $destinations = $query->paginate(6)->withQueryString();
+
+    // Hitung jumlah yang disaring (filteredCount)
+    if (!$search && (!$categorySlug || $categorySlug === 'semua')) {
+        $filteredCount = $totalCount;
+    } else {
+        $filteredCount = $destinations->total();
+    }
+
+    return view('pages.guest.explore', compact('categories', 'destinations', 'totalCount', 'filteredCount'));
 })->name('explore');
 
 Route::get('/explore/{slug}', function ($slug) {

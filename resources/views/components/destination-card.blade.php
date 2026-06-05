@@ -11,7 +11,9 @@
             <x-lucide-map-pin class="w-4 h-4 text-slate-400 shrink-0" />
             <span class="text-slate-500 font-sans font-light">{{ $location }}</span>
         </div>
-        <h3 class="text-xl font-bold text-[#3F5C7D] mb-2 font-sans leading-tight line-clamp-1">{{ $title }}</h3>
+        <h3 class="text-xl font-bold text-[#3F5C7D] mb-2 font-sans leading-tight line-clamp-1 hover:text-[#89A8E0] transition-colors" title="{{ $title }}">
+            <a href="{{ $link }}">{{ $title }}</a>
+        </h3>
         <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-4 font-light font-sans line-clamp-2">{{ $description }}</p>
         <a href="{{ $link }}" class="text-[#89A8E0] hover:text-[#7F9ED2] font-semibold text-sm transition-colors mt-auto flex items-center gap-1.5 font-sans">
             Lihat Detail

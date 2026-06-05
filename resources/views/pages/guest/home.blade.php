@@ -106,6 +106,16 @@
                     <span class="text-xs font-semibold uppercase tracking-widest text-[#3F5C7D] mb-3">Sistem Rekomendasi
                         Cerdas</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-[#3F5C7D] mb-6 font-sans">AI Planner</h2>
+
+                    <!-- Mockup image for mobile view (placed right under title) -->
+                    <div class="block lg:hidden w-full mb-8">
+                        <div class="relative w-full max-w-2xl aspect-[4/3] bg-gradient-to-tr from-[#3F5C7D] via-[#89A8E0] to-[#CDEBF2] rounded-[2rem] shadow-xl overflow-hidden">
+                            <div class="absolute inset-0 bg-white/5 backdrop-blur-[1px] pointer-events-none"></div>
+                            <img class="absolute inset-0 h-full w-full object-cover object-center"
+                                src="{{ asset('images/laptop-mockup.jpg') }}" alt="AI Planner Laptop Mockup">
+                        </div>
+                    </div>
+
                     <p class="text-slate-600 mb-8 font-light text-base leading-relaxed font-sans">
                         Kami menggunakan teknologi AI untuk merancang itinerary perjalanan Anda secara maksimal sesuai
                         preferensi dan durasi berlibur di Banyuwangi.
@@ -152,8 +162,8 @@
                     </a>
                 </div>
 
-                <!-- Right Mockup Image with Gradient Container -->
-                <div class="lg:col-span-6 flex justify-center w-full">
+                <!-- Right Mockup Image with Gradient Container (hidden on mobile, shown on desktop) -->
+                <div class="hidden lg:flex lg:col-span-6 justify-center w-full">
                     <div
                         class="relative w-full max-w-2xl aspect-[4/3] bg-gradient-to-tr from-[#3F5C7D] via-[#89A8E0] to-[#CDEBF2] rounded-[2.5rem] shadow-2xl overflow-hidden">
                         <div class="absolute inset-0 bg-white/5 backdrop-blur-[1px] pointer-events-none"></div>
