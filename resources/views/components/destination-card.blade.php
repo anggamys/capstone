@@ -1,8 +1,8 @@
 @props(['category', 'location', 'title', 'description', 'image', 'link' => '/explore'])
 
-<div class="group bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 hover:-translate-y-2 isolate">
-    <div class="relative overflow-hidden aspect-[4/3] bg-slate-100 rounded-t-[2rem]">
-        <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="{{ $image }}" alt="{{ $title }}">
+<div class="group bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col hover:shadow-xl hover:-translate-y-2 transition-[transform,box-shadow] duration-500 ease-out transform-gpu will-change-[transform,box-shadow] isolate">
+    <div class="relative overflow-hidden aspect-[4/3] bg-slate-100 rounded-t-[2rem] transform-gpu">
+        <img class="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out transform-gpu will-change-transform" src="{{ $image }}" alt="{{ $title }}">
         <span class="absolute top-4 right-4 bg-[#E6F7FA]/95 backdrop-blur-sm text-[#3F5C7D] text-xs font-semibold px-3.5 py-1.5 rounded-full shadow-sm border border-[#CDEBF2]">{{ $category }}</span>
     </div>
     <div class="p-5 flex flex-col flex-grow items-start text-left">

@@ -36,6 +36,19 @@ Route::get('/explore', function () {
     // Ambil kategori aktif untuk tab filter
     $categories = DestinationCategory::where('status', 'active')->orderBy('name')->get();
 
+    // Tentukan destinasi pilihan/terpopuler (hanya di halaman 1 dan tanpa filter/pencarian aktif)
+    $featuredDestinations = collect();
+    if (!request()->has('page') || request()->query('page') == 1) {
+        if (!$search && (!$categorySlug || $categorySlug === 'semua')) {
+            $featuredDestinations = Destination::where('status', 'active')
+                ->where('rating', '>=', 4.5)
+                ->with('category')
+                ->inRandomOrder()
+                ->limit(4) // Ambil 4 destinasi teratas secara acak untuk slider
+                ->get();
+        }
+    }
+
     $query = Destination::where('status', 'active')
         ->with('category')
         ->latest();
@@ -65,7 +78,7 @@ Route::get('/explore', function () {
         $filteredCount = $destinations->total();
     }
 
-    return view('pages.guest.explore', compact('categories', 'destinations', 'totalCount', 'filteredCount'));
+    return view('pages.guest.explore', compact('categories', 'destinations', 'totalCount', 'filteredCount', 'featuredDestinations'));
 })->name('explore');
 
 Route::get('/explore/{slug}', function ($slug) {

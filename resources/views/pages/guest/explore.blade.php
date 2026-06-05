@@ -90,6 +90,96 @@
                 </div>
             </div>
 
+            <!-- Pinned Featured Destinasi Sorotan Slider (Hanya muncul jika tidak sedang mencari/memfilter kategori) -->
+            @if($featuredDestinations->isNotEmpty())
+                <div 
+                    x-data="{ 
+                        activeSlide: 0, 
+                        slidesCount: {{ $featuredDestinations->count() }},
+                        autoplayInterval: null,
+                        startAutoplay() {
+                            this.stopAutoplay();
+                            this.autoplayInterval = setInterval(() => {
+                                this.activeSlide = (this.activeSlide + 1) % this.slidesCount;
+                            }, 5000);
+                        },
+                        stopAutoplay() {
+                            if (this.autoplayInterval) {
+                                clearInterval(this.autoplayInterval);
+                                this.autoplayInterval = null;
+                            }
+                        }
+                    }"
+                    x-init="startAutoplay()"
+                    @mouseenter="stopAutoplay()"
+                    @mouseleave="startAutoplay()"
+                    class="mb-12 relative"
+                >
+                    <div class="relative w-full min-h-[530px] sm:min-h-[460px] lg:min-h-0 lg:h-[400px]">
+                        @foreach($featuredDestinations as $index => $dest)
+                            <div 
+                                x-show="activeSlide === {{ $index }}"
+                                x-transition
+                                class="absolute inset-0 w-full h-full"
+                            >
+                                <!-- Card Layout (Split 60/40) -->
+                                <div class="group bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] overflow-hidden hover:shadow-xl transition-[box-shadow] duration-500 ease-out isolate h-full min-h-[530px] sm:min-h-[460px] lg:min-h-0 lg:h-[400px]">
+                                    <div class="grid grid-cols-1 lg:grid-cols-12 h-full min-h-[530px] sm:min-h-[460px] lg:min-h-0 lg:h-[400px]">
+                                        <!-- Image -->
+                                        <div class="relative overflow-hidden aspect-[16/10] lg:aspect-auto lg:h-full lg:col-span-7 bg-slate-100 rounded-t-[2rem] lg:rounded-t-none lg:rounded-l-[2rem] transform-gpu">
+                                            <img class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out transform-gpu will-change-transform" src="{{ $dest->image_url }}" alt="{{ $dest->name }}">
+                                            <span class="absolute top-5 left-5 bg-[#3F5C7D]/85 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full border border-white/20 flex items-center gap-1 shadow-sm">
+                                                <x-lucide-star class="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                                                Terpopuler
+                                            </span>
+                                            <span class="absolute top-5 right-5 bg-[#E6F7FA]/95 backdrop-blur-sm text-[#3F5C7D] text-[10px] font-semibold px-3.5 py-1.5 rounded-full shadow-sm border border-[#CDEBF2]">{{ $dest->category->name }}</span>
+                                        </div>
+                                        
+                                        <!-- Content -->
+                                        <div class="p-6 lg:p-10 lg:col-span-5 flex flex-col items-start text-left justify-center h-full">
+                                            <div class="flex flex-wrap items-center gap-y-1 gap-x-4 text-slate-400 text-xs font-medium mb-3">
+                                                <div class="flex items-center gap-1.5">
+                                                    <x-lucide-map-pin class="w-4 h-4 text-slate-400 shrink-0" />
+                                                    <span class="text-slate-500 font-sans font-light text-xs">{{ $dest->district }}, Banyuwangi</span>
+                                                </div>
+                                                <div class="flex items-center gap-1.5">
+                                                    <x-lucide-star class="w-4 h-4 text-amber-500 fill-amber-500 shrink-0" />
+                                                    <span class="text-slate-500 font-sans font-light text-xs"><strong class="font-semibold text-slate-600">{{ $dest->rating }}</strong> / 5.0</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <h2 class="text-xl lg:text-2xl font-bold text-[#3F5C7D] mb-3 font-sans leading-tight truncate w-full h-7 lg:h-8 hover:text-[#89A8E0] transition-colors" title="{{ $dest->name }}">
+                                                <a href="{{ route('explore.show', $dest->slug) }}">{{ $dest->name }}</a>
+                                            </h2>
+                                            
+                                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-5 font-light font-sans line-clamp-4 h-20">
+                                                {{ $dest->description }}
+                                            </p>
+                                            
+                                            <a href="{{ route('explore.show', $dest->slug) }}" class="px-5 py-2.5 bg-[#3F5C7D] hover:bg-[#344d6b] text-white font-semibold text-xs uppercase tracking-wider rounded-full transition-all flex items-center gap-2 font-sans shadow-md shadow-[#3F5C7D]/10">
+                                                Lihat Detail
+                                                <x-lucide-arrow-right class="w-4 h-4" stroke-width="2.5" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Dots Indicator / Controls -->
+                    <div class="absolute bottom-5 right-5 lg:right-10 z-20 flex gap-2">
+                        @foreach($featuredDestinations as $index => $dest)
+                            <button 
+                                @click="activeSlide = {{ $index }}; startAutoplay()"
+                                :class="activeSlide === {{ $index }} ? 'bg-[#3F5C7D] w-8' : 'bg-[#3F5C7D]/30 w-2.5'"
+                                class="h-2.5 rounded-full transition-all duration-300 focus:outline-none"
+                            ></button>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
             <!-- Destination Grid -->
             @if($destinations->isNotEmpty())
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
