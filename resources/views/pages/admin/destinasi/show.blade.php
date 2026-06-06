@@ -20,7 +20,7 @@
         <!-- Banner / Image Showcase -->
         <div class="mb-8 relative rounded-3xl overflow-hidden max-h-96 shadow-md border border-slate-100">
             @if($destination->main_image)
-                <img src="{{ asset('storage/' . $destination->main_image) }}" alt="{{ $destination->name }}" class="w-full h-full object-cover max-h-96">
+                <img src="{{ $destination->image_url }}" alt="{{ $destination->name }}" class="w-full h-full object-cover max-h-96">
             @else
                 <div class="w-full h-64 bg-slate-50 flex flex-col items-center justify-center text-slate-400 font-bold border border-dashed border-slate-200">
                     <x-lucide-image class="w-12 h-12 text-slate-300 mb-2" stroke-width="1.5" />

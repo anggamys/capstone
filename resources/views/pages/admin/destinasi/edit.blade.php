@@ -120,7 +120,7 @@
                     <!-- Upload Gambar Utama -->
                     <div>
                         <label class="block text-sm font-bold text-[#2B3674] mb-2">Unggah Gambar Utama</label>
-                        <div class="w-full" x-data="{ preview: '{{ $destination->main_image ? asset('storage/' . $destination->main_image) : '' }}' }">
+                        <div class="w-full" x-data="{ preview: '{{ $destination->main_image ? $destination->image_url : '' }}' }">
                             <div class="relative border-2 border-dashed border-slate-200 hover:border-[#89A8E0] bg-[#F4F7FE] rounded-3xl p-8 transition-all duration-200 flex flex-col items-center justify-center cursor-pointer">
                                 <input type="file" 
                                        name="main_image" 

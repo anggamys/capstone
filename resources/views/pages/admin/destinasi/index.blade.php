@@ -28,7 +28,7 @@
                     <!-- Column 2: Cover -->
                     <td class="px-8 py-5 text-sm w-32">
                         @if($destination->main_image)
-                            <img src="{{ asset('storage/' . $destination->main_image) }}" alt="{{ $destination->name }}" class="w-20 h-12 object-cover rounded-xl shadow-sm border border-slate-100">
+                            <img src="{{ $destination->image_url }}" alt="{{ $destination->name }}" class="w-20 h-12 object-cover rounded-xl shadow-sm border border-slate-100">
                         @else
                             <div class="w-20 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-[10px] text-slate-400 font-bold border border-dashed border-slate-200">
                                 No Image
