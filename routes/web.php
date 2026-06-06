@@ -23,7 +23,14 @@ Route::get('/', function () {
         ->latest('published_at')
         ->limit(3)
         ->get();
-    return view('pages.guest.home', compact('blogs'));
+
+    $destinations = Destination::where('status', 'active')
+        ->with('category')
+        ->inRandomOrder()
+        ->limit(3)
+        ->get();
+
+    return view('pages.guest.home', compact('blogs', 'destinations'));
 })->name('home');
 
 Route::get('/explore', function () {

@@ -195,20 +195,20 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Destinasi 1 -->
-                <x-destination-card category="Alam" location="Licin, Banyuwangi" title="Kawah Ijen"
-                    description="Fenomena blue fire yang menakjubkan dan kawah asam terbesar di dunia."
-                    image="{{ asset('images/kawah-ijen.png') }}" link="/explore/kawah-ijen" />
-
-                <!-- Destinasi 2 -->
-                <x-destination-card category="Pantai" location="Pesanggaran, Banyuwangi" title="Pulau Merah"
-                    description="Nikmati keindahan sunset emas dan bukit merah yang berada di tepi pantai."
-                    image="{{ asset('images/pulau-merah.png') }}" link="/explore/pantai-pulau-merah" />
-
-                <!-- Destinasi 3 -->
-                <x-destination-card category="Hutan" location="Benculuk, Banyuwangi" title="De Djawatan"
-                    description="Hutan trembesi magis ala film Lord of the Rings di Banyuwangi."
-                    image="{{ asset('images/de-djawatan.png') }}" link="/explore/de-djawatan" />
+                @forelse($destinations as $dest)
+                    <x-destination-card 
+                        :category="$dest->category->name" 
+                        :location="$dest->district . ', Banyuwangi'" 
+                        :title="$dest->name"
+                        :description="\Illuminate\Support\Str::limit($dest->description, 100)"
+                        :image="$dest->image_url" 
+                        :link="route('explore.show', $dest->slug)" 
+                    />
+                @empty
+                    <div class="col-span-3 text-center py-12 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                        <p class="text-slate-500 font-sans font-light">Belum ada destinasi yang aktif.</p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

@@ -12,12 +12,12 @@
             <div class="flex-shrink-0 flex items-center">
                 <a href="/">
                     <!-- White Logo (Only on homepage, when transparent/not scrolled/not open) -->
-                    <img class="h-12 w-auto object-contain transition-all duration-300" 
+                    <img class="h-12 w-auto object-contain transition-all duration-300 {{ !request()->is('/') ? 'hidden' : '' }}" 
                          :class="{ 'hidden': !({{ request()->is('/') ? 'true' : 'false' }} && !scrolled && !open) }"
                          src="{{ asset('images/logo-laras-white.png') }}" 
                          alt="Laras Banyuwangi Logo">
                     <!-- Colored Logo (In all other states) -->
-                    <img class="h-12 w-auto object-contain transition-all duration-300" 
+                    <img class="h-12 w-auto object-contain transition-all duration-300 {{ request()->is('/') ? 'hidden' : '' }}" 
                          :class="{ 'hidden': {{ request()->is('/') ? 'true' : 'false' }} && !scrolled && !open }"
                          src="{{ asset('images/logo-laras.png') }}" 
                          alt="Laras Banyuwangi Logo">
