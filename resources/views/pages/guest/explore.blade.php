@@ -19,11 +19,11 @@
     </div>
 
     <!-- Content Section wrapper -->
-    <div class="py-16 bg-slate-50 min-h-screen">
+    <div class="pt-8 pb-16 bg-slate-50 min-h-[50vh]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <!-- Search Bar (Centered) -->
-            <div class="mb-10 flex flex-col items-center justify-center text-center max-w-xl mx-auto">
+            <div class="mb-6 flex flex-col items-center justify-center text-center max-w-xl mx-auto">
                 <form action="{{ route('explore') }}" method="GET" class="w-full">
                     @if(request('category'))
                         <input type="hidden" name="category" value="{{ request('category') }}">
@@ -58,7 +58,7 @@
             </div>
 
             <!-- Category Tabs (Stacked & wrapped on mobile, centered) -->
-            <div class="mb-6">
+            <div class="mb-5">
                 <div class="flex flex-wrap gap-2.5 justify-center">
                     <!-- 'Semua' Tab -->
                     <a 
@@ -84,7 +84,7 @@
             </div>
 
             <!-- Results Count Indicator (Below Categories) -->
-            <div class="mb-10 text-center">
+            <div class="mb-6 text-center">
                 <div class="text-xs text-slate-400 font-sans font-light">
                     Menampilkan <span class="font-semibold text-[#3F5C7D]">{{ $filteredCount }}</span> dari {{ $totalCount }} destinasi
                 </div>
@@ -115,21 +115,22 @@
                     @mouseleave="startAutoplay()"
                     class="mb-12 relative"
                 >
-                    <div class="relative w-full min-h-[530px] sm:min-h-[460px] lg:min-h-0 lg:h-[400px]">
+                    <div class="relative w-full lg:h-[400px]">
                         @foreach($featuredDestinations as $index => $dest)
                             <div 
                                 x-show="activeSlide === {{ $index }}"
                                 x-transition
-                                class="absolute inset-0 w-full h-full"
+                                :class="activeSlide === {{ $index }} ? 'relative' : 'absolute inset-0'"
+                                class="w-full lg:absolute lg:inset-0 lg:h-full"
                             >
                                 <!-- Card Layout (Split 60/40) -->
-                                <div class="group bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] overflow-hidden hover:shadow-xl transition-[box-shadow] duration-500 ease-out isolate h-full min-h-[530px] sm:min-h-[460px] lg:min-h-0 lg:h-[400px]">
-                                    <div class="grid grid-cols-1 lg:grid-cols-12 h-full min-h-[530px] sm:min-h-[460px] lg:min-h-0 lg:h-[400px]">
+                                <div class="group bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_28px_rgba(0,0,0,0.03)] overflow-hidden hover:shadow-xl transition-[box-shadow] duration-500 ease-out isolate h-full">
+                                    <div class="flex flex-col lg:grid lg:grid-cols-12 h-full">
                                         <!-- Image -->
                                         <div class="relative overflow-hidden aspect-[16/10] lg:aspect-auto lg:h-full lg:col-span-7 bg-slate-100 rounded-t-[2rem] lg:rounded-t-none lg:rounded-l-[2rem] transform-gpu">
                                             <img class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out transform-gpu will-change-transform" src="{{ $dest->image_url }}" alt="{{ $dest->name }}">
-                                            <span class="absolute top-5 left-5 bg-[#3F5C7D]/85 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full border border-white/20 flex items-center gap-1 shadow-sm">
-                                                <x-lucide-star class="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                                            <span class="absolute top-5 left-5 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1.5 rounded-full border border-white/30 flex items-center gap-1 shadow-sm">
+                                                <x-lucide-star class="w-3 h-3 fill-white text-white" />
                                                 Terpopuler
                                             </span>
                                             <span class="absolute top-5 right-5 bg-[#E6F7FA]/95 backdrop-blur-sm text-[#3F5C7D] text-[10px] font-semibold px-3.5 py-1.5 rounded-full shadow-sm border border-[#CDEBF2]">{{ $dest->category->name }}</span>
@@ -152,7 +153,7 @@
                                                 <a href="{{ route('explore.show', $dest->slug) }}">{{ $dest->name }}</a>
                                             </h2>
                                             
-                                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-5 font-light font-sans line-clamp-4 h-20">
+                                            <p class="text-slate-500 text-xs sm:text-sm leading-relaxed mb-5 font-light font-sans line-clamp-4">
                                                 {{ $dest->description }}
                                             </p>
                                             

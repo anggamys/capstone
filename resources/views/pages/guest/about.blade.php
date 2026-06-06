@@ -129,25 +129,25 @@
             <div class="flex flex-wrap justify-center gap-6">
                 <!-- Dev 1: Clarisah -->
                 <x-developer-card tag="Machine Learning" name="Clarisah" role="Machine Learning Engineer"
-                    image="{{ asset('images/clarisah.png') }}"
+                    image="{{ asset('images/team/clarisah.png') }}"
                     linkedin="www.linkedin.com/in/clarissa-ingnasia-659323282" />
 
                 <!-- Dev 2: Dyah -->
                 <x-developer-card tag="Machine Learning" name="Dyah" role="Machine Learning Engineer"
-                    image="{{ asset('images/nana.png') }}" linkedin="www.linkedin.com/in/dyahinkud" />
+                    image="{{ asset('images/team/nana.png') }}" linkedin="www.linkedin.com/in/dyahinkud" />
 
                 <!-- Dev 3: Dicky -->
                 <x-developer-card tag="Front End & Back End" name="Dicky" role="Fullstack Developer"
-                    image="{{ asset('images/dickyha.png') }}" linkedin="www.linkedin.com/in/dickyhaa" />
+                    image="{{ asset('images/team/dickyha.png') }}" linkedin="www.linkedin.com/in/dickyhaa" />
 
                 <!-- Dev 4: Feomita -->
                 <x-developer-card tag="Front End & Back End" name="Feomita" role="Fullstack Developer"
-                    image="{{ asset('images/feomita.png') }}"
+                    image="{{ asset('images/team/feomita.png') }}"
                     linkedin="www.linkedin.com/in/feomita-ramadhany-fudiansah-90767828b" />
 
                 <!-- Dev 5: Sophia -->
                 <x-developer-card tag="UI UX Designer" name="Sophia" role="UI UX"
-                    image="{{ asset('images/sopia.png') }}" linkedin="www.linkedin.com/in/sophiaanindita" />
+                    image="{{ asset('images/team/sopia.png') }}" linkedin="www.linkedin.com/in/sophiaanindita" />
             </div>
         </div>
     </div>
