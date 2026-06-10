@@ -167,7 +167,7 @@
                      x-transition:leave-end="opacity-0 transform -translate-y-2"
                      class="space-y-1">
                     
-                    <a href="#" class="{{ $riwayatActive ? $activeSubClass : $inactiveSubClass }}">
+                    <a href="{{ route('admin.riwayat-preferensi.index') }}" class="{{ $riwayatActive ? $activeSubClass : $inactiveSubClass }}">
                         Riwayat Preferensi User
                     </a>
                 </div>
