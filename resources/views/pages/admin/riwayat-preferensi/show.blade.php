@@ -163,7 +163,7 @@
                         <span class="p-2 bg-[#F4F7FE] text-[#3F5C7D] rounded-xl">
                             <x-lucide-sparkles class="w-5 h-5 text-[#89A8E0]" stroke-width="2.5" />
                         </span>
-                        <h2 class="text-base font-bold text-[#2B3674]">Hasil Rekomendasi (Top 6)</h2>
+                        <h2 class="text-base font-bold text-[#2B3674]">Hasil Rekomendasi (Top {{ count($history->recommendations ?? []) }})</h2>
                     </div>
 
                     <div class="flex-1 space-y-4">

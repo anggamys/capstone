@@ -2,8 +2,8 @@
     <x-slot name="title">Jelajah Wisata - Laras Banyuwangi</x-slot>
 
     <!-- Header Section -->
-    <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-20 text-center text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-20 text-center text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
             <h1 class="text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">Jelajah Destinasi</h1>
             <p class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans">
                 Temukan keindahan alam tersembunyi, seni budaya yang sakral,<br class="hidden md:block" />
@@ -11,9 +11,9 @@
             </p>
         </div>
         <!-- Wave SVG -->
-        <div class="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-0">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[50px] text-slate-50 fill-current">
-                <path d="M0,60 C300,10 600,110 900,60 C1050,35 1150,45 1200,60 L1200,120 L0,120 Z"></path>
+        <div class="absolute -bottom-[2px] left-0 right-0 w-full overflow-hidden leading-none z-10">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[52px] text-slate-50 fill-current translate-y-[1px] scale-y-[1.05]">
+                <path d="M0,60 C300,10 600,110 900,60 C1050,35 1150,45 1200,60 L1200,120 L0,120 Z" stroke="none"></path>
             </svg>
         </div>
     </div>

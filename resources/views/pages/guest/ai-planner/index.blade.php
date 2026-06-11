@@ -10,24 +10,24 @@
     </style>
 
     <!-- Header Section -->
-    <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-20 text-center text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">Selaraskan Destinasi Wisatamu</h1>
-            <p class="text-white/95 max-w-3xl mx-auto text-base md:text-lg font-light leading-relaxed font-sans">
+    <div class="relative bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] py-16 sm:py-20 text-center text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 font-sans tracking-tight">Selaraskan Destinasi Wisatamu</h1>
+            <p class="text-white/95 max-w-3xl mx-auto text-sm sm:text-base md:text-lg font-light leading-relaxed font-sans">
                 Bantu kami merekomendasikan destinasi terbaik di Banyuwangi<br class="hidden md:block" />
                 yang sesuai dengan gaya dan preferensimu.
             </p>
         </div>
         <!-- Wave SVG -->
-        <div class="absolute -bottom-[1px] left-0 right-0 w-full overflow-hidden leading-none z-0">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[50px] text-[#EFF6FC] fill-current">
-                <path d="M0,60 C300,10 600,110 900,60 C1050,35 1150,45 1200,60 L1200,120 L0,120 Z"></path>
+        <div class="absolute -bottom-[2px] left-0 right-0 w-full overflow-hidden leading-none z-10">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[52px] text-[#EFF6FC] fill-current translate-y-[1px] scale-y-[1.05]">
+                <path d="M0,60 C300,10 600,110 900,60 C1050,35 1150,45 1200,60 L1200,120 L0,120 Z" stroke="none"></path>
             </svg>
         </div>
     </div>
 
     <!-- Wizard Section -->
-    <div class="py-16 bg-gradient-to-br from-[#EFF6FC] via-[#F4F9FC] to-[#E5EFF8] min-h-[60vh]" x-data="{
+    <div class="py-10 sm:py-16 bg-gradient-to-br from-[#EFF6FC] via-[#F4F9FC] to-[#E5EFF8] min-h-[60vh] overflow-x-hidden" x-data="{
         started: false,
         step: 1,
         totalSteps: 8,
@@ -170,12 +170,12 @@
                     </div>
 
                     <!-- Right Column: Features Panel (Mengapa Memilih...) -->
-                    <div class="lg:col-span-6 flex justify-center w-full relative">
+                    <div class="lg:col-span-6 flex justify-center w-full relative overflow-hidden py-6">
                         <!-- Decorative Back Gradients -->
                         <div class="absolute -top-12 -left-12 w-64 h-64 bg-[#E6F7FA] rounded-full blur-3xl opacity-50 z-0"></div>
                         <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-[#7F9ED2] rounded-full blur-3xl opacity-35 z-0"></div>
 
-                        <div class="relative w-full max-w-md bg-white/40 backdrop-blur-md border border-white/60 p-8 rounded-[2.5rem] shadow-2xl z-10 flex flex-col gap-6">
+                        <div class="relative w-full max-w-md bg-white/40 backdrop-blur-md border border-white/60 p-6 sm:p-8 rounded-[2.5rem] shadow-2xl z-10 flex flex-col gap-6">
                             <div>
                                 <h3 class="text-lg font-bold text-[#3F5C7D] font-sans">
                                     Mengapa Memilih AI Trip Planner?
@@ -220,7 +220,7 @@
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-[#3F5C7D] font-sans">Riwayat AI Planner Anda</h3>
-                            <p class="text-slate-400 text-xs font-light font-sans mt-0.5">Daftar pencarian rekomendasi destinasi kustom Anda yang tersimpan secara lokal.</p>
+                            <p class="text-slate-400 text-xs font-light font-sans mt-0.5">Daftar pencarian rekomendasi destinasi kustom Anda yang tersimpan secara lokal (maksimal 5 riwayat terakhir).</p>
                         </div>
                         <button type="button" x-show="history.length > 0" @click="clearHistory()" class="px-4 py-2 text-xs text-red-500 hover:text-white font-semibold bg-white border border-red-200 hover:bg-red-500 hover:border-red-500 rounded-full transition-all duration-300 shadow-sm cursor-pointer font-sans" x-cloak>
                             Hapus Semua Riwayat
@@ -296,7 +296,7 @@
                     @csrf
 
                     <!-- Main Card Container -->
-                    <div class="bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_40px_rgba(0,0,0,0.03)] p-8 md:p-12 min-h-[480px] flex flex-col justify-between">
+                    <div class="bg-white rounded-[2rem] border border-slate-100 shadow-[0_12px_40px_rgba(0,0,0,0.03)] p-5 sm:p-8 md:p-12 min-h-[480px] flex flex-col justify-between">
                         
                         <!-- STEP 1: Kategori Wisata -->
                         <div x-show="step === 1" class="space-y-6" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">

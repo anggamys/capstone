@@ -304,8 +304,8 @@ Route::match(['get', 'post'], '/planner/result', function () {
         return $b['match_score'] <=> $a['match_score'];
     });
 
-    // Take top 6
-    $recommendations = array_slice($recommendations, 0, 6);
+    // Take top 8
+    $recommendations = array_slice($recommendations, 0, 8);
 
     // Get/create guest token cookie
     $guestToken = request()->cookie('planner_guest_token');
