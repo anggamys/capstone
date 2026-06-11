@@ -38,7 +38,7 @@
                 <div class="max-w-3xl">
                     <h1 class="text-3xl md:text-4xl font-extrabold text-[#3F5C7D] font-sans tracking-tight mb-2">Rekomendasi Wisata untukmu</h1>
                     <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed font-sans">
-                        Berikut destinasi Banyuwangi yang paling selaras dengan preferensi perjalananmu. Algoritma harmoni kami telah menyusun rencana terbaik untuk eksplorasimu.
+                        Berikut destinasi Banyuwangi yang paling selaras dengan preferensi perjalananmu. Fitur AI Planner kami telah menyusun rencana terbaik untuk eksplorasimu.
                     </p>
                 </div>
                 <div class="shrink-0 flex items-center gap-3">
