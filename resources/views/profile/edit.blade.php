@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <div class="space-y-6 max-w-4xl">
+        <div class="space-y-6">
             <!-- 1. Informasi Profil -->
             <div class="bg-white rounded-3xl p-8 shadow-sm border border-indigo-100/10">
                 @include('profile.partials.update-profile-information-form')

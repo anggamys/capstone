@@ -46,7 +46,7 @@ class PlannerHistoryController extends Controller
             });
         }
 
-        $histories = $query->latest()->paginate(10)->withQueryString();
+        $histories = $query->latest()->paginate(5)->withQueryString();
 
         $categoryMap = \App\Models\DestinationCategory::pluck('name', 'id')->toArray();
         $activityMap = \App\Models\Activity::pluck('name', 'id')->toArray();
