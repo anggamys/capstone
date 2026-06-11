@@ -1,5 +1,5 @@
 <x-guest-portal-layout>
-    <x-slot name="title">AI Trip Planner - Laras Banyuwangi</x-slot>
+    <x-slot name="title">AI Planner - Laras Banyuwangi</x-slot>
 
 
 
@@ -82,7 +82,7 @@
                 '🌍 Mencari destinasi terbaik di database Laras Banyuwangi...',
                 '📊 Menganalisis aksesibilitas lokasi dan budget yang ditentukan...',
                 '🧠 Menghitung tingkat kecocokan (AI Match Score)...',
-                '✨ Menyusun 6 rekomendasi personal terbaik...'
+                '✨ Menyusun 8 rekomendasi personal terbaik...'
             ];
 
             let progress = 0;
@@ -128,87 +128,105 @@
                     <!-- Left Column: Stepper & Info -->
                     <div class="lg:col-span-6 flex flex-col items-start text-left">
                         <span class="px-3.5 py-1.5 bg-[#E6F7FA] text-[#3F5C7D] text-[10px] font-bold rounded-full border border-[#CDEBF2] tracking-wider uppercase inline-flex items-center gap-1.5 mb-6 font-sans select-none">
-                            Langkah Penyelarasan Destinasi
+                            <x-lucide-sparkles class="w-3.5 h-3.5 text-[#3F5C7D]" stroke-width="2.5" /> AI Planner Laras Banyuwangi
                         </span>
+
+                        <h2 class="text-3xl md:text-[2.75rem] font-bold text-[#3F5C7D] mb-4 font-sans leading-tight">
+                            Temukan Destinasi yang <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Selaras untuk Anda</span>
+                        </h2>
+
+                        <!-- Underline Divider -->
+                        <div class="w-16 h-1.5 bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] mb-6 rounded-full"></div>
+
+                        <p class="text-slate-600 mb-8 font-light text-base leading-relaxed font-sans">
+                            Laras Banyuwangi memanfaatkan teknologi Smart Tourism berbasis <br class="hidden md:block" />
+                            <span class="text-[#3F5C7D] font-bold">Content-Based Filtering</span> untuk menghadirkan rekomendasi destinasi <br class="hidden md:block" />
+                            yang sesuai dengan minat, budget, dan gaya perjalanan Anda.
+                        </p>
 
                         <!-- Vertical Stepper Timeline -->
                         <div class="space-y-6 mb-8 w-full font-sans">
                             <div class="flex items-start gap-4 group">
-                                <div class="w-9 h-9 rounded-full bg-[#2C4E80] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md transition-transform duration-300 group-hover:scale-105">
-                                    1
+                                <div class="w-10 h-10 rounded-2xl bg-[#E6F7FA] border border-[#CDEBF2] flex items-center justify-center text-[#3F5C7D] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                    <x-lucide-clipboard-list class="w-5 h-5 text-[#3F5C7D]" stroke-width="2" />
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm md:text-base mb-1">Pilih Preferensi</h4>
-                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Tentukan jenis wisata, budget, dan waktu yang Anda miliki.</p>
+                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Jawab beberapa pertanyaan tentang minat wisata, budget, durasi, dan gaya perjalanan Anda.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 group">
-                                <div class="w-9 h-9 rounded-full bg-[#6B8EC6] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md transition-transform duration-300 group-hover:scale-105">
-                                    2
+                                <div class="w-10 h-10 rounded-2xl bg-[#EFF6FC] border border-[#CDEBF2]/50 flex items-center justify-center text-[#89A8E0] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                    <x-lucide-brain class="w-5 h-5 text-[#89A8E0]" stroke-width="2" />
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm md:text-base mb-1">Sistem Menganalisis</h4>
-                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Algoritma kami akan mencari destinasi terbaik yang paling cocok.</p>
+                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Algoritma Content-Based Filtering, TF-IDF, dan Cosine Similarity menganalisis kecocokan destinasi.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 group">
-                                <div class="w-9 h-9 rounded-full bg-[#73C7D5] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-md transition-transform duration-300 group-hover:scale-105">
-                                    3
+                                <div class="w-10 h-10 rounded-2xl bg-[#E6F7FA] border border-[#CDEBF2] flex items-center justify-center text-[#8ED3D8] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                    <x-lucide-compass class="w-5 h-5 text-[#8ED3D8]" stroke-width="2" />
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-slate-800 text-sm md:text-base mb-1">Rekomendasi Destinasi Siap</h4>
-                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Daftar rekomendasi destinasi terbaik beserta persentase kecocokan AI.</p>
+                                    <h4 class="font-bold text-slate-800 text-sm md:text-base mb-1">Rekomendasi Destinasi</h4>
+                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Dapatkan daftar destinasi terbaik yang paling sesuai dengan preferensi Anda.</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Start Action Button -->
-                        <button type="button" @click="started = true" class="px-8 py-3.5 bg-gradient-to-r from-[#7F9ED2] to-[#3F5C7D] hover:from-[#7392c6] hover:to-[#344d6b] text-white text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3F5C7D]/20 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer border-none font-sans">
-                            <x-lucide-zap class="w-4 h-4 text-white fill-white shrink-0" stroke-width="2.5" />
+                        <button type="button" @click="started = true" class="px-8 py-3.5 bg-gradient-to-r from-[#7F9ED2] to-[#3F5C7D] hover:from-[#7392c6] hover:to-[#344d6b] text-white text-base font-semibold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3F5C7D]/20 hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2.5 cursor-pointer border-none font-sans">
+                            <x-lucide-sparkles class="w-5 h-5 text-white shrink-0" stroke-width="2" />
                             Mulai AI Planner
                         </button>
                     </div>
 
-                    <!-- Right Column: Features Panel (Mengapa Memilih...) -->
-                    <div class="lg:col-span-6 flex justify-center w-full relative overflow-hidden py-6">
-                        <!-- Decorative Back Gradients -->
-                        <div class="absolute -top-12 -left-12 w-64 h-64 bg-[#E6F7FA] rounded-full blur-3xl opacity-50 z-0"></div>
-                        <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-[#7F9ED2] rounded-full blur-3xl opacity-35 z-0"></div>
-
-                        <div class="relative w-full max-w-md bg-white/40 backdrop-blur-md border border-white/60 p-6 sm:p-8 rounded-[2.5rem] shadow-2xl z-10 flex flex-col gap-6">
+                    <!-- Right Column: Features Panel (Mengapa Menggunakan...) -->
+                    <div class="lg:col-span-6 flex justify-center w-full py-6">
+                        <div class="relative w-full max-w-lg bg-white/70 backdrop-blur-md border border-white/90 p-6 sm:p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(63,92,125,0.1)] z-10 flex flex-col gap-6">
                             <div>
-                                <h3 class="text-lg font-bold text-[#3F5C7D] font-sans">
-                                    Mengapa Memilih AI Trip Planner?
+                                <h3 class="text-lg md:text-xl font-bold text-[#3F5C7D] font-sans leading-tight">
+                                    Mengapa Menggunakan <br class="hidden sm:block" />AI Planner <span class="bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] bg-clip-text text-transparent">Laras Banyuwangi?</span>
                                 </h3>
-                                <div class="w-12 h-1 bg-gradient-to-r from-[#7F9ED2] to-[#8ED3D8] mt-2 rounded-full"></div>
+                                <div class="w-16 h-1.5 bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] mt-3 mb-6 rounded-full"></div>
                             </div>
                             
-                            <div class="space-y-5">
-                                <div class="group border-l-2 border-[#7F9ED2]/30 pl-4 hover:border-[#2C4E80] transition-all duration-300">
-                                    <h4 class="text-sm font-bold text-[#3F5C7D] font-sans mb-1 group-hover:text-[#2C4E80] transition-colors">
-                                        Rekomendasi Akurat
-                                    </h4>
-                                    <p class="text-slate-500 text-[11px] font-light leading-relaxed font-sans">
-                                        Menganalisis kecocokan destinasi wisata Banyuwangi secara riil berdasarkan kategori dan aktivitas favorit Anda.
-                                    </p>
+                            <div class="divide-y divide-slate-100/80">
+                                <div class="flex items-start gap-4 pb-5 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-[#E6F7FA] border border-[#CDEBF2] flex items-center justify-center text-[#3F5C7D] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                        <x-lucide-user-check class="w-6 h-6 text-[#3F5C7D]" />
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[#3F5C7D] text-base mb-1">Rekomendasi Personal</h4>
+                                        <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">
+                                            Destinasi dipilih berdasarkan minat, preferensi, dan karakteristik perjalanan Anda.
+                                        </p>
+                                    </div>
                                 </div>
                                 
-                                <div class="group border-l-2 border-[#7F9ED2]/30 pl-4 hover:border-[#2C4E80] transition-all duration-300">
-                                    <h4 class="text-sm font-bold text-[#3F5C7D] font-sans mb-1 group-hover:text-[#2C4E80] transition-colors">
-                                        Kesesuaian Kendaraan
-                                    </h4>
-                                    <p class="text-slate-500 text-[11px] font-light leading-relaxed font-sans">
-                                        Menyaring tempat wisata dengan tingkat aksesibilitas jalan yang aman dilalui oleh kendaraan utama pilihan Anda.
-                                    </p>
+                                <div class="flex items-start gap-4 py-5 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-[#EFF6FC] border border-[#DCEAF8] flex items-center justify-center text-[#89A8E0] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                        <x-lucide-network class="w-6 h-6 text-[#3F5C7D]" />
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[#3F5C7D] text-base mb-1">Pencocokan Cerdas</h4>
+                                        <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">
+                                            Menggunakan metode Content-Based Filtering, TF-IDF, dan Cosine Similarity untuk mengukur tingkat kecocokan destinasi.
+                                        </p>
+                                    </div>
                                 </div>
                                 
-                                <div class="group border-l-2 border-[#7F9ED2]/30 pl-4 hover:border-[#2C4E80] transition-all duration-300">
-                                    <h4 class="text-sm font-bold text-[#3F5C7D] font-sans mb-1 group-hover:text-[#2C4E80] transition-colors">
-                                        Kontrol Anggaran
-                                    </h4>
-                                    <p class="text-slate-500 text-[11px] font-light leading-relaxed font-sans">
-                                        Mengoptimalkan pilihan destinasi yang masuk dalam toleransi budget harga tiket masuk per orang yang Anda tentukan.
-                                    </p>
+                                <div class="flex items-start gap-4 pt-5 group">
+                                    <div class="w-14 h-14 rounded-2xl bg-[#F1F0FE] border border-[#E4E2FE] flex items-center justify-center text-[#89A8E0] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                        <x-lucide-wallet class="w-6 h-6 text-[#3F5C7D]" />
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[#3F5C7D] text-base mb-1">Sesuai Budget & Waktu</h4>
+                                        <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">
+                                            Rekomendasi mempertimbangkan biaya kunjungan, durasi perjalanan, serta tingkat aksesibilitas destinasi.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -220,9 +238,9 @@
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
                             <h3 class="text-lg md:text-xl font-bold text-[#3F5C7D] font-sans">Riwayat AI Planner Anda</h3>
-                            <p class="text-slate-400 text-xs font-light font-sans mt-0.5">Daftar pencarian rekomendasi destinasi kustom Anda yang tersimpan secara lokal (maksimal 5 riwayat terakhir).</p>
+                            <p class="text-slate-400 text-sm font-light font-sans mt-0.5">Daftar pencarian rekomendasi destinasi Anda yang tersimpan (maks menampilkan 5 riwayat terakhir).</p>
                         </div>
-                        <button type="button" x-show="history.length > 0" @click="clearHistory()" class="px-4 py-2 text-xs text-red-500 hover:text-white font-semibold bg-white border border-red-200 hover:bg-red-500 hover:border-red-500 rounded-full transition-all duration-300 shadow-sm cursor-pointer font-sans" x-cloak>
+                        <button type="button" x-show="history.length > 0" @click="clearHistory()" class="px-5 py-2 text-sm text-red-500 hover:text-white font-semibold bg-white border border-red-200 hover:bg-red-500 hover:border-red-500 rounded-full transition-all duration-300 shadow-sm cursor-pointer font-sans" x-cloak>
                             Hapus Semua Riwayat
                         </button>
                     </div>
@@ -241,14 +259,14 @@
                     <!-- History Display State: Table -->
                     <div x-show="history.length > 0" class="bg-white rounded-[2rem] border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.015)] overflow-hidden" x-cloak>
                         <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse font-sans text-xs">
+                            <table class="w-full text-left border-collapse font-sans text-sm">
                                 <thead>
-                                    <tr class="bg-slate-50/70 border-b border-slate-100 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
+                                    <tr class="bg-slate-50/70 border-b border-slate-100 text-slate-400 font-semibold uppercase tracking-wider text-xs">
                                         <th class="py-4 px-6">Tanggal</th>
                                         <th class="py-4 px-6">Gaya Travel</th>
                                         <th class="py-4 px-6">Kategori</th>
                                         <th class="py-4 px-6">Destinasi Terpilih</th>
-                                        <th class="py-4 px-6 text-right">Aksi</th>
+                                        <th class="py-4 px-6">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100/80">
@@ -256,23 +274,23 @@
                                         <tr class="hover:bg-slate-50/30 transition-colors duration-200 text-slate-600">
                                             <td class="py-4 px-6 font-medium text-slate-400" x-text="item.date"></td>
                                             <td class="py-4 px-6">
-                                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-bold rounded-full border border-emerald-100" x-text="item.travelType"></span>
+                                                <span class="px-2.5 py-1 bg-emerald-50 text-emerald-600 text-xs font-bold rounded-full border border-emerald-100" x-text="item.travelType"></span>
                                             </td>
                                             <td class="py-4 px-6">
                                                 <div class="flex flex-wrap gap-1">
                                                     <template x-for="cat in item.categories.slice(0, 2)">
-                                                        <span class="px-2 py-0.5 bg-[#E6F7FA] text-[#3F5C7D] text-[10px] font-medium rounded-md border border-[#CDEBF2]" x-text="cat"></span>
+                                                        <span class="px-2 py-0.5 bg-[#E6F7FA] text-[#3F5C7D] text-xs font-medium rounded-md border border-[#CDEBF2]" x-text="cat"></span>
                                                     </template>
                                                     <template x-if="item.categories.length > 2">
-                                                        <span class="px-1.5 py-0.5 bg-slate-50 text-slate-400 text-[10px] rounded-md border border-slate-100" x-text="'+' + (item.categories.length - 2)"></span>
+                                                        <span class="px-1.5 py-0.5 bg-slate-50 text-slate-400 text-xs rounded-md border border-slate-100" x-text="'+' + (item.categories.length - 2)"></span>
                                                     </template>
                                                 </div>
                                             </td>
                                             <td class="py-4 px-6">
-                                                <p class="max-w-xs md:max-w-sm truncate text-slate-500 font-light text-[11px] m-0" x-text="item.destinations.join(', ')"></p>
+                                                <p class="max-w-xs md:max-w-sm truncate text-slate-500 font-light text-xs m-0" x-text="item.destinations.slice(0, 3).join(', ') + (item.destinations.length > 3 ? ', ...' : '')"></p>
                                             </td>
-                                            <td class="py-4 px-6 text-right">
-                                                <a :href="item.url" class="inline-flex items-center gap-1 px-4 py-1.5 bg-[#3F5C7D]/10 hover:bg-[#3F5C7D] text-[#3F5C7D] hover:text-white font-bold rounded-full transition-all duration-300 no-underline text-[10px]">
+                                            <td class="py-4 px-6">
+                                                <a :href="item.url" class="inline-flex items-center gap-1 px-4 py-1.5 bg-[#3F5C7D]/10 hover:bg-[#3F5C7D] text-[#3F5C7D] hover:text-white font-bold rounded-full transition-all duration-300 no-underline text-xs">
                                                     Buka Rekomendasi <x-lucide-arrow-right class="w-3 h-3" stroke-width="2.5" />
                                                 </a>
                                             </td>
@@ -532,7 +550,7 @@
                 </div>
             </div>
 
-            <h3 class="text-2xl font-bold font-sans tracking-wide mb-3">AI Trip Planner sedang memproses</h3>
+            <h3 class="text-2xl font-bold font-sans tracking-wide mb-3">AI Planner sedang memproses</h3>
             <p class="text-slate-400 font-sans text-xs font-light tracking-wider uppercase mb-6">Mencari Rekomendasi Destinasi Terbaik Anda</p>
             
             <div class="bg-white/5 border border-white/10 rounded-2xl p-5 mb-6 min-h-[72px] flex items-center justify-center">

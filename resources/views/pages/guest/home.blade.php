@@ -19,12 +19,12 @@
                 <p
                     class="text-lg md:text-xl text-slate-100/90 mb-10 leading-relaxed font-light max-w-3xl mx-auto font-sans">
                     Cari dan rencanakan liburan impian Anda, mulai dari menjelajahi keindahan alam, hingga mendapatkan
-                    rekomendasi itinerary pintar.
+                    rekomendasi destinasi cerdas.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="/planner"
-                        class="px-8 py-4 bg-gradient-to-r from-[#89A8E0] to-[#3F5C7D] hover:from-[#7f9ed2] hover:to-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg shadow-[#3F5C7D]/25 transition-all hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-2">
-                        <x-lucide-sparkles class="w-4 h-4 text-white" stroke-width="2.5" />
+                        class="px-8 py-4 bg-gradient-to-r from-[#7F9ED2] to-[#3F5C7D] hover:from-[#7392c6] hover:to-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg shadow-[#3F5C7D]/25 transition-all hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-2.5">
+                        <x-lucide-sparkles class="w-5 h-5 text-white" stroke-width="2" />
                         Mulai AI Planner
                     </a>
                     <a href="/explore"
@@ -50,7 +50,7 @@
                 <!-- Gradient Underline Divider -->
                 <div class="w-32 h-1.5 bg-gradient-to-r from-[#89A8E0] to-[#8ED3D8] mx-auto mt-6 mb-8 rounded-full">
                 </div>
-                <p class="text-slate-500 leading-relaxed text-base font-light font-sans">
+                <p class="text-slate-500 leading-relaxed text-base font-sans">
                     Setiap sudut Banyuwangi menyimpan cerita. Dari gemuruh api biru Kawah Ijen, hingga tenangnya ombak
                     Pantai Pulau Merah. Kami hadir untuk membantu Anda merancang petualangan yang tak terlupakan di
                     ujung timur Pulau Jawa.
@@ -66,7 +66,7 @@
                         <x-lucide-compass class="w-6 h-6" />
                     </div>
                     <h3 class="text-xl font-bold text-[#3F5C7D] mb-3">Destinasi Wisata</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-sans">jelajah berbagai destinasi wisata
+                    <p class="text-slate-500 text-base leading-relaxed font-light font-sans">jelajah berbagai destinasi wisata
                         menarik mulai dari pantai eksotis, pegunungan megah, hingga keunikan budaya lokal.</p>
                 </div>
 
@@ -78,8 +78,8 @@
                         <x-lucide-route class="w-6 h-6" />
                     </div>
                     <h3 class="text-xl font-bold text-[#3F5C7D] mb-3">AI Planner</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-sans">Dapatkan rekomendasi itinerary
-                        perjalanan kustom secara pintar berdasarkan alokasi waktu dan budget Anda.</p>
+                    <p class="text-slate-500 text-base leading-relaxed font-lightfont-sans">Dapatkan rekomendasi destinasi
+                        perjalanan secara cerdas berdasarkan preferensi Anda.</p>
                 </div>
 
                 <!-- Card 3 -->
@@ -90,7 +90,7 @@
                         <x-lucide-newspaper class="w-6 h-6" />
                     </div>
                     <h3 class="text-xl font-bold text-[#3F5C7D] mb-3">Blog Banyuwangi</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed font-sans">Temukan blog menarik, cerita budaya khas
+                    <p class="text-slate-500 text-base leading-relaxed font-light font-sans">Temukan blog menarik, cerita budaya khas
                         Osing, kuliner tradisional, serta tips perjalanan terbaru.</p>
                 </div>
             </div>
@@ -103,7 +103,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <!-- Left Details -->
                 <div class="lg:col-span-6 flex flex-col items-start text-left">
-                    <span class="text-xs font-semibold uppercase tracking-widest text-[#3F5C7D] mb-3">Sistem Rekomendasi
+                    <span class="text-sm font-semibold uppercase tracking-widest text-[#3F5C7D] mb-3">Sistem Rekomendasi
                         Cerdas</span>
                     <h2 class="text-3xl md:text-5xl font-bold text-[#3F5C7D] mb-6 font-sans">AI Planner</h2>
 
@@ -117,47 +117,45 @@
                     </div>
 
                     <p class="text-slate-600 mb-8 font-light text-base leading-relaxed font-sans">
-                        Kami menggunakan teknologi AI untuk merancang itinerary perjalanan Anda secara maksimal sesuai
-                        preferensi dan durasi berlibur di Banyuwangi.
+                        Laras Banyuwangi memanfaatkan teknologi Smart Tourism berbasis <br class="hidden md:block" />
+                        <span class="text-[#3F5C7D] font-bold">Content-Based Filtering</span> untuk menghadirkan rekomendasi destinasi <br class="hidden md:block" /> 
+                        yang sesuai dengan minat, budget, dan gaya perjalanan Anda.
                     </p>
 
                     <!-- Stepper -->
                     <div class="space-y-6 mb-10 w-full font-sans">
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-[#3F5C7D] text-white flex items-center justify-center font-bold text-sm shrink-0">
-                                1</div>
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 rounded-2xl bg-[#E6F7FA] border border-[#CDEBF2] flex items-center justify-center text-[#3F5C7D] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                <x-lucide-clipboard-list class="w-5 h-5 text-[#3F5C7D]" stroke-width="2" />
+                            </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Pilih Preferensi</h4>
-                                <p class="text-slate-500 text-sm">Tentukan jenis wisata, budget, dan waktu yang Anda
-                                    miliki.</p>
+                                <p class="text-slate-500 text-base font-light leading-relaxed">Jawab beberapa pertanyaan tentang minat wisata, budget, durasi, dan gaya perjalanan Anda.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-[#89A8E0] text-white flex items-center justify-center font-bold text-sm shrink-0">
-                                2</div>
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 rounded-2xl bg-[#EFF6FC] border border-[#CDEBF2]/50 flex items-center justify-center text-[#89A8E0] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                <x-lucide-brain class="w-5 h-5 text-[#89A8E0]" stroke-width="2" />
+                            </div>
                             <div>
                                 <h4 class="font-bold text-slate-900 text-base mb-1">Sistem Menganalisis</h4>
-                                <p class="text-slate-500 text-sm">Algoritma kami akan mencari destinasi terbaik yang
-                                    paling cocok.</p>
+                                <p class="text-slate-500 text-base font-light leading-relaxed">Algoritma Content-Based Filtering, TF-IDF, dan Cosine Similarity menganalisis kecocokan destinasi.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-[#8ED3D8] text-white flex items-center justify-center font-bold text-sm shrink-0">
-                                3</div>
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 rounded-2xl bg-[#E6F7FA] border border-[#CDEBF2] flex items-center justify-center text-[#8ED3D8] shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105">
+                                <x-lucide-compass class="w-5 h-5 text-[#8ED3D8]" stroke-width="2" />
+                            </div>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-base mb-1">Rencana Perjalanan Jadi</h4>
-                                <p class="text-slate-500 text-sm">Itinerary harian yang siap digunakan beserta estimasi
-                                    alokasi biaya.</p>
+                                <h4 class="font-bold text-slate-900 text-base mb-1">Rekomendasi Destinasi</h4>
+                                <p class="text-slate-500 text-base font-light leading-relaxed">Dapatkan daftar destinasi terbaik yang paling sesuai dengan preferensi Anda.</p>
                             </div>
                         </div>
                     </div>
 
                     <a href="/planner"
-                        class="px-8 py-4 bg-gradient-to-r from-[#89A8E0] to-[#3F5C7D] hover:from-[#7f9ed2] hover:to-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg shadow-[#3F5C7D]/25 transition-all hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-2">
-                        <x-lucide-sparkles class="w-4 h-4 text-white" stroke-width="2.5" />
+                        class="px-8 py-4 bg-gradient-to-r from-[#7F9ED2] to-[#3F5C7D] hover:from-[#7392c6] hover:to-[#344d6b] text-white font-semibold rounded-full text-center shadow-lg shadow-[#3F5C7D]/25 transition-all hover:translate-y-[-1px] active:translate-y-[1px] flex items-center justify-center gap-2.5">
+                        <x-lucide-sparkles class="w-5 h-5 text-white" stroke-width="2" />
                         Mulai AI Planner
                     </a>
                 </div>
@@ -188,7 +186,7 @@
                         Banyuwangi.</p>
                 </div>
                 <a href="/explore"
-                    class="text-[#3F5C7D] font-semibold text-sm hover:underline mt-4 md:mt-0 flex items-center gap-1 font-sans">
+                    class="text-[#3F5C7D] font-semibold text-base hover:underline mt-4 md:mt-0 flex items-center gap-1 font-sans">
                     Lihat semua destinasi
                     <x-lucide-arrow-right class="w-4 h-4" stroke-width="2.5" />
                 </a>
@@ -225,7 +223,7 @@
                     <p class="text-slate-500 font-sans">Blog Terbaru Seputar Banyuwangi dan Wisata</p>
                 </div>
                 <a href="{{ route('blog') }}"
-                    class="text-[#3F5C7D] font-semibold text-sm hover:underline mt-4 md:mt-0 flex items-center gap-1 font-sans">
+                    class="text-[#3F5C7D] font-semibold text-base hover:underline mt-4 md:mt-0 flex items-center gap-1 font-sans">
                     Lihat semua blog
                     <x-lucide-arrow-right class="w-4 h-4" stroke-width="2.5" />
                 </a>
