@@ -13,21 +13,21 @@
         $selectedCrowdKey = is_string($selectedCrowd) || is_int($selectedCrowd) ? (string)$selectedCrowd : '';
 
         $budgetMap = [
-            'hemat' => '💵 Hemat (< Rp 15rb)',
-            'sedang' => '💳 Sedang (Rp 15rb - Rp 50rb)',
-            'mewah' => '💎 Mewah (> Rp 50rb)'
+            'hemat' => 'Hemat (< Rp 15rb)',
+            'sedang' => 'Sedang (Rp 15rb - Rp 50rb)',
+            'mewah' => 'Mewah (> Rp 50rb)'
         ];
 
         $accessMap = [
-            'mudah' => '🟢 Akses Mudah',
-            'sedang' => '🟡 Akses Sedang',
-            'menantang' => '🔴 Akses Menantang'
+            'mudah' => 'Akses Mudah',
+            'sedang' => 'Akses Sedang',
+            'menantang' => 'Akses Menantang'
         ];
 
         $crowdMap = [
-            'sepi' => '🤫 Sepi & Tenang',
-            'sedang' => '⚖️ Sedang / Normal',
-            'ramai' => '🔥 Ramai / Populer'
+            'sepi' => 'Sepi & Tenang',
+            'sedang' => 'Sedang / Normal',
+            'ramai' => 'Ramai / Populer'
         ];
     @endphp
 
