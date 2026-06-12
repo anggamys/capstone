@@ -1,0 +1,10 @@
+{
+  "python.defaultInterpreterPath": "C:\\laragon\\www\\cp-banyuwangidestination\\ai-service\\venv\\Scripts\\python.exe",
+  "python.pythonPath": "C:\\laragon\\www\\cp-banyuwangidestination\\ai-service\\venv\\Scripts\\python.exe",
+  "python.analysis.venvPath": "C:\\laragon\\www\\cp-banyuwangidestination\\ai-service",
+  "python.analysis.extraPaths": [
+    "C:\\laragon\\www\\cp-banyuwangidestination\\ai-service",
+    "C:\\laragon\\www\\cp-banyuwangidestination\\ai-service\\venv\\Lib\\site-packages"
+  ]
+}
+

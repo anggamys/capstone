@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Destination;
 use App\Models\DestinationCategory;
 use App\Models\Blog;
+use App\Http\Controllers\AIPlannerController;
 
 // Guest Routes
 Route::get('/', function () {
@@ -125,225 +126,232 @@ Route::get('/planner', function () {
     return $response;
 })->name('planner');
 
-Route::match(['get', 'post'], '/planner/result', function () {
-    // Check if any search input is present in the request
-    $hasInputs = request()->hasAny(['categories', 'activities', 'travel_type', 'transportation', 'visit_time', 'budget', 'access_level', 'crowd_level']);
+Route::post('/planner/result', [AIPlannerController::class, 'result'])
+    ->name('planner.result');
 
-    if ($hasInputs) {
-        // Save current search to session
-        session([
-            'ai_planner_last_search' => [
-                'categories' => request('categories', []),
-                'activities' => request('activities', []),
-                'travel_type' => request('travel_type'),
-                'transportation' => request('transportation'),
-                'visit_time' => request('visit_time', []),
-                'budget' => request('budget', 'hemat'),
-                'access_level' => request('access_level', 'sedang'),
-                'crowd_level' => request('crowd_level', 'sedang'),
-            ]
-        ]);
-    }
+Route::get('/planner/result', function () {
+    return redirect()->route('planner');
+});
 
-    // Retrieve from session if request has no inputs, defaulting to fallback values
-    $searchData = session('ai_planner_last_search', [
-        'categories' => [],
-        'activities' => [],
-        'travel_type' => null,
-        'transportation' => null,
-        'visit_time' => [],
-        'budget' => 'hemat',
-        'access_level' => 'sedang',
-        'crowd_level' => 'sedang',
-    ]);
+// Route::match(['get', 'post'], '/planner/result', function () {
+//     // Check if any search input is present in the request
+//     $hasInputs = request()->hasAny(['categories', 'activities', 'travel_type', 'transportation', 'visit_time', 'budget', 'access_level', 'crowd_level']);
 
-    $selectedCategories = $hasInputs ? request('categories', []) : $searchData['categories'];
-    $selectedActivities = $hasInputs ? request('activities', []) : $searchData['activities'];
-    $selectedTravelType = $hasInputs ? request('travel_type') : $searchData['travel_type'];
-    $selectedTrans = $hasInputs ? request('transportation') : $searchData['transportation'];
-    $selectedVisit = $hasInputs ? request('visit_time', []) : $searchData['visit_time'];
-    $selectedBudget = $hasInputs ? request('budget', 'hemat') : $searchData['budget'];
-    $selectedAccess = $hasInputs ? request('access_level', 'sedang') : $searchData['access_level'];
-    $selectedCrowd = $hasInputs ? request('crowd_level', 'sedang') : $searchData['crowd_level'];
+//     if ($hasInputs) {
+//         // Save current search to session
+//         session([
+//             'ai_planner_last_search' => [
+//                 'categories' => request('categories', []),
+//                 'activities' => request('activities', []),
+//                 'travel_type' => request('travel_type'),
+//                 'transportation' => request('transportation'),
+//                 'visit_time' => request('visit_time', []),
+//                 'budget' => request('budget', 'hemat'),
+//                 'access_level' => request('access_level', 'sedang'),
+//                 'crowd_level' => request('crowd_level', 'sedang'),
+//             ]
+//         ]);
+//     }
 
-    // Fetch all active destinations with relationships
-    $destinations = Destination::where('status', 'active')
-        ->with(['category', 'activities', 'travelTypes', 'visitTimes', 'transportations', 'facilities'])
-        ->get();
+//     // Retrieve from session if request has no inputs, defaulting to fallback values
+//     $searchData = session('ai_planner_last_search', [
+//         'categories' => [],
+//         'activities' => [],
+//         'travel_type' => null,
+//         'transportation' => null,
+//         'visit_time' => [],
+//         'budget' => 'hemat',
+//         'access_level' => 'sedang',
+//         'crowd_level' => 'sedang',
+//     ]);
 
-    $recommendations = [];
+//     $selectedCategories = $hasInputs ? request('categories', []) : $searchData['categories'];
+//     $selectedActivities = $hasInputs ? request('activities', []) : $searchData['activities'];
+//     $selectedTravelType = $hasInputs ? request('travel_type') : $searchData['travel_type'];
+//     $selectedTrans = $hasInputs ? request('transportation') : $searchData['transportation'];
+//     $selectedVisit = $hasInputs ? request('visit_time', []) : $searchData['visit_time'];
+//     $selectedBudget = $hasInputs ? request('budget', 'hemat') : $searchData['budget'];
+//     $selectedAccess = $hasInputs ? request('access_level', 'sedang') : $searchData['access_level'];
+//     $selectedCrowd = $hasInputs ? request('crowd_level', 'sedang') : $searchData['crowd_level'];
 
-    foreach ($destinations as $dest) {
-        $score = 0;
+//     // Fetch all active destinations with relationships
+//     $destinations = Destination::where('status', 'active')
+//         ->with(['category', 'activities', 'travelTypes', 'visitTimes', 'transportations', 'facilities'])
+//         ->get();
 
-        // 1. Category Match (25 pts)
-        if (!empty($selectedCategories)) {
-            if (in_array($dest->destination_category_id, $selectedCategories)) {
-                $score += 25;
-            }
-        } else {
-            $score += 25;
-        }
+//     $recommendations = [];
 
-        // 2. Activity Match (20 pts)
-        if (!empty($selectedActivities)) {
-            $destActivityIds = $dest->activities->pluck('id')->toArray();
-            $matches = array_intersect($selectedActivities, $destActivityIds);
-            if (count($selectedActivities) > 0) {
-                $score += (count($matches) / count($selectedActivities)) * 20;
-            } else {
-                $score += 20;
-            }
-        } else {
-            $score += 20;
-        }
+//     foreach ($destinations as $dest) {
+//         $score = 0;
 
-        // 3. Travel Type Match (15 pts)
-        if ($selectedTravelType) {
-            $destTravelTypeIds = $dest->travelTypes->pluck('id')->toArray();
-            if (in_array($selectedTravelType, $destTravelTypeIds)) {
-                $score += 15;
-            }
-        } else {
-            $score += 15;
-        }
+//         // 1. Category Match (25 pts)
+//         if (!empty($selectedCategories)) {
+//             if (in_array($dest->destination_category_id, $selectedCategories)) {
+//                 $score += 25;
+//             }
+//         } else {
+//             $score += 25;
+//         }
 
-        // 4. Transportation Match (15 pts)
-        if ($selectedTrans) {
-            $destTransIds = $dest->transportations->pluck('id')->toArray();
-            if (in_array($selectedTrans, $destTransIds)) {
-                $score += 15;
-            }
-        } else {
-            $score += 15;
-        }
+//         // 2. Activity Match (20 pts)
+//         if (!empty($selectedActivities)) {
+//             $destActivityIds = $dest->activities->pluck('id')->toArray();
+//             $matches = array_intersect($selectedActivities, $destActivityIds);
+//             if (count($selectedActivities) > 0) {
+//                 $score += (count($matches) / count($selectedActivities)) * 20;
+//             } else {
+//                 $score += 20;
+//             }
+//         } else {
+//             $score += 20;
+//         }
 
-        // 5. Visit Time Match (10 pts)
-        if (!empty($selectedVisit)) {
-            $destVisitIds = $dest->visitTimes->pluck('id')->toArray();
-            if (is_array($selectedVisit)) {
-                $matchesVisit = array_intersect($selectedVisit, $destVisitIds);
-                if (count($selectedVisit) > 0) {
-                    $score += (count($matchesVisit) / count($selectedVisit)) * 10;
-                } else {
-                    $score += 10;
-                }
-            } else {
-                if (in_array($selectedVisit, $destVisitIds)) {
-                    $score += 10;
-                }
-            }
-        } else {
-            $score += 10;
-        }
+//         // 3. Travel Type Match (15 pts)
+//         if ($selectedTravelType) {
+//             $destTravelTypeIds = $dest->travelTypes->pluck('id')->toArray();
+//             if (in_array($selectedTravelType, $destTravelTypeIds)) {
+//                 $score += 15;
+//             }
+//         } else {
+//             $score += 15;
+//         }
 
-        // 6. Budget Match (10 pts)
-        $price = $dest->ticket_price;
-        if ($selectedBudget === 'hemat') {
-            if ($price <= 15000) {
-                $score += 10;
-            } elseif ($price <= 30000) {
-                $score += 5;
-            }
-        } elseif ($selectedBudget === 'sedang') {
-            if ($price <= 50000) {
-                $score += 10;
-            } else {
-                $score += 5;
-            }
-        } elseif ($selectedBudget === 'mewah') {
-            $score += 10;
-        }
+//         // 4. Transportation Match (15 pts)
+//         if ($selectedTrans) {
+//             $destTransIds = $dest->transportations->pluck('id')->toArray();
+//             if (in_array($selectedTrans, $destTransIds)) {
+//                 $score += 15;
+//             }
+//         } else {
+//             $score += 15;
+//         }
 
-        // 7. Access Level Match (5 pts)
-        $access = strtolower($dest->access_level);
-        if ($selectedAccess === 'mudah') {
-            if ($access === 'mudah') {
-                $score += 5;
-            }
-        } elseif ($selectedAccess === 'sedang') {
-            if ($access === 'mudah' || $access === 'sedang') {
-                $score += 5;
-            }
-        } elseif ($selectedAccess === 'menantang') {
-            $score += 5;
-        }
+//         // 5. Visit Time Match (10 pts)
+//         if (!empty($selectedVisit)) {
+//             $destVisitIds = $dest->visitTimes->pluck('id')->toArray();
+//             if (is_array($selectedVisit)) {
+//                 $matchesVisit = array_intersect($selectedVisit, $destVisitIds);
+//                 if (count($selectedVisit) > 0) {
+//                     $score += (count($matchesVisit) / count($selectedVisit)) * 10;
+//                 } else {
+//                     $score += 10;
+//                 }
+//             } else {
+//                 if (in_array($selectedVisit, $destVisitIds)) {
+//                     $score += 10;
+//                 }
+//             }
+//         } else {
+//             $score += 10;
+//         }
 
-        // Normalize matching score
-        $matchPercent = round($score);
-        if ($matchPercent < 60) {
-            $matchPercent = 60 + ($dest->id % 25);
-        }
-        if ($matchPercent > 99) {
-            $matchPercent = 99;
-        }
+//         // 6. Budget Match (10 pts)
+//         $price = $dest->ticket_price;
+//         if ($selectedBudget === 'hemat') {
+//             if ($price <= 15000) {
+//                 $score += 10;
+//             } elseif ($price <= 30000) {
+//                 $score += 5;
+//             }
+//         } elseif ($selectedBudget === 'sedang') {
+//             if ($price <= 50000) {
+//                 $score += 10;
+//             } else {
+//                 $score += 5;
+//             }
+//         } elseif ($selectedBudget === 'mewah') {
+//             $score += 10;
+//         }
 
-        // Generate dynamic AI reason based on database attributes
-        $actName = $dest->activities->first()?->name ?? 'menikmati keindahan alam';
-        $reason = "Destinasi ini sangat cocok karena merupakan kawasan {$dest->category->name} yang mendukung aktivitas {$actName}. Aksesibilitasnya bertipe {$dest->access_level} dengan tiket masuk seharga " . ($dest->ticket_price == 0 ? 'Gratis' : 'Rp ' . number_format($dest->ticket_price, 0, ',', '.')) . ".";
+//         // 7. Access Level Match (5 pts)
+//         $access = strtolower($dest->access_level);
+//         if ($selectedAccess === 'mudah') {
+//             if ($access === 'mudah') {
+//                 $score += 5;
+//             }
+//         } elseif ($selectedAccess === 'sedang') {
+//             if ($access === 'mudah' || $access === 'sedang') {
+//                 $score += 5;
+//             }
+//         } elseif ($selectedAccess === 'menantang') {
+//             $score += 5;
+//         }
 
-        $recommendations[] = [
-            'name' => $dest->name,
-            'slug' => $dest->slug,
-            'image' => $dest->image_url,
-            'match_score' => $matchPercent,
-            'category' => $dest->category->name,
-            'district' => $dest->district ?? 'Banyuwangi',
-            'best_time' => $dest->operational_hours ?? 'Pagi - Sore',
-            'budget' => $dest->ticket_price == 0 ? 'Gratis' : 'Rp ' . number_format($dest->ticket_price, 0, ',', '.'),
-            'reason' => $reason,
-            'access_level' => $dest->access_level ?? 'Sedang',
-            'activities' => $dest->activities->take(2)->pluck('name')->join(', '),
-            'facilities' => $dest->facilities->take(2)->pluck('name')->join(', '),
-            'google_maps_url' => $dest->google_maps_url
-        ];
-    }
+//         // Normalize matching score
+//         $matchPercent = round($score);
+//         if ($matchPercent < 60) {
+//             $matchPercent = 60 + ($dest->id % 25);
+//         }
+//         if ($matchPercent > 99) {
+//             $matchPercent = 99;
+//         }
 
-    // Sort by match score descending
-    usort($recommendations, function ($a, $b) {
-        return $b['match_score'] <=> $a['match_score'];
-    });
+//         // Generate dynamic AI reason based on database attributes
+//         $actName = $dest->activities->first()?->name ?? 'menikmati keindahan alam';
+//         $reason = "Destinasi ini sangat cocok karena merupakan kawasan {$dest->category->name} yang mendukung aktivitas {$actName}. Aksesibilitasnya bertipe {$dest->access_level} dengan tiket masuk seharga " . ($dest->ticket_price == 0 ? 'Gratis' : 'Rp ' . number_format($dest->ticket_price, 0, ',', '.')) . ".";
 
-    // Take top 8
-    $recommendations = array_slice($recommendations, 0, 8);
+//         $recommendations[] = [
+//             'name' => $dest->name,
+//             'slug' => $dest->slug,
+//             'image' => $dest->image_url,
+//             'match_score' => $matchPercent,
+//             'category' => $dest->category->name,
+//             'district' => $dest->district ?? 'Banyuwangi',
+//             'best_time' => $dest->operational_hours ?? 'Pagi - Sore',
+//             'budget' => $dest->ticket_price == 0 ? 'Gratis' : 'Rp ' . number_format($dest->ticket_price, 0, ',', '.'),
+//             'reason' => $reason,
+//             'access_level' => $dest->access_level ?? 'Sedang',
+//             'activities' => $dest->activities->take(2)->pluck('name')->join(', '),
+//             'facilities' => $dest->facilities->take(2)->pluck('name')->join(', '),
+//             'google_maps_url' => $dest->google_maps_url
+//         ];
+//     }
 
-    // Get/create guest token cookie
-    $guestToken = request()->cookie('planner_guest_token');
-    $cookieToQueue = null;
-    if (!$guestToken) {
-        $guestToken = (string) \Illuminate\Support\Str::uuid();
-        $cookieToQueue = cookie('planner_guest_token', $guestToken, 2628000); // 5 years
-    }
+//     // Sort by match score descending
+//     usort($recommendations, function ($a, $b) {
+//         return $b['match_score'] <=> $a['match_score'];
+//     });
 
-    if ($hasInputs) {
-        \App\Models\PlannerHistory::create([
-            'user_id' => \Illuminate\Support\Facades\Auth::id(),
-            'guest_token' => $guestToken,
-            'categories' => $selectedCategories,
-            'activities' => $selectedActivities,
-            'travel_type_id' => $selectedTravelType,
-            'transportation_id' => $selectedTrans,
-            'visit_times' => $selectedVisit,
-            'budget' => $selectedBudget,
-            'access_level' => $selectedAccess,
-            'crowd_level' => $selectedCrowd,
-            'recommendations' => collect($recommendations)->pluck('name')->toArray()
-        ]);
-    }
+//     // Take top 8
+//     $recommendations = array_slice($recommendations, 0, 8);
 
-    // If logged in, associate previous anonymous entries with this user
-    if (\Illuminate\Support\Facades\Auth::check() && $guestToken) {
-        \App\Models\PlannerHistory::where('guest_token', $guestToken)
-            ->whereNull('user_id')
-            ->update(['user_id' => \Illuminate\Support\Facades\Auth::id()]);
-    }
+//     // Get/create guest token cookie
+//     $guestToken = request()->cookie('planner_guest_token');
+//     $cookieToQueue = null;
+//     if (!$guestToken) {
+//         $guestToken = (string) \Illuminate\Support\Str::uuid();
+//         $cookieToQueue = cookie('planner_guest_token', $guestToken, 2628000); // 5 years
+//     }
 
-    $response = response()->view('pages.guest.ai-planner.result', compact('recommendations', 'selectedCategories', 'selectedTravelType', 'selectedTrans', 'selectedVisit', 'selectedBudget', 'selectedAccess', 'selectedCrowd'));
-    if ($cookieToQueue) {
-        $response->withCookie($cookieToQueue);
-    }
-    return $response;
-})->name('planner.result');
+//     if ($hasInputs) {
+//         \App\Models\PlannerHistory::create([
+//             'user_id' => \Illuminate\Support\Facades\Auth::id(),
+//             'guest_token' => $guestToken,
+//             'categories' => $selectedCategories,
+//             'activities' => $selectedActivities,
+//             'travel_type_id' => $selectedTravelType,
+//             'transportation_id' => $selectedTrans,
+//             'visit_times' => $selectedVisit,
+//             'budget' => $selectedBudget,
+//             'access_level' => $selectedAccess,
+//             'crowd_level' => $selectedCrowd,
+//             'recommendations' => collect($recommendations)->pluck('name')->toArray()
+//         ]);
+//     }
+
+//     // If logged in, associate previous anonymous entries with this user
+//     if (\Illuminate\Support\Facades\Auth::check() && $guestToken) {
+//         \App\Models\PlannerHistory::where('guest_token', $guestToken)
+//             ->whereNull('user_id')
+//             ->update(['user_id' => \Illuminate\Support\Facades\Auth::id()]);
+//     }
+
+//     $response = response()->view('pages.guest.ai-planner.result', compact('recommendations', 'selectedCategories', 'selectedTravelType', 'selectedTrans', 'selectedVisit', 'selectedBudget', 'selectedAccess', 'selectedCrowd'));
+//     if ($cookieToQueue) {
+//         $response->withCookie($cookieToQueue);
+//     }
+//     return $response;
+// })->name('planner.result');
 
 Route::get('/blog', function () {
     $search = request()->query('search');

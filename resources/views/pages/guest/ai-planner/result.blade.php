@@ -2,20 +2,19 @@
     <x-slot name="title">Rekomendasi AI Planner - Laras Banyuwangi</x-slot>
 
     @php
-        // Fetch selected model objects dynamically from the database to render search criteria badges
-        $categoriesList = \App\Models\DestinationCategory::whereIn('id', (array)$selectedCategories)->get();
-        $travelTypeObj = \App\Models\TravelType::find($selectedTravelType);
-        $transportationObj = \App\Models\Transportation::find($selectedTrans);
-        $visitTimeList = \App\Models\VisitTime::whereIn('id', (array)$selectedVisit)->get();
+        $categoriesList = \App\Models\DestinationCategory::whereIn('name', (array)$selectedCategories)->get();
+        $travelTypeObj = \App\Models\TravelType::where('name', $selectedTravelType)->first();
+        $transportationObj = \App\Models\Transportation::where('name', $selectedTrans)->first();
+        $visitTimeList = \App\Models\VisitTime::whereIn('name', (array)$selectedVisit)->get();
 
         $selectedBudgetKey = is_string($selectedBudget) || is_int($selectedBudget) ? (string)$selectedBudget : '';
         $selectedAccessKey = is_string($selectedAccess) || is_int($selectedAccess) ? (string)$selectedAccess : '';
         $selectedCrowdKey = is_string($selectedCrowd) || is_int($selectedCrowd) ? (string)$selectedCrowd : '';
 
         $budgetMap = [
-            'hemat' => 'Hemat (< Rp 15rb)',
-            'sedang' => 'Sedang (Rp 15rb - Rp 50rb)',
-            'mewah' => 'Mewah (> Rp 50rb)'
+            '15000' => 'Hemat (< Rp 15rb)',
+            '50000' => 'Sedang (Rp 15rb - Rp 50rb)',
+            '100000' => 'Mewah (> Rp 50rb)'
         ];
 
         $accessMap = [

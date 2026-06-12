@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'ai_planner' => [
+        'url' => env('AI_PLANNER_API_URL', 'http://127.0.0.1:8001'),
+    ],
 ];

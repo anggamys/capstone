@@ -328,7 +328,7 @@
                                     <x-planner-option 
                                         type="checkbox" 
                                         name="categories[]" 
-                                        value="{{ $category->id }}" 
+                                        value="{{ $category->name }}" 
                                         title="Wisata {{ $category->name }}" 
                                         x-model="categories"
                                     />
@@ -348,7 +348,7 @@
                                     <x-planner-option 
                                         type="checkbox" 
                                         name="activities[]" 
-                                        value="{{ $activity->id }}" 
+                                        value="{{ $activity->name }}" 
                                         title="{{ $activity->name }}" 
                                         x-model="activities"
                                     />
@@ -368,7 +368,7 @@
                                     <x-planner-option 
                                         type="radio" 
                                         name="travel_type" 
-                                        value="{{ $type->id }}" 
+                                        value="{{ $type->name }}" 
                                         title="Gaya {{ $type->name }}" 
                                         x-model="travelType"
                                     />
@@ -388,7 +388,7 @@
                                     <x-planner-option 
                                         type="radio" 
                                         name="transportation" 
-                                        value="{{ $trans->id }}" 
+                                        value="{{ $trans->name }}" 
                                         title="{{ $trans->name }}" 
                                         x-model="transportation"
                                     />
@@ -407,8 +407,8 @@
                                 @foreach($visitTimes as $time)
                                     <x-planner-option 
                                         type="checkbox" 
-                                        name="visit_time[]" 
-                                        value="{{ $time->id }}" 
+                                        name="visit_times[]" 
+                                        value="{{ $time->name }}" 
                                         title="{{ $time->name }}" 
                                         x-model="visitTime"
                                     />
@@ -427,21 +427,21 @@
                                 <x-planner-option 
                                     type="radio" 
                                     name="budget" 
-                                    value="hemat" 
+                                    value="15000" 
                                     title="Hemat" 
                                     x-model="budget"
                                 />
                                 <x-planner-option 
                                     type="radio" 
                                     name="budget" 
-                                    value="sedang" 
+                                    value="50000" 
                                     title="Sedang" 
                                     x-model="budget"
                                 />
                                 <x-planner-option 
                                     type="radio" 
                                     name="budget" 
-                                    value="mewah" 
+                                    value="100000" 
                                     title="Mewah / Premium" 
                                     x-model="budget"
                                 />
