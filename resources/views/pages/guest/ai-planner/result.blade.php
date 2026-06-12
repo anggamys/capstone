@@ -12,9 +12,9 @@
         $selectedCrowdKey = is_string($selectedCrowd) || is_int($selectedCrowd) ? (string)$selectedCrowd : '';
 
         $budgetMap = [
-            '15000' => 'Hemat (< Rp 15rb)',
-            '50000' => 'Sedang (Rp 15rb - Rp 50rb)',
-            '100000' => 'Mewah (> Rp 50rb)'
+            '15000' => 'Hemat (di bawah Rp 15 Ribu)',
+            '50000' => 'Sedang (Rp 15 Ribu - Rp 50 Ribu)',
+            '100000' => 'Mewah (di atas Rp 50 Ribu)'
         ];
 
         $accessMap = [
@@ -37,7 +37,8 @@
                 <div class="max-w-3xl">
                     <h1 class="text-3xl md:text-4xl font-extrabold text-[#3F5C7D] font-sans tracking-tight mb-2">Rekomendasi Wisata untukmu</h1>
                     <p class="text-slate-500 text-sm md:text-base font-light leading-relaxed font-sans">
-                        Berikut destinasi Banyuwangi yang paling selaras dengan preferensi perjalananmu. Fitur AI Planner kami telah menyusun rencana terbaik untuk eksplorasimu.
+                        Berikut destinasi Banyuwangi yang paling selaras dengan preferensi perjalananmu. <br class="hidden md:block" />
+                        Fitur AI Planner kami telah menyusun rencana terbaik untuk eksplorasimu.
                     </p>
                 </div>
                 <div class="shrink-0 flex items-center gap-3">
@@ -86,11 +87,28 @@
                         </div>
                     </div>
 
-                    <!-- Durasi & Anggaran Section -->
+                    <!-- Waktu Kunjungan Section -->
                     <div class="flex flex-col gap-2">
-                        <span class="text-[10px] tracking-wider uppercase text-slate-400 font-bold font-sans">DURASI & ANGGARAN</span>
+                        <span class="text-[10px] tracking-wider uppercase text-slate-400 font-bold font-sans">WAKTU KUNJUNGAN</span>
                         <span class="text-sm font-bold text-slate-700 font-sans">
-                            {{ $visitTimeList->isNotEmpty() ? $visitTimeList->pluck('name')->join(' & ') : 'Fleksibel' }} • {{ isset($budgetMap[$selectedBudgetKey]) ? str_replace(['💵 ', '💳 ', '💎 '], '', explode(' (', $budgetMap[$selectedBudgetKey])[0]) : 'Hemat' }}
+                            {{ $visitTimeList->isNotEmpty() ? $visitTimeList->pluck('name')->join(' & ') : 'Fleksibel' }}
+                        </span>
+                    </div>
+
+                    <!-- Anggaran Section -->
+                    <div class="flex flex-col gap-2">
+                        <span class="text-[10px] tracking-wider uppercase text-slate-400 font-bold font-sans">ANGGARAN</span>
+                        <span class="text-sm font-bold text-slate-700 font-sans">
+                            @if(isset($budgetMap[$selectedBudgetKey]))
+                                @php
+                                    $parts = explode(' (', $budgetMap[$selectedBudgetKey]);
+                                    $label = $parts[0];
+                                    $desc = isset($parts[1]) ? '(' . $parts[1] : '';
+                                @endphp
+                                {{ $label }} <span class="text-xs font-normal text-slate-400">{{ $desc }}</span>
+                            @else
+                                Hemat <span class="text-xs font-normal text-slate-400">(di bawah Rp 15 Ribu)</span>
+                            @endif
                         </span>
                     </div>
 
@@ -251,7 +269,7 @@
          data-selected-budget="{{ $selectedBudget ?? '' }}"
          data-selected-access="{{ $selectedAccess ?? '' }}"
          data-selected-crowd="{{ $selectedCrowd ?? '' }}"
-         data-result-url="{{ route('planner.result') }}"
+         data-result-url="{{ $historyUrl ?? route('planner') }}"
          data-destinations="{{ json_encode(collect($recommendations)->pluck('name')->toArray()) }}">
     </div>
     <!-- Hidden PDF Template specially designed for export -->

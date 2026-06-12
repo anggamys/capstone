@@ -170,7 +170,7 @@ class AIPlannerController extends Controller
 
         $transportationId = Transportation::where('name', $payload['transportation'])->value('id');
 
-        PlannerHistory::create([
+        $plannerHistory = PlannerHistory::create([
             'user_id' => Auth::check() ? Auth::id() : null,
             'guest_token' => $guestToken,
 
@@ -201,6 +201,41 @@ class AIPlannerController extends Controller
             'selectedBudget' => $payload['budget'],
             'selectedAccess' => $payload['access_level'],
             'selectedCrowd' => $payload['crowd_level'],
+
+            'historyUrl' => route('planner.history.show', $plannerHistory->id),
+        ]);
+    }
+
+    public function showHistory(PlannerHistory $plannerHistory)
+    {
+        $travelTypeName = $plannerHistory->travelType?->name ?? '';
+        $transportationName = $plannerHistory->transportation?->name ?? '';
+
+        return view('pages.guest.ai-planner.result', [
+            'preferences' => [
+                'categories' => $plannerHistory->categories ?? [],
+                'activities' => $plannerHistory->activities ?? [],
+                'travel_type' => $travelTypeName,
+                'transportation' => $transportationName,
+                'visit_times' => $plannerHistory->visit_times ?? [],
+                'budget' => $plannerHistory->budget,
+                'access_level' => $plannerHistory->access_level,
+                'crowd_level' => $plannerHistory->crowd_level,
+            ],
+
+            'recommendations' => $plannerHistory->recommendations ?? [],
+            'apiSuccess' => true,
+            'apiMessage' => null,
+
+            'selectedCategories' => $plannerHistory->categories ?? [],
+            'selectedTravelType' => $travelTypeName,
+            'selectedTrans' => $transportationName,
+            'selectedVisit' => $plannerHistory->visit_times ?? [],
+            'selectedBudget' => $plannerHistory->budget,
+            'selectedAccess' => $plannerHistory->access_level,
+            'selectedCrowd' => $plannerHistory->crowd_level,
+
+            'historyUrl' => route('planner.history.show', $plannerHistory->id),
         ]);
     }
 }

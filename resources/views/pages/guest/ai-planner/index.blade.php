@@ -152,7 +152,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm md:text-base mb-1">Pilih Preferensi</h4>
-                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Jawab beberapa pertanyaan tentang minat wisata, budget, durasi, dan gaya perjalanan Anda.</p>
+                                    <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">Jawab beberapa pertanyaan tentang minat wisata, budget, waktu, dan gaya perjalanan Anda.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-4 group">
@@ -224,7 +224,7 @@
                                     <div>
                                         <h4 class="font-bold text-[#3F5C7D] text-base mb-1">Sesuai Budget & Waktu</h4>
                                         <p class="text-slate-500 text-xs md:text-sm font-light leading-relaxed">
-                                            Rekomendasi mempertimbangkan biaya kunjungan, durasi perjalanan, serta tingkat aksesibilitas destinasi.
+                                            Rekomendasi mempertimbangkan biaya kunjungan, waktu kunjungan, serta tingkat aksesibilitas destinasi.
                                         </p>
                                     </div>
                                 </div>
@@ -319,8 +319,8 @@
                         <!-- STEP 1: Kategori Wisata -->
                         <div x-show="step === 1" class="space-y-6" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Apa tipe liburan favoritmu?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Pilih kategori wisata untuk membantu AI kami mencari destinasi terbaik.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Jenis wisata apa yang paling kamu minati?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih satu atau beberapa kategori wisata agar AI dapat memahami minat perjalananmu.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -339,8 +339,8 @@
                         <!-- STEP 2: Aktivitas yang Disukai -->
                         <div x-show="step === 2" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Aktivitas apa yang paling kamu inginkan?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Pilih aktivitas favoritmu selama menjelajahi Banyuwangi.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Aktivitas apa yang ingin kamu lakukan?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih aktivitas yang ingin kamu nikmati selama menjelajahi Banyuwangi.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -360,7 +360,7 @@
                         <div x-show="step === 3" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
                                 <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Bagaimana gaya perjalananmu?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Pilih satu gaya perjalanan yang paling mendeskripsikan liburanmu.</p>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih gaya perjalanan yang paling menggambarkan rencana liburanmu.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -379,8 +379,8 @@
                         <!-- STEP 4: Transportasi -->
                         <div x-show="step === 4" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Kendaraan apa yang akan digunakan?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Kami akan mencocokkan akses jalan destinasi dengan kendaraanmu.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Transportasi apa yang akan kamu gunakan?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">AI akan menyesuaikan rekomendasi dengan akses menuju destinasi.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -399,8 +399,8 @@
                         <!-- STEP 5: Waktu Kunjungan -->
                         <div x-show="step === 5" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Kapan waktu kunjungan favoritmu?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Pilih satu atau beberapa waktu kunjungan yang paling ideal.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Kapan waktu terbaik untuk kunjunganmu?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih satu atau beberapa waktu kunjungan yang paling sesuai dengan rencana perjalananmu.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -419,8 +419,8 @@
                         <!-- STEP 6: Budget Tiket Masuk -->
                         <div x-show="step === 6" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Berapa alokasi budget tiket masukmu?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Sesuaikan rentang harga tiket per orang yang nyaman bagi Anda.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Berapa kisaran budget tiket masukmu?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih rentang harga tiket per orang yang paling nyaman untukmu.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -451,8 +451,8 @@
                         <!-- STEP 7: Aksesibilitas Lokasi -->
                         <div x-show="step === 7" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Bagaimana toleransi akses medannya?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Kami menyesuaikan rute berdasarkan tingkat kemudahan akses jalan ke lokasi.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Seberapa mudah akses destinasi yang kamu inginkan?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">AI akan menyesuaikan rekomendasi dengan tingkat kemudahan akses menuju lokasi.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -483,8 +483,8 @@
                         <!-- STEP 8: Tingkat Keramaian -->
                         <div x-show="step === 8" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
-                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Suasana keramaian seperti apa yang dicari?</h2>
-                                <p class="text-slate-400 text-xs font-sans font-light mt-1.5">Sesuaikan tingkat kepadatan pengunjung demi kenyamanan Anda.</p>
+                                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Suasana destinasi seperti apa yang kamu inginkan?</h2>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih tingkat keramaian yang paling nyaman untuk pengalaman wisatamu.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -528,7 +528,7 @@
 
                                 <!-- Submit button -->
                                 <button type="submit" x-show="step === totalSteps" :disabled="!stepIsValid()" :class="stepIsValid() ? 'bg-[#3F5C7D] hover:bg-[#344d6b] cursor-pointer' : 'bg-slate-300 text-slate-500 cursor-not-allowed'" class="px-8 py-3 text-white text-xs font-semibold uppercase tracking-wider rounded-xl transition-all duration-300 flex items-center justify-center gap-1.5 shadow-sm border-none font-sans w-full sm:w-auto" x-cloak>
-                                    Cari Rekomendasi Destinasi <x-lucide-sparkles class="w-4 h-4 text-white" stroke-width="2.5" />
+                                    LIHAT REKOMENDASI SAYA <x-lucide-sparkles class="w-4 h-4 text-white" stroke-width="2.5" />
                                 </button>
                             </div>
                         </div>

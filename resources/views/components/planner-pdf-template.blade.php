@@ -55,7 +55,18 @@
                             </span>
                             <div>
                                 <p style="color: #94a3b8; font-weight: 500; margin: 0;">Anggaran</p>
-                                <p style="font-weight: 700; color: #1e293b; margin: 0.125rem 0 0 0;">{{ isset($budgetMap[$selectedBudgetKey]) ? str_replace(['💵 ', '💳 ', '💎 '], '', explode(' (', $budgetMap[$selectedBudgetKey])[0]) : 'Hemat' }}</p>
+                                <p style="font-weight: 700; color: #1e293b; margin: 0.125rem 0 0 0;">
+                                    @if(isset($budgetMap[$selectedBudgetKey]))
+                                        @php
+                                            $parts = explode(' (', $budgetMap[$selectedBudgetKey]);
+                                            $label = $parts[0];
+                                            $desc = isset($parts[1]) ? '(' . $parts[1] : '';
+                                        @endphp
+                                        {{ $label }} <span style="font-size: 0.65rem; font-weight: 400; color: #94a3b8;">{{ $desc }}</span>
+                                    @else
+                                        Hemat <span style="font-size: 0.65rem; font-weight: 400; color: #94a3b8;">(di bawah Rp 15 Ribu)</span>
+                                    @endif
+                                </p>
                             </div>
                         </div>
                     </td>
