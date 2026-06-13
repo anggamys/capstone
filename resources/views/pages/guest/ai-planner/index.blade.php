@@ -340,7 +340,7 @@
                         <div x-show="step === 2" class="space-y-6" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
                             <div class="text-center mb-8">
                                 <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-sans">Aktivitas apa yang ingin kamu lakukan?</h2>
-                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih aktivitas yang ingin kamu nikmati selama menjelajahi Banyuwangi.</p>
+                                <p class="text-slate-400 text-sm md:text-base font-sans font-light mt-2">Pilih satu atau beberapa aktivitas yang ingin kamu nikmati selama menjelajahi Banyuwangi.</p>
                             </div>
                             
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
