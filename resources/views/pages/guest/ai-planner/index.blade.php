@@ -429,6 +429,7 @@
                                     name="budget" 
                                     value="15000" 
                                     title="Hemat" 
+                                    description="di bawah Rp 15 Ribu"
                                     x-model="budget"
                                 />
                                 <x-planner-option 
@@ -436,6 +437,7 @@
                                     name="budget" 
                                     value="50000" 
                                     title="Sedang" 
+                                    description="Rp 15 Ribu - Rp 50 Ribu"
                                     x-model="budget"
                                 />
                                 <x-planner-option 
@@ -443,6 +445,7 @@
                                     name="budget" 
                                     value="100000" 
                                     title="Mewah / Premium" 
+                                    description="di atas Rp 50 Ribu"
                                     x-model="budget"
                                 />
                             </div>

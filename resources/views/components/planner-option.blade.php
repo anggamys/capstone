@@ -16,11 +16,11 @@
            {{ $attributes }}>
     
     <!-- Sibling 2: The Main Card Wrapper -->
-    <div class="option-card border border-slate-200/80 bg-white rounded-2xl p-5 pr-12 flex transition-all duration-300 peer-checked:border-[#3F5C7D] peer-checked:bg-[#E6F7FA]/10 h-full shadow-sm relative {{ $description ? 'flex-col justify-between min-h-[105px]' : 'items-center min-h-[64px]' }}">
+    <div class="option-card border border-slate-200/80 bg-white rounded-2xl p-5 pr-12 flex transition-all duration-300 peer-checked:border-[#3F5C7D] peer-checked:bg-[#E6F7FA]/10 h-full shadow-sm relative {{ $description ? 'flex-col justify-between min-h-[110px]' : 'items-center min-h-[64px]' }}">
         <div>
-            <h4 class="text-xs md:text-sm font-bold text-slate-800 font-sans transition-colors">{{ $title }}</h4>
+            <h4 class="text-sm md:text-base font-bold text-slate-800 font-sans transition-colors">{{ $title }}</h4>
             @if($description)
-                <p class="text-[10px] md:text-[11px] text-slate-400 font-sans font-light mt-1.5 leading-relaxed">{{ $description }}</p>
+                <p class="text-xs md:text-sm text-slate-500 font-sans font-light mt-1.5 leading-relaxed">{{ $description }}</p>
             @endif
         </div>
     </div>
