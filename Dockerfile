@@ -1,44 +1,11 @@
 # ============================================
-# Laras Banyuwangi — Dockerfile (multi-stage)
+# Laras Banyuwangi — Dockerfile (single container)
+# Nginx + PHP-FPM + Supervisor
 # ============================================
 
-# ---- Base stage ----
-FROM php:8.4-fpm-alpine AS base
-
-RUN set -eux; \
-    apk add --no-cache \
-        postgresql-dev \
-        libzip-dev \
-        zip \
-        unzip \
-        git \
-        curl \
-        oniguruma-dev \
-        libpng-dev \
-        libjpeg-turbo-dev \
-        freetype-dev \
-        linux-headers \
-    ; \
-    docker-php-ext-configure gd --with-freetype --with-jpeg; \
-    docker-php-ext-install -j$(nproc) \
-        pdo_pgsql \
-        pgsql \
-        pcntl \
-        bcmath \
-        gd \
-        zip \
-        mbstring \
-        exif \
-    ; \
-    apk del linux-headers
-
-# Install Composer
-COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
-
-WORKDIR /app
-
 # ---- Vendor stage ----
-FROM base AS vendor-stage
+FROM composer:2.8 AS vendor-stage
+WORKDIR /app
 COPY composer.json composer.lock ./
 RUN composer install \
     --no-interaction \
@@ -56,46 +23,82 @@ COPY postcss.config.js tailwind.config.js vite.config.js ./
 COPY resources/ resources/
 RUN npx vite build
 
-# ---- App stage ----
-FROM base AS app
+# ---- Final stage: Nginx + PHP + Supervisor ----
+FROM php:8.4-fpm-alpine
+
+# Install system dependencies + Nginx + Supervisor
+RUN set -eux; \
+    apk add --no-cache \
+        nginx \
+        supervisor \
+        postgresql-dev \
+        libzip-dev \
+        zip \
+        unzip \
+        git \
+        curl \
+        oniguruma-dev \
+        libpng-dev \
+        libjpeg-turbo-dev \
+        freetype-dev \
+    ; \
+    docker-php-ext-configure gd --with-freetype --with-jpeg; \
+    docker-php-ext-install -j$(nproc) \
+        pdo_pgsql \
+        pgsql \
+        pcntl \
+        bcmath \
+        gd \
+        zip \
+        mbstring \
+        exif \
+    ; \
+    # Cleanup
+    docker-php-source delete; \
+    rm -rf /var/cache/apk/* /tmp/*
+
+# Install Composer
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+
 WORKDIR /app
 
 # Copy app source
-COPY --chown=www-data:www-data . .
+COPY . .
 
 # Copy built vendor
-COPY --chown=www-data:www-data --from=vendor-stage /app/vendor ./vendor
+COPY --from=vendor-stage /app/vendor ./vendor
 
 # Generate optimized autoloader
 RUN composer dump-autoload --optimize --no-dev --ansi
 
 # Copy built frontend assets
-COPY --chown=www-data:www-data --from=frontend-stage /app/public/build ./public/build
+COPY --from=frontend-stage /app/public/build ./public/build
 
-# Copy compiled cache from bootstrap if exists
-RUN if [ -f bootstrap/cache/packages.php ]; then \
-        php artisan package:discover --ansi; \
-        php artisan config:cache --ansi; \
-        php artisan route:cache --ansi; \
-        php artisan view:cache --ansi; \
-    else \
-        php artisan package:discover --ansi; \
-    fi
+# Laravel: cache everything, storage permissions
+RUN set -eux; \
+    php artisan package:discover --ansi; \
+    php artisan config:cache --ansi; \
+    php artisan route:cache --ansi; \
+    php artisan view:cache --ansi; \
+    mkdir -p storage/framework/cache/data \
+             storage/framework/sessions \
+             storage/framework/views \
+             storage/logs; \
+    chmod -R 775 storage bootstrap/cache; \
+    chown -R www-data:www-data storage bootstrap/cache
 
-# Storage permissions
-RUN mkdir -p storage/framework/cache/data \
-    storage/framework/sessions \
-    storage/framework/views \
-    storage/logs \
-    && chmod -R 775 storage bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache
+# Nginx config
+COPY docker/nginx/conf.d/default.conf /etc/nginx/http.d/default.conf
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=10s --retries=3 \
-    CMD php -r "echo 'ok';" || exit 1
+# Supervisor config
+COPY docker/supervisord.conf /etc/supervisor/supervisord.conf
 
-EXPOSE 9000
+# PHP config
+COPY docker/php/php.ini /usr/local/etc/php/conf.d/app.ini
 
-USER www-data
+# Remove default nginx site
+RUN rm -f /etc/nginx/http.d/default.conf
 
-CMD ["php-fpm"]
+EXPOSE 8000
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
