@@ -74,12 +74,12 @@ RUN composer dump-autoload --optimize --no-dev --ansi
 # Copy built frontend assets
 COPY --from=frontend-stage /app/public/build ./public/build
 
-# Laravel: cache everything, storage permissions
+# Laravel: package discovery + storage permissions
+# NOTE: config:cache/route:cache not run at build time —
+# they run at container start via entrypoint.sh to respect
+# runtime environment variables.
 RUN set -eux; \
     php artisan package:discover --ansi; \
-    php artisan config:cache --ansi; \
-    php artisan route:cache --ansi; \
-    php artisan view:cache --ansi; \
     mkdir -p storage/framework/cache/data \
              storage/framework/sessions \
              storage/framework/views \
@@ -100,6 +100,10 @@ COPY docker/php/php.ini /usr/local/etc/php/conf.d/app.ini
 # Remove default nginx site
 RUN rm -f /etc/nginx/http.d/default.conf
 
+# Entrypoint
+COPY docker/entrypoint/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 EXPOSE 8000
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+ENTRYPOINT ["/entrypoint.sh"]
