@@ -13,7 +13,7 @@ RUN set -eux; \
         unzip \
         git \
         curl \
-        oniguruntime \
+        oniguruma-dev \
         libpng-dev \
         libjpeg-turbo-dev \
         freetype-dev \
