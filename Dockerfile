@@ -44,7 +44,6 @@ RUN composer install \
     --no-interaction \
     --no-dev \
     --no-scripts \
-    --no-autoloader \
     --prefer-dist \
     --optimize-autoloader
 
@@ -66,6 +65,9 @@ COPY --chown=www-data:www-data . .
 
 # Copy built vendor
 COPY --chown=www-data:www-data --from=vendor-stage /app/vendor ./vendor
+
+# Generate optimized autoloader
+RUN composer dump-autoload --optimize --no-dev --ansi
 
 # Copy built frontend assets
 COPY --chown=www-data:www-data --from=frontend-stage /app/public/build ./public/build
