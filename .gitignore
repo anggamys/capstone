@@ -31,3 +31,10 @@ ai-service/venv/
 **/__pycache__/
 *.pyc
 
+# Python ML artifacts (generated from training - not source code)
+ai-service/artifacts/*.pkl
+ai-service/artifacts/*.csv
+
+# VS Code project settings
+ai-service/.vscode/
+
