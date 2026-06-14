@@ -38,3 +38,5 @@ ai-service/artifacts/*.csv
 # VS Code project settings
 ai-service/.vscode/
 
+# AI service
+ai-service
