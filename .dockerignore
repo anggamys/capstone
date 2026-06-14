@@ -1,0 +1,45 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Environment
+.env
+.env.backup
+.env.production
+
+# Dependencies (will be installed inside container)
+/vendor
+/node_modules
+
+# Cache & logs
+/storage/framework/cache/**
+/storage/framework/sessions/**
+/storage/framework/views/**
+/storage/logs/**
+/storage/debugbar/**
+!storage/framework/cache/.gitignore
+!storage/framework/sessions/.gitignore
+!storage/framework/views/.gitignore
+!storage/logs/.gitignore
+
+# Build artifacts
+/public/build
+/public/hot
+
+# IDE & local config
+/.vscode
+/.idea
+/.phpunit.cache
+/.phpactor.json
+Thumbs.db
+.DS_Store
+Homestead.json
+Homestead.yaml
+
+# Python (ai-service handled separately)
+ai-service/venv/
+ai-service/__pycache__/
+ai-service/.env
+ai-service/artifacts/*.pkl
+ai-service/artifacts/*.csv
